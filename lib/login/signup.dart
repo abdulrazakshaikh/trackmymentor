@@ -215,7 +215,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Already Registered'.toLowerCase(),
+                                'Already Registered ?'.toLowerCase(),
                                 style: GoogleFonts.roboto(
                                     textStyle: Theme.of(context).textTheme.labelLarge,
                                     letterSpacing: 1.2,

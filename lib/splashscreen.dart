@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trackmy_mentor/intro/intro.dart';
 import 'package:trackmy_mentor/login/login.dart';
 
 
@@ -43,7 +44,8 @@ late Animation<double> _animation;
     Future.delayed(Duration(seconds: 4), () {
       Navigator.pushReplacement<void, void>(context, 
         MaterialPageRoute(
-          builder: (BuildContext context) => Login()
+          builder: (BuildContext context) => Intro()
+          // Login()
         )
       );
     });

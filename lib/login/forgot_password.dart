@@ -68,16 +68,15 @@ Widget build(BuildContext context) {
                     fontWeight: FontWeight.w600,
                     letterSpacing: 1.2,
                   ),
-                  autofocus: true,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.symmetric(vertical: 15),
-                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                    floatingLabelBehavior: FloatingLabelBehavior.auto,
                     labelText: 'Email/Mobile'.toLowerCase(),
                     labelStyle: GoogleFonts.roboto(
                       textStyle: Theme.of(context).textTheme.bodyMedium,
                       letterSpacing: 1.8,
                       fontWeight: FontWeight.w300),
-                    prefixIcon: Icon(Icons.alternate_email),
+                    prefixIcon: Icon(Icons.login_outlined),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
                     ),

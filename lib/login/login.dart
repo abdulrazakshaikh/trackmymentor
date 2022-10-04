@@ -238,7 +238,6 @@ SingingCharacter? _character = SingingCharacter.student;
                               fontWeight: FontWeight.w600,
                               letterSpacing: 1.2,
                             ),
-                            autofocus: true,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.symmetric(vertical: 15),
                               floatingLabelBehavior: FloatingLabelBehavior.auto,
