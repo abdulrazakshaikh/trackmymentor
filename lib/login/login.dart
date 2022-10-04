@@ -20,6 +20,9 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
   
 SingingCharacter? _character = SingingCharacter.student;
 
+  int selectedIndex = 0;
+  
+  
 
   @override
   Widget build(BuildContext context) {
@@ -69,134 +72,159 @@ SingingCharacter? _character = SingingCharacter.student;
                             'Who are you ?',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.roboto(
-                              textStyle: Theme.of(context).textTheme.titleMedium,
+                              textStyle: Theme.of(context).textTheme.headlineSmall,
                               letterSpacing: 1.5
                             ),
                           ),
                         ),
-                        Row(
-                          children: [
-
-                            // Expanded(
-                            //   child: RadioListTile<SingingCharacter>(
-                            //     controlAffinity: ListTileControlAffinity.platform,
-                            //     title: Text('Student'),
-                            //     shape: RoundedRectangleBorder(
-                            //       borderRadius: BorderRadius.circular(10),
-                            //       // side: BorderSide(width: 1, 
-                            //       //   color: 
-                            //       //   _character == SingingCharacter.student ?
-                            //       //   Theme.of(context).colorScheme.primary :
-                            //       //   Theme.of(context).colorScheme.outline
-                            //       // )
-                            //     ),
-                            //     // selectedTileColor: Theme.of(context).colorScheme.primary,
-                            //     value: SingingCharacter.student,
-                            //     groupValue: _character,
-                            //     activeColor: Theme.of(context).colorScheme.primary,
-                            //     onChanged: (SingingCharacter? value) {
-                            //       setState(() {
-                            //         _character = value;
-                            //       });
-                            //     },
-                            //   ),
-                            // ),
-                            // Expanded(
-                            //   child: RadioListTile<SingingCharacter>(
-                            //     controlAffinity: ListTileControlAffinity.platform,
-                            //     title: Text('Teacher'),
-
-                            //     shape: RoundedRectangleBorder(
-                            //       borderRadius: BorderRadius.circular(10),
-                            //       // side: BorderSide(width: 1, 
-                            //       //   color: 
-                            //       //   _character == SingingCharacter.teacher ?
-                            //       //   Theme.of(context).colorScheme.primary :
-                            //       //   Theme.of(context).colorScheme.outline
-                            //       // )
-                            //     ),
-                            //     // selectedTileColor: Theme.of(context).colorScheme.primary,
-                            //     value: SingingCharacter.teacher,
-                            //     groupValue: _character,
-                            //     activeColor: Theme.of(context).colorScheme.primary,
-                            //     onChanged: (SingingCharacter? value) {
-                            //       setState(() {
-                            //         _character = value;
-                            //       });
-                            //     },
-                            //   ),
-                            // ),
-                           
-                            Expanded(
-                              child: Card(
-                                
-
-                                color: 
-                                _character == SingingCharacter.student ?
-                                Theme.of(context).colorScheme.primaryContainer :
-                                Theme.of(context).colorScheme.background,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  side: BorderSide(width: 2, 
-                                    color: 
-                                    _character == SingingCharacter.student ?
-                                    Theme.of(context).colorScheme.primary :
-                                    Theme.of(context).colorScheme.outline.withOpacity(0.1)
-                                  )
-                                ),
-                                child: RadioListTile<SingingCharacter>(
-                                  controlAffinity: ListTileControlAffinity.platform,
-                                  title: Text('Student'),
-                                  selectedTileColor: Theme.of(context).colorScheme.primary,
-                                  value: SingingCharacter.student,
-                                  groupValue: _character,
-                                  activeColor: Theme.of(context).colorScheme.primary,
-                                  onChanged: (SingingCharacter? value) {
-                                    setState(() {
-                                      _character = value;
-                                    });
-                                  },
-                                ),
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 150,
+                                child: anyItem(0),
                               ),
-                            ),
-                            Expanded(
-                              child: Card(
-                                color: 
-                                _character == SingingCharacter.teacher ?
-                                Theme.of(context).colorScheme.primaryContainer :
-                                Theme.of(context).colorScheme.background,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  side: BorderSide(width: 2, 
-                                  color: 
-                                  _character == SingingCharacter.teacher ?
-                                    Theme.of(context).colorScheme.primary :
-                                    Theme.of(context).colorScheme.outline.withOpacity(0.1)
-                                  )
-                                ),
-                                child: RadioListTile<SingingCharacter>(
-                                  controlAffinity: ListTileControlAffinity.platform,
-                                  title: Text('Teacher'),
-                                  selectedTileColor: Theme.of(context).colorScheme.primary,
-                                  value: SingingCharacter.teacher,
-                                  groupValue: _character,
-                                  activeColor: Theme.of(context).colorScheme.primary,
-                                  onChanged: (SingingCharacter? value) {
-                                    setState(() {
-                                      _character = value;
-                                    });
-                                  },
-                                ),
-                              )
-                            ),
+                              SizedBox(width: 10.0),
+                              Container(
+                                width: 150,
+                                child: anyItem(1),
+                              ),
 
-        
-
-                          ],
-                        )
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
+          
+
+                  
+                 
+
+
+                  // Container(
+                  //   child: Column(
+                  //     children: [
+                  //       Container(
+                  //         margin: EdgeInsets.only(bottom: 15),
+                  //         child: Text(
+                  //           'Who are you ?',
+                  //           textAlign: TextAlign.center,
+                  //           style: GoogleFonts.roboto(
+                  //             textStyle: Theme.of(context).textTheme.headlineSmall,
+                  //             letterSpacing: 1.5
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       Row(
+                  //         children: [
+                  //           Expanded(
+                  //             child: Card(
+                  //               color: 
+                  //               _character == SingingCharacter.student ?
+                  //               Theme.of(context).colorScheme.primaryContainer :
+                  //               Theme.of(context).colorScheme.background,
+                  //               shape: RoundedRectangleBorder(
+                  //                 borderRadius: BorderRadius.circular(10),
+                  //                 side: BorderSide(width: 2, 
+                  //                   color: 
+                  //                   _character == SingingCharacter.student ?
+                  //                   Theme.of(context).colorScheme.primary :
+                  //                   Theme.of(context).colorScheme.outline.withOpacity(0.1)
+                  //                 )
+                  //               ),
+                  //               child: RadioListTile<SingingCharacter>(
+                  //                 contentPadding: EdgeInsets.all(15),
+                  //                 controlAffinity: ListTileControlAffinity.trailing,
+                  //                 title: Column(
+                  //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //                   children: [
+                  //                     Container(
+                  //                       margin: EdgeInsets.only(bottom: 20),
+                  //                       child: Image.asset('images/student.png',
+                  //                       fit: BoxFit.contain,
+                  //                       width: 48, height: 48,
+                  //                       ),
+                  //                     ),
+                  //                     Text('Student'.toUpperCase(),
+                  //                     style: GoogleFonts.roboto(
+                  //                       textStyle: Theme.of(context).textTheme.titleLarge,
+                  //                       fontWeight: FontWeight.w500,
+                  //                       fontSize: 16
+                  //                     ),
+                  //                     ),
+                  //                   ],
+                  //                 ),
+                  //                 selectedTileColor: Theme.of(context).colorScheme.primary,
+                  //                 value: SingingCharacter.student,
+                  //                 groupValue: _character,
+                  //                 activeColor: Theme.of(context).colorScheme.primary,
+                  //                 onChanged: (SingingCharacter? value) {
+                  //                   setState(() {
+                  //                     _character = value;
+                  //                   });
+                  //                 },
+                  //               ),
+                  //             ),
+                  //           ),
+                  //           Expanded(
+                  //             child: Card(
+                  //               color: 
+                  //               _character == SingingCharacter.teacher ?
+                  //               Theme.of(context).colorScheme.primaryContainer :
+                  //               Theme.of(context).colorScheme.background,
+                  //               shape: RoundedRectangleBorder(
+                  //                 borderRadius: BorderRadius.circular(10),
+                  //                 side: BorderSide(width: 2, 
+                  //                 color: 
+                  //                 _character == SingingCharacter.teacher ?
+                  //                   Theme.of(context).colorScheme.primary :
+                  //                   Theme.of(context).colorScheme.outline.withOpacity(0.1)
+                  //                 )
+                  //               ),
+                  //               child: RadioListTile<SingingCharacter>(
+                  //                 contentPadding: EdgeInsets.all(15),
+                  //                 controlAffinity: ListTileControlAffinity.trailing,
+                  //                 title: Column(
+                  //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //                   children: [
+                  //                     Container(
+                  //                       margin: EdgeInsets.only(bottom: 20),
+                  //                       child: Image.asset('images/teacher.png',
+                  //                       fit: BoxFit.contain,
+                  //                       width: 48, height: 48,
+                  //                       ),
+                  //                     ),
+                  //                     Text('Teacher'.toUpperCase(),
+                  //                     style: GoogleFonts.roboto(
+                  //                       textStyle: Theme.of(context).textTheme.titleLarge,
+                  //                       fontWeight: FontWeight.w500,
+                  //                       fontSize: 16
+                  //                     ),
+                  //                     ),
+                  //                   ],
+                  //                 ),
+                  //                 selectedTileColor: Theme.of(context).colorScheme.primary,
+                  //                 value: SingingCharacter.teacher,
+                  //                 groupValue: _character,
+                  //                 activeColor: Theme.of(context).colorScheme.primary,
+                  //                 onChanged: (SingingCharacter? value) {
+                  //                   setState(() {
+                  //                     _character = value;
+                  //                   });
+                  //                 },
+                  //               ),
+                  //             )
+                  //           ),
+
+        
+
+                  //         ],
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
 
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 25),
@@ -374,4 +402,79 @@ SingingCharacter? _character = SingingCharacter.student;
       ),
     );
   }
+
+Widget anyItem(int index) {
+  return InkWell(
+    onTap: () {
+      setState(() {
+        selectedIndex = index;
+      });
+    },
+    child: Card(
+      color:
+      selectedIndex == index ? Theme.of(context).colorScheme.primaryContainer :
+      Theme.of(context).colorScheme.background,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        side: BorderSide(width: 1, 
+        color: 
+        selectedIndex == index ? Theme.of(context).colorScheme.primary : 
+        Theme.of(context).colorScheme.secondary
+        ),
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Positioned(
+            top: 10, right: 10,
+            child: Container(
+              width: 20, height: 20, 
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1, 
+                  color: 
+                  selectedIndex == index ?
+                  Colors.transparent :
+                  Theme.of(context).colorScheme.secondary
+                ),
+                borderRadius: BorderRadius.circular(12),
+                color: 
+                selectedIndex == index ?
+                Theme.of(context).colorScheme.primary : Colors.transparent,
+              ),
+              child: Icon(Icons.check, color: Colors.white, size: 12,),
+            )
+          ),
+          Padding(
+            padding: EdgeInsets.all(15),
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 20),
+                  width: 64,
+                  child: Image.asset(
+                  index == 0 ? 'images/teacher.png' : 'images/student.png',
+                  fit: BoxFit.contain,
+                  ),
+                ),
+                Text(index == 0 ? 'Teacher'.toUpperCase() : 'Student'.toUpperCase(),
+                  style: GoogleFonts.roboto(
+                    textStyle: Theme.of(context).textTheme.titleLarge,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    letterSpacing: 1.2,
+                    color: selectedIndex == index ? Theme.of(context).colorScheme.primary : null,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          
+        ],
+      )
+    ),
+  );
 }
+
+}
+
