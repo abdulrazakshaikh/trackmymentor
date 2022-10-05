@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trackmy_mentor/common_widgets/bottom_navigation.dart';
 
 class Dashboard extends StatefulWidget {
  
@@ -21,7 +22,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      bottomNavigationBar: BottomNavigation(),
       appBar: AppBar(
         title: Text('Dashboard'.toUpperCase()),
         actions: [],
@@ -45,13 +46,7 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
-        child: const Icon(Icons.add),
-      ),
+      
     );
   }
 }

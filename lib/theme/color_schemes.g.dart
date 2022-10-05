@@ -92,8 +92,22 @@ AppBarTheme lightAppbarTheme = AppBarTheme(
   elevation: 4,
   shadowColor: arsshadow,
   titleTextStyle: GoogleFonts.robotoCondensed(textStyle: const TextStyle(fontSize: 15, color: arstextColorLight, letterSpacing: 1.2, fontWeight: FontWeight.bold)),
-  titleSpacing: 0,
+  // titleSpacing: 0,
 );
+
+// ------BOTTOM NAVIGATION BAR--------//
+BottomNavigationBarThemeData lightBottomNavigationBarTheme = BottomNavigationBarThemeData(
+  // unselectedIconTheme: IconThemeData(color: arstextColorLight),
+  // selectedIconTheme: IconThemeData(color: arsprimary),
+  backgroundColor: arsappbarbackgroundLight,
+  type: BottomNavigationBarType.fixed,
+  showSelectedLabels: false,
+  showUnselectedLabels: false,
+  selectedItemColor: arsprimary,
+  unselectedItemColor: arssecondary,
+
+);
+
 
 // ------DRAWER--------//
 DrawerThemeData lightDrawerTheme = const DrawerThemeData(
@@ -209,8 +223,14 @@ ThemeData lightthemeData(BuildContext context) {
     colorScheme: lightColorScheme,
 
     appBarTheme: lightAppbarTheme,
+    // bottomAppBarTheme: lightBottomAppbarTheme,
+    bottomNavigationBarTheme: lightBottomNavigationBarTheme,
+  
+  
+
     drawerTheme: lightDrawerTheme,
     cardTheme: lightCardTheme,
+    
 
     iconTheme: lightIconTheme,    
 
@@ -221,7 +241,7 @@ ThemeData lightthemeData(BuildContext context) {
 
     expansionTileTheme: lightExpansionTileTheme,
 
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(),
+    
     floatingActionButtonTheme: const FloatingActionButtonThemeData(),
     textTheme : lightTextTheme,
   );
