@@ -20,6 +20,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "card_swiper",
+      "rootUri": "file:///D:/flutter_3.3.2/.pub-cache/hosted/pub.dartlang.org/card_swiper-2.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///D:/flutter_3.3.2/.pub-cache/hosted/pub.dartlang.org/characters-1.2.1",
       "packageUri": "lib/",
@@ -84,6 +90,12 @@
       "rootUri": "file:///D:/flutter_3.3.2/.pub-cache/hosted/pub.dartlang.org/flutter_lints-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_rating_bar",
+      "rootUri": "file:///D:/flutter_3.3.2/.pub-cache/hosted/pub.dartlang.org/flutter_rating_bar-4.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
     },
     {
       "name": "flutter_test",
@@ -278,7 +290,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-10-05T12:19:12.164793Z",
+  "generated": "2022-10-05T15:46:20.712904Z",
   "generator": "pub",
   "generatorVersion": "2.18.1"
 }

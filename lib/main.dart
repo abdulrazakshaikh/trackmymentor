@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trackmy_mentor/dashboard.dart';
+import 'package:trackmy_mentor/homepage/homepage.dart';
 import 'package:trackmy_mentor/login/login.dart';
 import 'package:trackmy_mentor/login/signup.dart';
 import 'package:trackmy_mentor/splashscreen.dart';
@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
       
       home: 
       // SplashScreen(),
-      // Dashboard()
-      Login()
+      Homepage()
+      // Login()
       // Signup()
     );
   }

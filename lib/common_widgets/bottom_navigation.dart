@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trackmy_mentor/chat.dart';
-import 'package:trackmy_mentor/dashboard.dart';
 import 'package:trackmy_mentor/history.dart';
 import 'package:trackmy_mentor/profile.dart';
 import 'dart:async';

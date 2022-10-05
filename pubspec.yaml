@@ -39,6 +39,8 @@ dependencies:
   google_fonts: ^3.0.1
   introduction_slider: ^2.0.1
   cool_stepper_reloaded: ^3.2.5
+  card_swiper: ^2.0.4
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
