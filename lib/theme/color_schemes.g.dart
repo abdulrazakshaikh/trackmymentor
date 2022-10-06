@@ -5,49 +5,49 @@ import 'package:google_fonts/google_fonts.dart';
 
 // ------TEXT THEME--------//
 TextTheme lightTextTheme = TextTheme(
-  displayLarge: GoogleFonts.roboto(
+  displayLarge: GoogleFonts.lato(
       textStyle: const TextStyle(color: arstextColorLight, fontSize: 57, fontWeight: FontWeight.w300,)
   ),
-  displayMedium: GoogleFonts.roboto(
+  displayMedium: GoogleFonts.lato(
       textStyle: const TextStyle(color: arstextColorLight, fontSize: 45, fontWeight: FontWeight.w300,)
   ),
-  displaySmall: GoogleFonts.roboto(
+  displaySmall: GoogleFonts.lato(
       textStyle: const TextStyle(color: arstextColorLight, fontSize: 36, fontWeight: FontWeight.w300,)
   ),
-  headlineLarge: GoogleFonts.roboto(
+  headlineLarge: GoogleFonts.lato(
     textStyle: const TextStyle(color: arstextColorLight, fontSize: 32, fontWeight: FontWeight.w300,)
   ),
-  headlineMedium: GoogleFonts.roboto(
+  headlineMedium: GoogleFonts.lato(
       textStyle: const TextStyle(color: arstextColorLight, fontSize: 28, fontWeight: FontWeight.w300,)
   ),
-  headlineSmall: GoogleFonts.roboto(
+  headlineSmall: GoogleFonts.lato(
       textStyle: const TextStyle(color: arstextColorLight, fontSize: 24, fontWeight: FontWeight.w300,)
   ),
-  titleLarge: GoogleFonts.roboto(
+  titleLarge: GoogleFonts.lato(
       textStyle: const TextStyle(color: arstextColorLight, fontSize: 22, fontWeight: FontWeight.w500, )
   ),
-  titleMedium: GoogleFonts.roboto(
+  titleMedium: GoogleFonts.lato(
       textStyle: const TextStyle(color: arstextColorLight, fontSize: 16, letterSpacing: 0.15, fontWeight: FontWeight.w500,)
   ),
-  titleSmall: GoogleFonts.roboto(
+  titleSmall: GoogleFonts.lato(
       textStyle: const TextStyle(color: arstextColorLight, fontSize: 14, letterSpacing: 0.1, fontWeight: FontWeight.w500,)
   ),
-  labelLarge: GoogleFonts.roboto(
+  labelLarge: GoogleFonts.lato(
       textStyle: TextStyle(color: arstextColorLight.withOpacity(0.65), fontSize: 14, letterSpacing: 0.5, fontWeight: FontWeight.w500,)
   ),
-  labelMedium: GoogleFonts.roboto(
+  labelMedium: GoogleFonts.lato(
       textStyle: TextStyle(color: arstextColorLight.withOpacity(0.65), fontSize: 12, letterSpacing: 0.5, fontWeight: FontWeight.w500,)
   ),
-  labelSmall: GoogleFonts.roboto(
+  labelSmall: GoogleFonts.lato(
       textStyle: TextStyle(color: arstextColorLight.withOpacity(0.65), fontSize: 11, letterSpacing: 0.5, fontWeight: FontWeight.w500,)
   ),
-  bodyLarge: GoogleFonts.roboto(
+  bodyLarge: GoogleFonts.lato(
       textStyle: const TextStyle(color: arstextColorLight, fontSize: 16, letterSpacing: 0.5, fontWeight: FontWeight.w500,)
   ),
-  bodyMedium: GoogleFonts.roboto(
+  bodyMedium: GoogleFonts.lato(
       textStyle: const TextStyle(color: arstextColorLight, fontSize: 14, letterSpacing: 0.25, fontWeight: FontWeight.w500,)
   ),
-  bodySmall: GoogleFonts.roboto(
+  bodySmall: GoogleFonts.lato(
       textStyle: const TextStyle(color: arstextColorLight, fontSize: 12, letterSpacing: 0.4, fontWeight: FontWeight.w500,)
   ),
 );
@@ -136,7 +136,7 @@ ElevatedButtonThemeData lightElevatedButtonTheme = ElevatedButtonThemeData(
     // shape: RoundedRectangleBorder(
     //   borderRadius: BorderRadius.circular(6)
     // ),
-    textStyle: GoogleFonts.roboto(
+    textStyle: GoogleFonts.lato(
       textStyle: TextStyle(fontSize: 15, letterSpacing: 1.2,fontWeight: FontWeight.w500)
     ),
   ),
@@ -153,7 +153,7 @@ OutlinedButtonThemeData lightOutlinedButtonTheme = OutlinedButtonThemeData(
     //   borderRadius: BorderRadius.circular(6)
     // ),
     side: BorderSide(width: 1, color: arsprimary),
-    textStyle: GoogleFonts.roboto(
+    textStyle: GoogleFonts.lato(
       textStyle: TextStyle(fontSize: 15, letterSpacing: 1.2,fontWeight: FontWeight.w500)
     ),
   ),
@@ -169,7 +169,7 @@ TextButtonThemeData lightTextButtonTheme = TextButtonThemeData(
     // shape: RoundedRectangleBorder(
     //   borderRadius: BorderRadius.circular(6)
     // ),
-    textStyle: GoogleFonts.roboto(
+    textStyle: GoogleFonts.lato(
       textStyle: TextStyle(fontSize: 15, letterSpacing: 1.2,fontWeight: FontWeight.w500)
     ),
   ),
@@ -198,7 +198,7 @@ FloatingActionButtonThemeData lightFloatingActionButtonTheme = FloatingActionBut
   foregroundColor: arsonprimary,
   hoverElevation: 0,
   extendedIconLabelSpacing: 10,
-  extendedTextStyle: GoogleFonts.roboto(
+  extendedTextStyle: GoogleFonts.lato(
     textStyle: TextStyle(fontSize: 15, letterSpacing: 1.2,fontWeight: FontWeight.w500)
   ),
 );

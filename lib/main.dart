@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
       
       home: 
       // SplashScreen(),
-      Homepage()
-      // Login()
+      // Homepage()
+      Login()
       // Signup()
     );
   }

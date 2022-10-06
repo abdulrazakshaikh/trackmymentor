@@ -155,7 +155,7 @@ List carouselitemlist = [
                                 SizedBox(height: 5),
                                 Text('${item["category"]}',
                                   overflow: TextOverflow.clip,
-                                  style: GoogleFonts.roboto(
+                                  style: GoogleFonts.lato(
                                     textStyle: Theme.of(context).textTheme.bodySmall,
                                     color: Theme.of(context).colorScheme.secondary,
                                     letterSpacing: 1.2,

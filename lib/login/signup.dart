@@ -112,18 +112,18 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
           ),
           stepColor: Theme.of(context).colorScheme.background,
           headerColor: Theme.of(context).colorScheme.tertiary.withOpacity(0.1),
-          stepOfTextStyle: GoogleFonts.roboto(
+          stepOfTextStyle: GoogleFonts.lato(
             textStyle: Theme.of(context).textTheme.labelSmall,
             letterSpacing: 1.5,
             fontWeight: FontWeight.w500,
           ),
-          titleTextStyle: GoogleFonts.roboto(
+          titleTextStyle: GoogleFonts.lato(
             textStyle: Theme.of(context).textTheme.headlineSmall,
             letterSpacing: 1.5,
             fontSize: 22,
             fontWeight: FontWeight.w700,
           ),
-          subtitleTextStyle: GoogleFonts.roboto(
+          subtitleTextStyle: GoogleFonts.lato(
             textStyle: Theme.of(context).textTheme.titleSmall,
             letterSpacing: 1.5,
           ),

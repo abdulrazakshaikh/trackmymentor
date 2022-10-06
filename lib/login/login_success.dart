@@ -49,13 +49,13 @@ class _LoginSuccessState extends State<LoginSuccess> with TickerProviderStateMix
               child: Column(
                 children: [
                   Text('Congratulations',
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.headlineLarge,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                   Text('you have logged in to your account successfully', textAlign: TextAlign.center,
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.bodyMedium,
                       letterSpacing: 1.5
                     ),

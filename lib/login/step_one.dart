@@ -111,7 +111,7 @@ Widget anyItem(int index) {
                   ),
                 ),
                 Text(index == 0 ? 'Teacher'.toUpperCase() : 'Student'.toUpperCase(),
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.titleLarge,
                     fontWeight: FontWeight.w700,
                     fontSize: 16,

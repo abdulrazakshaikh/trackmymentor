@@ -55,7 +55,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
 
 
                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: 15),
                   child: Column(
                     children: [
                       Container(
@@ -70,7 +70,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                         ),
                       ),
                       DropdownButtonFormField(
-                        style: GoogleFonts.roboto(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
@@ -79,7 +79,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                           contentPadding: EdgeInsets.all(10),
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
                           hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.roboto(
+                          hintStyle: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             letterSpacing: 1.8,
                             fontWeight: FontWeight.w300),
@@ -95,7 +95,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value,
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.lato(
                               textStyle: Theme.of(context).textTheme.bodyMedium,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 1.2,
@@ -115,7 +115,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                 ),
 
                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: 15),
                   child: Column(
                     children: [
                       Container(
@@ -130,7 +130,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                         ),
                       ),
                       DropdownButtonFormField(
-                        style: GoogleFonts.roboto(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
@@ -139,7 +139,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                           contentPadding: EdgeInsets.all(10),
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
                           hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.roboto(
+                          hintStyle: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             letterSpacing: 1.8,
                             fontWeight: FontWeight.w300),
@@ -155,7 +155,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value,
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.lato(
                               textStyle: Theme.of(context).textTheme.bodyMedium,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 1.2,
@@ -175,7 +175,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                 ),
 
                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: 15),
                   child: Column(
                     children: [
                       Container(
@@ -190,7 +190,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                         ),
                       ),
                       DropdownButtonFormField(
-                        style: GoogleFonts.roboto(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
@@ -199,7 +199,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                           contentPadding: EdgeInsets.all(10),
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
                           hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.roboto(
+                          hintStyle: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             letterSpacing: 1.8,
                             fontWeight: FontWeight.w300),
@@ -215,7 +215,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value,
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.lato(
                               textStyle: Theme.of(context).textTheme.bodyMedium,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 1.2,
@@ -235,7 +235,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                 ),
 
                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: 15),
                   child: Column(
                     children: [
                       Container(
@@ -250,7 +250,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                         ),
                       ),
                       DropdownButtonFormField(
-                        style: GoogleFonts.roboto(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
@@ -259,7 +259,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                           contentPadding: EdgeInsets.all(10),
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
                           hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.roboto(
+                          hintStyle: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             letterSpacing: 1.8,
                             fontWeight: FontWeight.w300),
@@ -275,7 +275,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value,
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.lato(
                               textStyle: Theme.of(context).textTheme.bodyMedium,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 1.2,

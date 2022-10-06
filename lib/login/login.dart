@@ -46,15 +46,16 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                       children: [
                         Text(
                           'Welcome Back',
-                          style: GoogleFonts.roboto(
+                          style: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.headlineLarge,
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 1.2
                           ),
                         ),
                         Text(
                           'enter login details to proceed',
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.roboto(
+                          style: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.titleSmall,
                             letterSpacing: 1.5),
                         ),
@@ -71,7 +72,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                           child: Text(
                             'Who are you ?',
                             textAlign: TextAlign.center,
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.lato(
                               textStyle: Theme.of(context).textTheme.headlineSmall,
                               letterSpacing: 1.5
                             ),
@@ -111,7 +112,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                   //         child: Text(
                   //           'Who are you ?',
                   //           textAlign: TextAlign.center,
-                  //           style: GoogleFonts.roboto(
+                  //           style: GoogleFonts.lato(
                   //             textStyle: Theme.of(context).textTheme.headlineSmall,
                   //             letterSpacing: 1.5
                   //           ),
@@ -148,7 +149,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                   //                       ),
                   //                     ),
                   //                     Text('Student'.toUpperCase(),
-                  //                     style: GoogleFonts.roboto(
+                  //                     style: GoogleFonts.lato(
                   //                       textStyle: Theme.of(context).textTheme.titleLarge,
                   //                       fontWeight: FontWeight.w500,
                   //                       fontSize: 16
@@ -197,7 +198,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                   //                       ),
                   //                     ),
                   //                     Text('Teacher'.toUpperCase(),
-                  //                     style: GoogleFonts.roboto(
+                  //                     style: GoogleFonts.lato(
                   //                       textStyle: Theme.of(context).textTheme.titleLarge,
                   //                       fontWeight: FontWeight.w500,
                   //                       fontSize: 16
@@ -233,7 +234,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                         Container(
                           margin: EdgeInsets.only(bottom: 15),
                           child: TextField(
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.lato(
                               textStyle: Theme.of(context).textTheme.bodyMedium,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 1.2,
@@ -242,7 +243,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                               contentPadding: EdgeInsets.symmetric(vertical: 15),
                               floatingLabelBehavior: FloatingLabelBehavior.auto,
                               labelText: 'Enter Email/Mobile'.toLowerCase(),
-                              labelStyle: GoogleFonts.roboto(
+                              labelStyle: GoogleFonts.lato(
                                 textStyle: Theme.of(context).textTheme.bodyMedium,
                                 letterSpacing: 1.8,
                                 fontWeight: FontWeight.w300),
@@ -259,7 +260,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                         Container(
                           margin: EdgeInsets.only(bottom: 5),
                           child: TextField(
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.lato(
                               textStyle: Theme.of(context).textTheme.bodyMedium,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 1.2,
@@ -269,7 +270,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                               contentPadding: EdgeInsets.symmetric(vertical: 15),
                               floatingLabelBehavior: FloatingLabelBehavior.auto,
                               labelText: 'Password'.toLowerCase(),
-                              labelStyle: GoogleFonts.roboto(
+                              labelStyle: GoogleFonts.lato(
                                 textStyle: Theme.of(context).textTheme.bodyMedium,
                                 letterSpacing: 1.8,
                                 fontWeight: FontWeight.w300),
@@ -319,7 +320,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                                 },
                                 child: Text(
                                   'Forgot Password ?',
-                                  style: GoogleFonts.roboto(
+                                  style: GoogleFonts.lato(
                                   textStyle: Theme.of(context).textTheme.titleSmall,
                                     color: Theme.of(context).colorScheme.primary,
                                     letterSpacing: 1,
@@ -359,7 +360,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                             children: [
                               Text(
                                 'Not Registered Yet ?'.toLowerCase(),
-                                style: GoogleFonts.roboto(
+                                style: GoogleFonts.lato(
                                     textStyle: Theme.of(context).textTheme.labelLarge,
                                     letterSpacing: 1.2,
                                     fontWeight: FontWeight.w500),
@@ -378,7 +379,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                                 },
                                 child: Text(
                                   'Signup',
-                                  style: GoogleFonts.roboto(
+                                  style: GoogleFonts.lato(
                                   textStyle: Theme.of(context).textTheme.titleSmall,
                                     color: Theme.of(context).colorScheme.primary,
                                     letterSpacing: 1,
@@ -456,9 +457,9 @@ Widget anyItem(int index) {
                   ),
                 ),
                 Text(index == 0 ? 'Teacher'.toUpperCase() : 'Student'.toUpperCase(),
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.titleLarge,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.bold,
                     fontSize: 16,
                     letterSpacing: 1.2,
                     color: selectedIndex == index ? Theme.of(context).colorScheme.primary : null,

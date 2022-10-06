@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cool_stepper_reloaded/cool_stepper_reloaded.dart';
+import 'package:trackmy_mentor/login/dropdown_bottomsheet.dart';
 
 
 class StepThree extends StatefulWidget {
@@ -57,7 +58,7 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
               children: [
 
                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: 15),
                   child: Column(
                     children: [
                       Container(
@@ -71,8 +72,8 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                         ),
                         ),
                       ),
-                      DropdownButtonFormField(
-                        style: GoogleFonts.roboto(
+                      TextField(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
@@ -81,35 +82,32 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                           contentPadding: EdgeInsets.all(10),
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
                           hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.roboto(
+                          hintStyle: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             letterSpacing: 1.8,
-                            fontWeight: FontWeight.w300),
-                          
+                            fontWeight: FontWeight.w300
+                          ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
                           ),
+                          suffixIcon: Icon(Icons.arrow_drop_down)
                         ),
-                        items: _options.map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value,
-                            style: GoogleFonts.roboto(
-                              textStyle: Theme.of(context).textTheme.bodyMedium,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1.2,
+                        onTap: (){
+                          showModalBottomSheet(
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
+                              ),
                             ),
-                            ),
+                            context: context, builder: (BuildContext context) { 
+                              return DropdownBottomSheet();
+                            }, 
                           );
-                        }).toList(), 
-                        focusColor: Colors.white,
-                        onChanged: (String? newValue){
-                          setState(() {
-                            selectOptions = newValue!;
-                          });
                         },
                       ),
                     ],
@@ -117,7 +115,7 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                 ),
 
                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: 15),
                   child: Column(
                     children: [
                       Container(
@@ -131,8 +129,8 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                         ),
                         ),
                       ),
-                      DropdownButtonFormField(
-                        style: GoogleFonts.roboto(
+                      TextField(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
@@ -141,35 +139,32 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                           contentPadding: EdgeInsets.all(10),
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
                           hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.roboto(
+                          hintStyle: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             letterSpacing: 1.8,
-                            fontWeight: FontWeight.w300),
-                          
+                            fontWeight: FontWeight.w300
+                          ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
                           ),
+                          suffixIcon: Icon(Icons.arrow_drop_down)
                         ),
-                        items: _options.map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value,
-                            style: GoogleFonts.roboto(
-                              textStyle: Theme.of(context).textTheme.bodyMedium,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 1.2,
+                        onTap: (){
+                          showModalBottomSheet(
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
+                              ),
                             ),
-                            ),
+                            context: context, builder: (BuildContext context) { 
+                              return DropdownBottomSheet();
+                            }, 
                           );
-                        }).toList(), 
-                        focusColor: Colors.white,
-                        onChanged: (String? newValue){
-                          setState(() {
-                            selectOptions = newValue!;
-                          });
                         },
                       ),
                     ],
@@ -177,7 +172,7 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                 ),
 
                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: 15),
                   child: Column(
                     children: [
                       Container(
@@ -191,8 +186,8 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                         ),
                         ),
                       ),
-                      DropdownButtonFormField(
-                        style: GoogleFonts.roboto(
+                      TextField(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
@@ -201,35 +196,32 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                           contentPadding: EdgeInsets.all(10),
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
                           hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.roboto(
+                          hintStyle: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             letterSpacing: 1.8,
-                            fontWeight: FontWeight.w300),
-                          
+                            fontWeight: FontWeight.w300
+                          ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
                           ),
+                          suffixIcon: Icon(Icons.arrow_drop_down)
                         ),
-                        items: _options.map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value,
-                              style: GoogleFonts.roboto(
-                                textStyle: Theme.of(context).textTheme.bodyMedium,
-                                fontWeight: FontWeight.w600,
-                                letterSpacing: 1.2,
+                        onTap: (){
+                          showModalBottomSheet(
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
                               ),
                             ),
+                            context: context, builder: (BuildContext context) { 
+                              return DropdownBottomSheet();
+                            }, 
                           );
-                        }).toList(), 
-                        focusColor: Colors.white,
-                        onChanged: (String? newValue){
-                          setState(() {
-                            selectOptions = newValue!;
-                          });
                         },
                       ),
                     ],
