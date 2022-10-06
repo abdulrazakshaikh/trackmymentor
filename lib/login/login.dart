@@ -18,7 +18,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
   bool _passwordVisible = false;
 
   
-SingingCharacter? _character = SingingCharacter.student;
+  SingingCharacter? _character = SingingCharacter.student;
 
   int selectedIndex = 0;
   
@@ -264,7 +264,6 @@ SingingCharacter? _character = SingingCharacter.student;
                               fontWeight: FontWeight.w600,
                               letterSpacing: 1.2,
                             ),
-                            autofocus: true,
                             obscureText: !_passwordVisible,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.symmetric(vertical: 15),

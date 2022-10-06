@@ -4,7 +4,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trackmy_mentor/dashboard.dart';
+import 'package:trackmy_mentor/homepage/homepage.dart';
 
 class LoginSuccess extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class _LoginSuccessState extends State<LoginSuccess> with TickerProviderStateMix
     Future.delayed(Duration(seconds: 1), () {
       Navigator.pushReplacement<void, void>(context, 
         MaterialPageRoute(
-          builder: (BuildContext context) => Dashboard()
+          builder: (BuildContext context) => Homepage()
         )
       );
     });
