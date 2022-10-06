@@ -15,33 +15,38 @@ class _HomepagePopularTeacherState extends State<HomepagePopularTeacher> {
 List carouselitemlist = [
   {
     "id": "001",
-    "title" : "Lorem Ipsum",
-    "category": "Categrory",
-    "img": "images/bg1.jpg",
+    "name" : "Levi Solomon",
+    "specialization": "Lorem One",
+    "experience": "3yrs",
+    "img": "images/default.jpg",
   },
   {
     "id": "002",
-    "title" : "Lorem Ipsum",
-    "category": "Categrory",
-    "img": "images/bg1.jpg",
+    "name" : "Lyndon Merrill",
+    "specialization": "Lorem Two",
+    "experience": "3yrs",
+    "img": "images/default.jpg",
   },
   {
     "id": "003",
-    "title" : "Lorem Ipsum",
-    "category": "Categrory",
-    "img": "images/bg1.jpg",
+    "name" : "Charles Pennington",
+    "specialization": "Lorem Two",
+    "experience": "3yrs",
+    "img": "images/default.jpg",
   },
   {
     "id": "004",
-    "title" : "Lorem Ipsum",
-    "category": "Categrory",
-    "img": "images/bg1.jpg",
+    "name" : "Trevor Wainwright",
+    "specialization": "Lorem Two",
+    "experience": "3yrs",
+    "img": "images/default.jpg",
   },
   {
     "id": "005",
-    "title" : "Lorem Ipsum",
-    "category": "Categrory",
-    "img": "images/bg1.jpg",
+    "name" : "Elisha Wilkins",
+    "specialization": "Lorem Two",
+    "experience": "3yrs",
+    "img": "images/default.jpg",
   },
 ];
 
@@ -50,6 +55,7 @@ List carouselitemlist = [
   
   return Container(
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -58,7 +64,7 @@ List carouselitemlist = [
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
-                child: Text('Top Gigs',
+                child: Text('Popular Teacher',
                   style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.titleLarge,
                     letterSpacing: 1.2,
@@ -98,13 +104,19 @@ List carouselitemlist = [
         ),
                   
         Container(
-          height: MediaQuery.of(context).size.width < 321 ?  250 : 240,
+          height: MediaQuery.of(context).size.width < 321 ?  265 : 255,
+          alignment: Alignment.topLeft,
           child: Swiper(
             itemBuilder: (BuildContext context, int index) {
               Map item = carouselitemlist[index];
               return Container(
-              transform: Transform.translate( offset: const Offset(-15, 0), ).transform,
+                
+                
+              alignment: Alignment.topLeft,
+              transform: Transform.translate( offset: Offset(-75, 0), ).transform,
               margin: const EdgeInsets.only( bottom: 25 ), 
+              
+
               // margin: EdgeInsets.only(bottom: 25),
               child: GestureDetector(
                 onTap: () {},
@@ -138,8 +150,9 @@ List carouselitemlist = [
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                Text('${item["title"]}',
+                                Text('${item["name"]}',
                                   overflow: TextOverflow.clip,
+                                  maxLines: 1,
                                   style: GoogleFonts.lato(
                                     textStyle: Theme.of(context).textTheme.titleMedium,
                                     letterSpacing: 1.2,
@@ -148,13 +161,34 @@ List carouselitemlist = [
                                   ),
                                 ),
                                 SizedBox(height: 5),
-                                Text('${item["category"]}',
+                                Text('${item["specialization"]}',
                                   overflow: TextOverflow.clip,
                                   style: GoogleFonts.lato(
                                     textStyle: Theme.of(context).textTheme.bodySmall,
                                     color: Theme.of(context).colorScheme.secondary,
                                     letterSpacing: 1.2,
                                     fontWeight: FontWeight.w400
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                RichText(
+                                  text: TextSpan(
+                                    style: GoogleFonts.lato(
+                                      textStyle: Theme.of(context).textTheme.bodySmall,
+                                      color: Theme.of(context).colorScheme.secondary,
+                                      letterSpacing: 1.2,
+                                      fontWeight: FontWeight.w400
+                                    ),
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text: 'Experience : ', 
+                                        
+                                      ),
+                                      TextSpan(
+                                        text: '${item["experience"]}',
+                                        style: TextStyle(fontWeight: FontWeight.bold)
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -168,10 +202,14 @@ List carouselitemlist = [
               );
             },
             autoplay: false,
-            viewportFraction: MediaQuery.of(context).size.width < 321 ?  0.9 : 0.85,
+            viewportFraction: MediaQuery.of(context).size.width < 321 ?  0.6 : 0.55,
+            // viewportFraction: 0.5,
             itemCount: carouselitemlist == null ? 0 : carouselitemlist.length,
             scrollDirection: Axis.horizontal,
+            axisDirection: AxisDirection.left,
             loop: false,
+
+
             // pagination: SwiperPagination(
             //   alignment: Alignment.bottomCenter,
             //   builder: DotSwiperPaginationBuilder(

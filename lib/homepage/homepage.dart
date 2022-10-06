@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:trackmy_mentor/common_widgets/bottom_navigation.dart';
 import 'package:trackmy_mentor/homepage/homepage_mypopulargigs.dart';
 import 'package:trackmy_mentor/homepage/homepage_populargigs.dart';
+import 'package:trackmy_mentor/homepage/homepage_popularteacher.dart';
 import 'package:trackmy_mentor/homepage/homepage_topgigs.dart';
 
 class Homepage extends StatefulWidget {
@@ -36,7 +37,11 @@ class _HomepageState extends State<Homepage> {
             ),
 
             Container(
-              child: HomepageTopGigs()
+              child: HomepageTopGigs(),
+            ),
+
+            Container(
+              child: HomepagePopularTeacher(),
             ),
 
           ],
