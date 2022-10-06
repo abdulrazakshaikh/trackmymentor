@@ -26,7 +26,7 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
             child: Text(
               'Personal Information',
               textAlign: TextAlign.center,
-              style: GoogleFonts.robotoCondensed(
+              style: GoogleFonts.lato(
                 textStyle: Theme.of(context).textTheme.headlineSmall,
                 letterSpacing: 1.5,
                 fontSize: 22,

@@ -64,7 +64,7 @@ List carouselitemlist = [
             children: [
               Expanded(
                 child: Text('My Popular Gigs',
-                  style: GoogleFonts.robotoCondensed(
+                  style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.titleLarge,
                     letterSpacing: 1.2,
                     fontSize: 20,
@@ -78,7 +78,7 @@ List carouselitemlist = [
                   child: Row(
                     children: [
                       Text('Show All',
-                        style: GoogleFonts.robotoCondensed(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.titleSmall,
                           letterSpacing: 1.2,
                           color: Theme.of(context).colorScheme.secondary,
@@ -145,7 +145,7 @@ List carouselitemlist = [
                               children: [
                                 Text('${item["title"]}',
                                   overflow: TextOverflow.clip,
-                                  style: GoogleFonts.robotoCondensed(
+                                  style: GoogleFonts.lato(
                                     textStyle: Theme.of(context).textTheme.titleMedium,
                                     letterSpacing: 1.2,
                                     fontSize: 18,

@@ -39,7 +39,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
             child: Text(
               'Experience',
               textAlign: TextAlign.center,
-              style: GoogleFonts.robotoCondensed(
+              style: GoogleFonts.lato(
                 textStyle: Theme.of(context).textTheme.headlineSmall,
                 letterSpacing: 1.5,
                 fontSize: 22,
@@ -62,7 +62,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                         alignment: Alignment.topLeft,
                         padding: EdgeInsets.only(bottom: 5),
                         child: Text('No. of Years',
-                        style: GoogleFonts.robotoCondensed(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.labelLarge,
                           letterSpacing: 1.75,
                           fontWeight: FontWeight.w400,
@@ -122,7 +122,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                         alignment: Alignment.topLeft,
                         padding: EdgeInsets.only(bottom: 5),
                         child: Text('Select Category',
-                        style: GoogleFonts.robotoCondensed(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.labelLarge,
                           letterSpacing: 1.75,
                           fontWeight: FontWeight.w400,
@@ -182,7 +182,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                         alignment: Alignment.topLeft,
                         padding: EdgeInsets.only(bottom: 5),
                         child: Text('Choose a Class',
-                        style: GoogleFonts.robotoCondensed(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.labelLarge,
                           letterSpacing: 1.75,
                           fontWeight: FontWeight.w400,
@@ -242,7 +242,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                         alignment: Alignment.topLeft,
                         padding: EdgeInsets.only(bottom: 5),
                         child: Text('Choose Subject',
-                        style: GoogleFonts.robotoCondensed(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.labelLarge,
                           letterSpacing: 1.75,
                           fontWeight: FontWeight.w400,

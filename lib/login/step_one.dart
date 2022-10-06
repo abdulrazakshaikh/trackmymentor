@@ -26,7 +26,7 @@ class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
             child: Text(
               'Who are you ?',
               textAlign: TextAlign.center,
-              style: GoogleFonts.robotoCondensed(
+              style: GoogleFonts.lato(
                 textStyle: Theme.of(context).textTheme.headlineSmall,
                 letterSpacing: 1.5,
                 fontSize: 22,

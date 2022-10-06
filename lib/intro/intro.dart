@@ -27,7 +27,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
         child: Row(
           children: [
             Text('Done'.toUpperCase(),
-            style: GoogleFonts.robotoCondensed(
+            style: GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.titleSmall,
               color: Theme.of(context).colorScheme.primary,
               fontWeight: FontWeight.w700,
@@ -44,7 +44,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
         child: Row(
           children: [
             Text('Next'.toUpperCase(),
-            style: GoogleFonts.robotoCondensed(
+            style: GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.titleSmall,
               color: Theme.of(context).colorScheme.primary,
               fontWeight: FontWeight.w700,
@@ -62,7 +62,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
             Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.secondary,),
             SizedBox(width: 5),
             Text('Back'.toUpperCase(),
-            style: GoogleFonts.robotoCondensed(
+            style: GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.titleSmall,
               color: Theme.of(context).colorScheme.secondary,
               fontWeight: FontWeight.w700,

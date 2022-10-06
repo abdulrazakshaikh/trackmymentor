@@ -46,7 +46,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                   Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.secondary),
                   SizedBox(width: 5),
                   Text('Back'.toUpperCase(),
-                  style: GoogleFonts.robotoCondensed(
+                  style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.titleSmall,
                     color: Theme.of(context).colorScheme.secondary,
                     fontWeight: FontWeight.w700,
@@ -69,7 +69,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
               child: Row(
                 children: [
                   Text('Next'.toUpperCase(),
-                  style: GoogleFonts.robotoCondensed(
+                  style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.titleSmall,
                     color: Theme.of(context).colorScheme.onPrimary,
                     fontWeight: FontWeight.w700,
@@ -93,7 +93,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
               child: Row(
                 children: [
                   Text('Submit'.toUpperCase(),
-                    style: GoogleFonts.robotoCondensed(
+                    style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.titleSmall,
                       color: Theme.of(context).colorScheme.onPrimary,
                       fontWeight: FontWeight.w700,

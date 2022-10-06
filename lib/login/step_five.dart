@@ -27,7 +27,7 @@ class _StepFiveState extends State<StepFive> with TickerProviderStateMixin {
             child: Text(
               'TMM Credentials',
               textAlign: TextAlign.center,
-              style: GoogleFonts.robotoCondensed(
+              style: GoogleFonts.lato(
                 textStyle: Theme.of(context).textTheme.headlineSmall,
                 letterSpacing: 1.5,
                 fontSize: 22,
