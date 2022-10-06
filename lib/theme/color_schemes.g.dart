@@ -1,4 +1,3 @@
-import 'dart:js';
 import 'package:flutter/material.dart';
 import 'constant.dart';
 import 'package:google_fonts/google_fonts.dart';
