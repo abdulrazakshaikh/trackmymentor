@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       
       home: 
-      // SplashScreen(),
-      Homepage()
+      SplashScreen(),
+      //Homepage()
       // Login()
       // Signup()
     );
