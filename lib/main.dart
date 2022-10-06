@@ -20,11 +20,10 @@ class MyApp extends StatelessWidget {
       title: 'Track My Mentor',
       theme: lightthemeData(context),
       themeMode: ThemeMode.light,
-      
       home: 
       // SplashScreen(),
-      // Homepage()
-      Login()
+      Homepage()
+      // Login()
       // Signup()
     );
   }

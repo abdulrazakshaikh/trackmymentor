@@ -76,7 +76,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
       
       items: [
         IntroductionSliderItem(
-          logo: Image.asset("images/success.png",
+          logo: Image.asset("assets/images/success.png",
             fit: BoxFit.contain,
           ),
           title: Padding(
@@ -103,7 +103,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
           ),
         ),
         IntroductionSliderItem(
-          logo: Image.asset("images/success.png",
+          logo: Image.asset("assets/images/success.png",
             fit: BoxFit.contain,
           ),
           title: Padding(
@@ -130,7 +130,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
           ),
         ),
         IntroductionSliderItem(
-          logo: Image.asset("images/success.png",
+          logo: Image.asset("assets/images/success.png",
             fit: BoxFit.contain,
           ),
           title: Padding(

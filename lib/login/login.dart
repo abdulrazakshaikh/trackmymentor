@@ -452,7 +452,7 @@ Widget anyItem(int index) {
                   margin: EdgeInsets.only(bottom: 20),
                   width: 64,
                   child: Image.asset(
-                  index == 0 ? 'images/teacher.png' : 'images/student.png',
+                  index == 0 ? 'assets/images/teacher.png' : 'assets/images/student.png',
                   fit: BoxFit.contain,
                   ),
                 ),

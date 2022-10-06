@@ -17,31 +17,31 @@ List carouselitemlist = [
     "id": "001",
     "title" : "Lorem Ipsum",
     "category": "Categrory",
-    "img": "images/bg1.jpg",
+    "img": "assets/images/bg1.jpg",
   },
   {
     "id": "002",
     "title" : "Lorem Ipsum",
     "category": "Categrory",
-    "img": "images/bg1.jpg",
+    "img": "assets/images/bg1.jpg",
   },
   {
     "id": "003",
     "title" : "Lorem Ipsum",
     "category": "Categrory",
-    "img": "images/bg1.jpg",
+    "img": "assets/images/bg1.jpg",
   },
   {
     "id": "004",
     "title" : "Lorem Ipsum",
     "category": "Categrory",
-    "img": "images/bg1.jpg",
+    "img": "assets/images/bg1.jpg",
   },
   {
     "id": "005",
     "title" : "Lorem Ipsum",
     "category": "Categrory",
-    "img": "images/bg1.jpg",
+    "img": "assets/images/bg1.jpg",
   },
 ];
 

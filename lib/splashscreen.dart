@@ -79,7 +79,7 @@ late Animation<double> _animation;
                         Container(
                           height: 128,
                           child: Image.asset(
-                            'images/logo.png',
+                            'assets/images/logo.png',
                             fit: BoxFit.contain,
                           ),
                         ),
