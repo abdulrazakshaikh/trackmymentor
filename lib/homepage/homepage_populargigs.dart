@@ -57,18 +57,18 @@ List carouselitemlist = [
     child: Column(
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
-                child: Text('Popular Gigs',
+                child: Text('Popular Gigs'.toUpperCase(),
                   style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.titleLarge,
-                    letterSpacing: 1.2,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold
+                    letterSpacing: 1.5,
+                    fontSize: MediaQuery.of(context).size.width < 321 ? 16 : 18,
+                    fontWeight: FontWeight.w900
                   ),
                 )
               ),
@@ -81,12 +81,13 @@ List carouselitemlist = [
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.titleSmall,
                           letterSpacing: 1.2,
+                          fontSize: MediaQuery.of(context).size.width < 321 ? 12 : 14,
                           color: Theme.of(context).colorScheme.secondary,
                           fontWeight: FontWeight.w600
                         ),
                       ),
                       SizedBox(width: 5),
-                      Icon(Icons.arrow_forward, size: 18,), 
+                      Icon(Icons.arrow_forward, size: 16,), 
                     ],
                   ),
                   style: TextButton.styleFrom(
@@ -104,7 +105,7 @@ List carouselitemlist = [
                   
         Container(
                 alignment: Alignment.topLeft,
-                height: MediaQuery.of(context).size.width < 321 ?  280 : 260,
+                height: MediaQuery.of(context).size.width < 321 ?  260 : 260,
                 child: PageView.builder(
                 scrollDirection: Axis.horizontal,    
                 controller: PageController(viewportFraction: 0.85,), 
@@ -152,9 +153,8 @@ List carouselitemlist = [
                                   overflow: TextOverflow.clip,
                                   style: GoogleFonts.lato(
                                     textStyle: Theme.of(context).textTheme.titleMedium,
-                                    letterSpacing: 1.2,
                                     fontSize: 18,
-                                    fontWeight: FontWeight.w700,
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 SizedBox(height: 5),
