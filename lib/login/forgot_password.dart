@@ -40,7 +40,7 @@ Widget build(BuildContext context) {
                 children: [
                   Expanded(
                     child: Text('Forgot Password',
-                      style: GoogleFonts.roboto(
+                      style: GoogleFonts.lato(
                         textStyle: Theme.of(context).textTheme.bodyMedium,
                         fontWeight: FontWeight.w600,
                         letterSpacing: 1.2,
@@ -63,7 +63,7 @@ Widget build(BuildContext context) {
               Container(
                 margin: EdgeInsets.only(bottom: 15),
                 child: TextField(
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.bodyMedium,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 1.2,
@@ -72,7 +72,7 @@ Widget build(BuildContext context) {
                     contentPadding: EdgeInsets.symmetric(vertical: 15),
                     floatingLabelBehavior: FloatingLabelBehavior.auto,
                     labelText: 'Email/Mobile'.toLowerCase(),
-                    labelStyle: GoogleFonts.roboto(
+                    labelStyle: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.bodyMedium,
                       letterSpacing: 1.8,
                       fontWeight: FontWeight.w300),
@@ -112,7 +112,7 @@ Widget build(BuildContext context) {
                       alignment: Alignment.center,
                     ),
                     child: Text('Cancel',
-                      style: GoogleFonts.roboto(
+                      style: GoogleFonts.lato(
                         color: Theme.of(context).colorScheme.secondary,
                       ),
                     ),

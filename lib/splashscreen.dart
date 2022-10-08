@@ -86,7 +86,7 @@ late Animation<double> _animation;
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 10),
                           child: Text('Track My Mentor',
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.lato(
                               fontSize: 20,
                               color: Theme.of(context).colorScheme.primary,
                               fontWeight: FontWeight.w900,

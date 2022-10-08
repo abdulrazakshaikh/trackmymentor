@@ -59,7 +59,7 @@ List carouselitemlist = [
             children: [
               Expanded(
                 child: Text('Top Gigs',
-                  style: GoogleFonts.robotoCondensed(
+                  style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.titleLarge,
                     letterSpacing: 1.2,
                     fontSize: 20,
@@ -73,7 +73,7 @@ List carouselitemlist = [
                   child: Row(
                     children: [
                       Text('Show All',
-                        style: GoogleFonts.robotoCondensed(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.titleSmall,
                           letterSpacing: 1.2,
                           color: Theme.of(context).colorScheme.secondary,
@@ -97,16 +97,23 @@ List carouselitemlist = [
           ),
         ),
                   
-        Container(
-          height: MediaQuery.of(context).size.width < 321 ?  250 : 240,
-          child: Swiper(
-            itemBuilder: (BuildContext context, int index) {
-              Map item = carouselitemlist[index];
-              return Container(
-              transform: Transform.translate( offset: const Offset(-15, 0), ).transform,
-              margin: const EdgeInsets.only( bottom: 25 ), 
-              // margin: EdgeInsets.only(bottom: 25),
-              child: GestureDetector(
+
+
+            Container(
+                alignment: Alignment.topLeft,
+                height: MediaQuery.of(context).size.width < 321 ?  250 : 240,
+                child: PageView.builder(
+                scrollDirection: Axis.horizontal,    
+                controller: PageController(viewportFraction: 0.85,), 
+                padEnds: false,
+                pageSnapping: true,
+                itemCount: carouselitemlist == null ? 0 : carouselitemlist.length,
+                physics: PageScrollPhysics(),
+                itemBuilder: (BuildContext context, int index) {
+                  Map item = carouselitemlist[index];
+                  return Container(
+                  margin: EdgeInsets.only(bottom: 25, left: index==0 ? 10 : 0,), 
+                  child: GestureDetector(
                 onTap: () {},
                   child: Card(
                     elevation: 5,
@@ -140,7 +147,7 @@ List carouselitemlist = [
                               children: [
                                 Text('${item["title"]}',
                                   overflow: TextOverflow.clip,
-                                  style: GoogleFonts.robotoCondensed(
+                                  style: GoogleFonts.lato(
                                     textStyle: Theme.of(context).textTheme.titleMedium,
                                     letterSpacing: 1.2,
                                     fontSize: 18,
@@ -150,7 +157,7 @@ List carouselitemlist = [
                                 SizedBox(height: 5),
                                 Text('${item["category"]}',
                                   overflow: TextOverflow.clip,
-                                  style: GoogleFonts.roboto(
+                                  style: GoogleFonts.lato(
                                     textStyle: Theme.of(context).textTheme.bodySmall,
                                     color: Theme.of(context).colorScheme.secondary,
                                     letterSpacing: 1.2,
@@ -164,28 +171,12 @@ List carouselitemlist = [
                       ),
                     ),
                   ),
-                ),    
+                ), 
               );
-            },
-            autoplay: false,
-            viewportFraction: MediaQuery.of(context).size.width < 321 ?  0.9 : 0.85,
-            itemCount: carouselitemlist == null ? 0 : carouselitemlist.length,
-            scrollDirection: Axis.horizontal,
-            loop: false,
-            // pagination: SwiperPagination(
-            //   alignment: Alignment.bottomCenter,
-            //   builder: DotSwiperPaginationBuilder(
-            //     size: 6,
-            //     activeSize: 10,
-            //     color: Colors.grey.withOpacity(0.5), activeColor:  Theme.of(context).colorScheme.primary
-            //   ),
-            // ),
-            control: null,
-            // itemCount: 3,
-            // pagination: new SwiperPagination(),
-            // control: new SwiperControl(),
-          ),
+            }  
+          ),  
         ),
+      
       ],
     ),
   );

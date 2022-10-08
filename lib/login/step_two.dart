@@ -26,7 +26,7 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
             child: Text(
               'Personal Information',
               textAlign: TextAlign.center,
-              style: GoogleFonts.robotoCondensed(
+              style: GoogleFonts.lato(
                 textStyle: Theme.of(context).textTheme.headlineSmall,
                 letterSpacing: 1.5,
                 fontSize: 22,
@@ -46,7 +46,7 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
                     children: [
                       Expanded(
                         child: TextField(
-                          style: GoogleFonts.roboto(
+                          style: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             fontWeight: FontWeight.w600,
                             letterSpacing: 1.2,
@@ -55,7 +55,7 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
                             contentPadding: EdgeInsets.all(15),
                             floatingLabelBehavior: FloatingLabelBehavior.auto,
                             labelText: 'First Name'.toLowerCase(),
-                            labelStyle: GoogleFonts.roboto(
+                            labelStyle: GoogleFonts.lato(
                               textStyle: Theme.of(context).textTheme.bodyMedium,
                               letterSpacing: 1.8,
                               fontWeight: FontWeight.w300),
@@ -71,7 +71,7 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
                       SizedBox(width: 10),
                       Expanded(
                         child: TextField(
-                          style: GoogleFonts.roboto(
+                          style: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             fontWeight: FontWeight.w600,
                             letterSpacing: 1.2,
@@ -80,7 +80,7 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
                             contentPadding: EdgeInsets.all(15),
                             floatingLabelBehavior: FloatingLabelBehavior.auto,
                             labelText: 'Last Name'.toLowerCase(),
-                            labelStyle: GoogleFonts.roboto(
+                            labelStyle: GoogleFonts.lato(
                               textStyle: Theme.of(context).textTheme.bodyMedium,
                               letterSpacing: 1.8,
                               fontWeight: FontWeight.w300),
@@ -100,7 +100,7 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
                 Container(
                   margin: EdgeInsets.only(bottom: 15),
                   child: TextField(
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.bodyMedium,
                       fontWeight: FontWeight.w600,
                       letterSpacing: 1.2,
@@ -109,7 +109,7 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
                       contentPadding: EdgeInsets.all(15),
                       floatingLabelBehavior: FloatingLabelBehavior.auto,
                       labelText: 'Mobile Number'.toLowerCase(),
-                      labelStyle: GoogleFonts.roboto(
+                      labelStyle: GoogleFonts.lato(
                         textStyle: Theme.of(context).textTheme.bodyMedium,
                         letterSpacing: 1.8,
                         fontWeight: FontWeight.w300),
@@ -129,7 +129,7 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
                       Container(
                         margin: EdgeInsets.only(bottom: 10),
                         child: Text('Upload Profile Picture',
-                        style: GoogleFonts.roboto(
+                        style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.labelLarge,
                           letterSpacing: 1.5,
                           fontWeight: FontWeight.w600
@@ -138,7 +138,7 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
                       ),
                       InkWell(
                         child: CircleAvatar(
-                          backgroundImage: AssetImage('images/default.jpg'),
+                          backgroundImage: AssetImage('assets/images/default.jpg'),
                           radius: 54,
                         ),
                       ),

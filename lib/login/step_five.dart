@@ -27,7 +27,7 @@ class _StepFiveState extends State<StepFive> with TickerProviderStateMixin {
             child: Text(
               'TMM Credentials',
               textAlign: TextAlign.center,
-              style: GoogleFonts.robotoCondensed(
+              style: GoogleFonts.lato(
                 textStyle: Theme.of(context).textTheme.headlineSmall,
                 letterSpacing: 1.5,
                 fontSize: 22,
@@ -43,7 +43,7 @@ class _StepFiveState extends State<StepFive> with TickerProviderStateMixin {
                 Container(
                   margin: EdgeInsets.only(bottom: 15),
                   child: TextField(
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.bodyMedium,
                       fontWeight: FontWeight.w600,
                       letterSpacing: 1.2,
@@ -52,7 +52,7 @@ class _StepFiveState extends State<StepFive> with TickerProviderStateMixin {
                       contentPadding: EdgeInsets.all(15),
                       floatingLabelBehavior: FloatingLabelBehavior.auto,
                       labelText: 'Email Address'.toLowerCase(),
-                      labelStyle: GoogleFonts.roboto(
+                      labelStyle: GoogleFonts.lato(
                         textStyle: Theme.of(context).textTheme.bodyMedium,
                         letterSpacing: 1.8,
                         fontWeight: FontWeight.w300),
@@ -68,7 +68,7 @@ class _StepFiveState extends State<StepFive> with TickerProviderStateMixin {
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
                   child: TextField(
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.bodyMedium,
                       fontWeight: FontWeight.w600,
                       letterSpacing: 1.2,
@@ -78,7 +78,7 @@ class _StepFiveState extends State<StepFive> with TickerProviderStateMixin {
                       contentPadding: EdgeInsets.symmetric(vertical: 15),
                       floatingLabelBehavior: FloatingLabelBehavior.auto,
                       labelText: 'Password'.toLowerCase(),
-                      labelStyle: GoogleFonts.roboto(
+                      labelStyle: GoogleFonts.lato(
                         textStyle: Theme.of(context).textTheme.bodyMedium,
                         letterSpacing: 1.8,
                         fontWeight: FontWeight.w300),
@@ -106,7 +106,7 @@ class _StepFiveState extends State<StepFive> with TickerProviderStateMixin {
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
                   child: TextField(
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.bodyMedium,
                       fontWeight: FontWeight.w600,
                       letterSpacing: 1.2,
@@ -116,7 +116,7 @@ class _StepFiveState extends State<StepFive> with TickerProviderStateMixin {
                       contentPadding: EdgeInsets.symmetric(vertical: 15),
                       floatingLabelBehavior: FloatingLabelBehavior.auto,
                       labelText: 'Confirm Password'.toLowerCase(),
-                      labelStyle: GoogleFonts.roboto(
+                      labelStyle: GoogleFonts.lato(
                         textStyle: Theme.of(context).textTheme.bodyMedium,
                         letterSpacing: 1.8,
                         fontWeight: FontWeight.w300),

@@ -46,7 +46,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                   Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.secondary),
                   SizedBox(width: 5),
                   Text('Back'.toUpperCase(),
-                  style: GoogleFonts.robotoCondensed(
+                  style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.titleSmall,
                     color: Theme.of(context).colorScheme.secondary,
                     fontWeight: FontWeight.w700,
@@ -69,7 +69,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
               child: Row(
                 children: [
                   Text('Next'.toUpperCase(),
-                  style: GoogleFonts.robotoCondensed(
+                  style: GoogleFonts.lato(
                     textStyle: Theme.of(context).textTheme.titleSmall,
                     color: Theme.of(context).colorScheme.onPrimary,
                     fontWeight: FontWeight.w700,
@@ -93,7 +93,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
               child: Row(
                 children: [
                   Text('Submit'.toUpperCase(),
-                    style: GoogleFonts.robotoCondensed(
+                    style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.titleSmall,
                       color: Theme.of(context).colorScheme.onPrimary,
                       fontWeight: FontWeight.w700,
@@ -112,18 +112,18 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
           ),
           stepColor: Theme.of(context).colorScheme.background,
           headerColor: Theme.of(context).colorScheme.tertiary.withOpacity(0.1),
-          stepOfTextStyle: GoogleFonts.roboto(
+          stepOfTextStyle: GoogleFonts.lato(
             textStyle: Theme.of(context).textTheme.labelSmall,
             letterSpacing: 1.5,
             fontWeight: FontWeight.w500,
           ),
-          titleTextStyle: GoogleFonts.roboto(
+          titleTextStyle: GoogleFonts.lato(
             textStyle: Theme.of(context).textTheme.headlineSmall,
             letterSpacing: 1.5,
             fontSize: 22,
             fontWeight: FontWeight.w700,
           ),
-          subtitleTextStyle: GoogleFonts.roboto(
+          subtitleTextStyle: GoogleFonts.lato(
             textStyle: Theme.of(context).textTheme.titleSmall,
             letterSpacing: 1.5,
           ),

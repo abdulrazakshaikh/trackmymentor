@@ -27,7 +27,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
         child: Row(
           children: [
             Text('Done'.toUpperCase(),
-            style: GoogleFonts.robotoCondensed(
+            style: GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.titleSmall,
               color: Theme.of(context).colorScheme.primary,
               fontWeight: FontWeight.w700,
@@ -44,7 +44,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
         child: Row(
           children: [
             Text('Next'.toUpperCase(),
-            style: GoogleFonts.robotoCondensed(
+            style: GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.titleSmall,
               color: Theme.of(context).colorScheme.primary,
               fontWeight: FontWeight.w700,
@@ -62,7 +62,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
             Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.secondary,),
             SizedBox(width: 5),
             Text('Back'.toUpperCase(),
-            style: GoogleFonts.robotoCondensed(
+            style: GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.titleSmall,
               color: Theme.of(context).colorScheme.secondary,
               fontWeight: FontWeight.w700,
@@ -82,7 +82,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
           title: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Text("Lorem Ipsum Heading", textAlign: TextAlign.center,
-            style: GoogleFonts.roboto(
+            style: GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.headlineSmall,
               fontWeight: FontWeight.w900,
               letterSpacing: 1.2,
@@ -93,7 +93,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: Text("Lorem Ipsum Dolor sit amet is a simply dummy text used for typesetting",
             textAlign: TextAlign.center,
-            style: GoogleFonts.roboto(
+            style: GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.labelMedium,
               fontSize: 13,
               fontWeight: FontWeight.w500,
@@ -109,7 +109,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
           title: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Text("Lorem Ipsum Heading", textAlign: TextAlign.center,
-            style: GoogleFonts.roboto(
+            style: GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.headlineSmall,
               fontWeight: FontWeight.w900,
               letterSpacing: 1.2,
@@ -120,7 +120,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: Text("Lorem Ipsum Dolor sit amet is a simply dummy text used for typesetting",
             textAlign: TextAlign.center,
-            style: GoogleFonts.roboto(
+            style: GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.labelMedium,
               fontSize: 13,
               fontWeight: FontWeight.w500,
@@ -136,7 +136,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
           title: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Text("Lorem Ipsum Heading", textAlign: TextAlign.center,
-            style: GoogleFonts.roboto(
+            style: GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.headlineSmall,
               fontWeight: FontWeight.w900,
               letterSpacing: 1.2,
@@ -147,7 +147,7 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: Text("Lorem Ipsum Dolor sit amet is a simply dummy text used for typesetting",
             textAlign: TextAlign.center,
-            style: GoogleFonts.roboto(
+            style: GoogleFonts.lato(
               textStyle: Theme.of(context).textTheme.labelMedium,
               fontSize: 13,
               fontWeight: FontWeight.w500,
