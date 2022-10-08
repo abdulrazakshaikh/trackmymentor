@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:trackmy_mentor/homepage/homepage.dart';
 import 'package:trackmy_mentor/login/login.dart';
 import 'package:trackmy_mentor/login/signup.dart';
+import 'package:trackmy_mentor/profile.dart';
+import 'package:trackmy_mentor/profile/userprofile.dart';
 import 'package:trackmy_mentor/splashscreen.dart';
 import 'package:trackmy_mentor/theme/color_schemes.g.dart';
 
@@ -22,9 +24,11 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       home: 
       // SplashScreen(),
-      Homepage()
+      // Homepage()
+      // Profile()
       // Login()
       // Signup()
+      UserProfile()
     );
   }
 }
