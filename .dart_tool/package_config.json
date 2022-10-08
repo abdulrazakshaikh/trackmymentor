@@ -32,6 +32,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "chat_bubbles",
+      "rootUri": "file:///D:/flutter_3.3.2/.pub-cache/hosted/pub.dartlang.org/chat_bubbles-1.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "clock",
       "rootUri": "file:///D:/flutter_3.3.2/.pub-cache/hosted/pub.dartlang.org/clock-1.1.1",
       "packageUri": "lib/",
@@ -118,6 +124,12 @@
     {
       "name": "http_parser",
       "rootUri": "file:///D:/flutter_3.3.2/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "intl",
+      "rootUri": "file:///D:/flutter_3.3.2/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -290,7 +302,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-10-06T16:49:56.871066Z",
+  "generated": "2022-10-08T08:28:34.364938Z",
   "generator": "pub",
   "generatorVersion": "2.18.1"
 }

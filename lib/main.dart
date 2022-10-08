@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trackmy_mentor/chat/chat_list.dart';
 import 'package:trackmy_mentor/homepage/homepage.dart';
 import 'package:trackmy_mentor/login/login.dart';
 import 'package:trackmy_mentor/login/signup.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
       // Profile()
       // Login()
       // Signup()
-      UserProfile()
+      // UserProfile()
+      ChatList()
     );
   }
 }
