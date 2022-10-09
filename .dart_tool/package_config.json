@@ -32,6 +32,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "chat_bubbles",
+      "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/chat_bubbles-1.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "clock",
       "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/clock-1.1.1",
       "packageUri": "lib/",
@@ -118,6 +124,12 @@
     {
       "name": "http_parser",
       "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "intl",
+      "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -290,7 +302,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-10-07T04:18:37.624952Z",
+  "generated": "2022-10-09T05:32:04.127167Z",
   "generator": "pub",
   "generatorVersion": "2.18.1"
 }

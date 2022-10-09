@@ -10,12 +10,12 @@ class Intro extends StatefulWidget {
 }
 
 class _IntroState extends State<Intro> with TickerProviderStateMixin {
- 
+
 
   @override
   Widget build(BuildContext context) {
     return IntroductionSlider(
-      showStatusBar: false,
+      showStatusBar: true,
       scrollDirection: Axis.horizontal,
       dotIndicator: DotIndicator(
         selectedColor: Theme.of(context).colorScheme.secondary,

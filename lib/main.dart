@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:trackmy_mentor/add/add.dart';
-import 'package:trackmy_mentor/chat/chat_list.dart';
-import 'package:trackmy_mentor/homepage/homepage.dart';
-import 'package:trackmy_mentor/login/login.dart';
-import 'package:trackmy_mentor/login/signup.dart';
-import 'package:trackmy_mentor/profile.dart';
-import 'package:trackmy_mentor/profile/teacherprofile.dart';
-import 'package:trackmy_mentor/profile/userprofile.dart';
+import 'package:flutter/services.dart';
 import 'package:trackmy_mentor/splashscreen.dart';
 import 'package:trackmy_mentor/theme/color_schemes.g.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIOverlays(
+      [SystemUiOverlay.top, SystemUiOverlay.bottom]).then((_) {
+    runApp(const MyApp());
+  });
+
 }
 
 class MyApp extends StatelessWidget {
@@ -25,8 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Track My Mentor',
       theme: lightthemeData(context),
       themeMode: ThemeMode.light,
-      home: 
-      SplashScreen(),
+      home: SafeArea(top: false, child: SplashScreen())
       // Homepage()
       // Profile()
       // Login()
@@ -34,7 +31,7 @@ class MyApp extends StatelessWidget {
       // UserProfile()
       // ChatList()
       // TeacherProfile()
-     // Add()
+      // Add()
     );
   }
 }
