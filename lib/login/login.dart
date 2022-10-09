@@ -8,6 +8,9 @@ import 'package:trackmy_mentor/login/forgot_password.dart';
 import 'package:trackmy_mentor/login/login_success.dart';
 import 'package:trackmy_mentor/login/signup.dart';
 
+import '../common_widgets/bottom_navigation.dart';
+import '../homepage/homepage.dart';
+
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -340,7 +343,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                                   onPressed: () {
                                     Navigator.pushReplacement<void, void>(
                                       context, MaterialPageRoute(
-                                        builder: (BuildContext context) => LoginSuccess()
+                                        builder: (BuildContext context) => BottomNavigation()
                                       )
                                     );
                                   },

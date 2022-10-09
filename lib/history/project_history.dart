@@ -8,13 +8,13 @@ import 'package:trackmy_mentor/homepage/homepage_populargigs.dart';
 import 'package:trackmy_mentor/homepage/homepage_popularteacher.dart';
 import 'package:trackmy_mentor/homepage/homepage_topgigs.dart';
 
-class Homepage extends StatefulWidget {
+class ProjectHistory extends StatefulWidget {
  
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<ProjectHistory> createState() => _ProjectHistoryState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _ProjectHistoryState extends State<ProjectHistory> {
 
 
   @override
@@ -23,7 +23,7 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       //bottomNavigationBar: BottomNavigation(),
       appBar: AppBar(
-        title: Text('Dashboard'.toUpperCase()),
+        title: Text('History'.toUpperCase()),
         actions: [],
         leading:  Container(
           child: Image.asset(
@@ -37,30 +37,10 @@ class _HomepageState extends State<Homepage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Container(
-              child: HomepagePopularTeacher(),
-            ),
-            // HomepageAdsslider()
+
             Container(
               child: HomepageMyPopularGigs(),
             ),
-            
-            Container(
-              child: HomepageCategories(),
-            ),
-
-            Container(
-              child: HomepagePopularGigs(),
-            ),
-
-            Container(
-              child: HomepageTopGigs(),
-            ),
-
-
-
-
-            
 
           ],
         ),

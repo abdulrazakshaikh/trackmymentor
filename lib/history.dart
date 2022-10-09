@@ -13,7 +13,7 @@ class _HistoryState extends State<History> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigation(),
+      //bottomNavigationBar: BottomNavigation(),
       appBar: AppBar(
         title: Text('History'.toUpperCase()),
         actions: [],

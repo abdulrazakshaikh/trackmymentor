@@ -5,14 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../see_all_project_list.dart';
-
-class HomepageTopGigs extends StatefulWidget {
+class TeacherMyWork extends StatefulWidget {
   @override
-  _HomepageTopGigsState createState() => new _HomepageTopGigsState();
+  _TeacherMyWorkState createState() => new _TeacherMyWorkState();
 }
 
-class _HomepageTopGigsState extends State<HomepageTopGigs> {
+class _TeacherMyWorkState extends State<TeacherMyWork> {
 
 List carouselitemlist = [
   {
@@ -20,30 +18,35 @@ List carouselitemlist = [
     "title" : "Lorem Ipsum",
     "category": "Categrory",
     "img": "assets/images/bg1.jpg",
+    "rating": 3.5,
   },
   {
     "id": "002",
     "title" : "Lorem Ipsum",
     "category": "Categrory",
     "img": "assets/images/bg1.jpg",
+    "rating": 3.5,
   },
   {
     "id": "003",
     "title" : "Lorem Ipsum",
     "category": "Categrory",
     "img": "assets/images/bg1.jpg",
+    "rating": 3.5,
   },
   {
     "id": "004",
     "title" : "Lorem Ipsum",
     "category": "Categrory",
     "img": "assets/images/bg1.jpg",
+    "rating": 3.5,
   },
   {
     "id": "005",
     "title" : "Lorem Ipsum",
     "category": "Categrory",
     "img": "assets/images/bg1.jpg",
+    "rating": 3.5,
   },
 ];
 
@@ -60,33 +63,31 @@ List carouselitemlist = [
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
-                child: Text('Top Gigs'.toUpperCase(),
+                child: Text('My Work',
                   style: GoogleFonts.lato(
-                    textStyle: Theme.of(context).textTheme.titleLarge,
+                    textStyle: Theme.of(context).textTheme.titleMedium,
                     letterSpacing: 1.5,
-                    fontSize: MediaQuery.of(context).size.width < 321 ? 16 : 18,
+                    fontSize: MediaQuery.of(context).size.width < 321 ? 14 : 16,
                     fontWeight: FontWeight.w900
                   ),
                 )
               ),
               Container(
                 child: TextButton(
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> SeeAllProjectList("Top Gigs")));
-                  },
+                  onPressed: (){},
                   child: Row(
                     children: [
                       Text('Show All',
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.titleSmall,
                           letterSpacing: 1.2,
-                          fontSize: MediaQuery.of(context).size.width < 321 ? 12 : 14,
+                          fontSize: MediaQuery.of(context).size.width < 321 ? 12 : 13,
                           color: Theme.of(context).colorScheme.secondary,
                           fontWeight: FontWeight.w600
                         ),
                       ),
                       SizedBox(width: 5),
-                      Icon(Icons.arrow_forward, size: 16,), 
+                      Icon(Icons.arrow_forward, size: 14,), 
                     ],
                   ),
                   style: TextButton.styleFrom(
@@ -101,12 +102,11 @@ List carouselitemlist = [
             ],
           ),
         ),
-                  
 
 
             Container(
                 alignment: Alignment.topLeft,
-                height: MediaQuery.of(context).size.width < 321 ?  240 : 240,
+                height: MediaQuery.of(context).size.width < 321 ?  260 : 260,
                 child: PageView.builder(
                 scrollDirection: Axis.horizontal,    
                 controller: PageController(viewportFraction: 0.85,), 
@@ -154,7 +154,7 @@ List carouselitemlist = [
                                   overflow: TextOverflow.clip,
                                   style: GoogleFonts.lato(
                                     textStyle: Theme.of(context).textTheme.titleMedium,
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -168,6 +168,18 @@ List carouselitemlist = [
                                     fontWeight: FontWeight.w400
                                   ),
                                 ),
+                                SizedBox(height: 5),
+                                RatingBarIndicator(
+                                  rating: item["rating"],
+                                  
+                                  itemBuilder: (context, index) => Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                  ),
+                                  itemCount: 5,
+                                  itemSize: 16,
+                                  direction: Axis.horizontal,
+                                ),
                               ],
                             ),
                           )
@@ -175,12 +187,12 @@ List carouselitemlist = [
                       ),
                     ),
                   ),
-                ), 
+                ),   
               );
             }  
           ),  
         ),
-      
+         
       ],
     ),
   );

@@ -4,6 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trackmy_mentor/profile/teacherprofile.dart';
+
+import '../see_all_teacher_list.dart';
 
 class HomepagePopularTeacher extends StatefulWidget {
   @override
@@ -75,7 +78,9 @@ List carouselitemlist = [
               ),
               Container(
                 child: TextButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> SeeAllTeacherList("Popular Teachers")));
+                  },
                   child: Row(
                     children: [
                       Text('Show All',
@@ -120,7 +125,9 @@ List carouselitemlist = [
                   return Container(
                   margin: EdgeInsets.only(bottom: 25, left: index==0 ? 10 : 0,), 
                   child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> TeacherProfile()));
+                  },
                   child: Card(
                     elevation: 5,
                     shadowColor: Theme.of(context).shadowColor.withOpacity(0.35),

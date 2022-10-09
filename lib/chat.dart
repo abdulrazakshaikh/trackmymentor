@@ -13,7 +13,7 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigation(),
+      //bottomNavigationBar: BottomNavigation(),
       appBar: AppBar(
         title: Text('Chat'.toUpperCase()),
         actions: [],

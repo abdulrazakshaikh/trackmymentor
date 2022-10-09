@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../see_all_project_list.dart';
+
 class HomepageMyPopularGigs extends StatefulWidget {
   @override
   _HomepageMyPopularGigsState createState() => new _HomepageMyPopularGigsState();
@@ -74,7 +76,9 @@ List carouselitemlist = [
               ),
               Container(
                 child: TextButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> SeeAllProjectList("My Popular Gigs")));
+                  },
                   child: Row(
                     children: [
                       Text('Show All',
