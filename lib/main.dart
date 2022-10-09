@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Track My Mentor',
       theme: lightthemeData(context),
       themeMode: ThemeMode.light,
-      home: SafeArea(top: false, child: SplashScreen())
+      home: SafeArea(child: SplashScreen())
       // Homepage()
       // Profile()
       // Login()

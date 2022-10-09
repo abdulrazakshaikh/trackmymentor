@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trackmy_mentor/homepage/gigs_item.dart';
 
 import '../see_all_project_list.dart';
 
@@ -106,7 +107,7 @@ List carouselitemlist = [
 
             Container(
                 alignment: Alignment.topLeft,
-                height: MediaQuery.of(context).size.width < 321 ?  240 : 240,
+                height: MediaQuery.of(context).size.width < 321 ?  260 : 260,
                 child: PageView.builder(
                 scrollDirection: Axis.horizontal,    
                 controller: PageController(viewportFraction: 0.85,), 
@@ -118,64 +119,7 @@ List carouselitemlist = [
                   Map item = carouselitemlist[index];
                   return Container(
                   margin: EdgeInsets.only(bottom: 25, left: index==0 ? 10 : 0,), 
-                  child: GestureDetector(
-                onTap: () {},
-                  child: Card(
-                    elevation: 5,
-                    shadowColor: Theme.of(context).shadowColor.withOpacity(0.35),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      side: BorderSide(width: 1, color: Colors.grey.withOpacity(0.2))
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 130,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            width: double.infinity,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Image.asset('${item["img"]}',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(top: 10),
-                            width: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Text('${item["title"]}',
-                                  overflow: TextOverflow.clip,
-                                  style: GoogleFonts.lato(
-                                    textStyle: Theme.of(context).textTheme.titleMedium,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                SizedBox(height: 5),
-                                Text('${item["category"]}',
-                                  overflow: TextOverflow.clip,
-                                  style: GoogleFonts.lato(
-                                    textStyle: Theme.of(context).textTheme.bodySmall,
-                                    color: Theme.of(context).colorScheme.secondary,
-                                    letterSpacing: 1.2,
-                                    fontWeight: FontWeight.w400
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ), 
+                  child: GigsItem(value: '0'),
               );
             }  
           ),  

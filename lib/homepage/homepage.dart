@@ -40,7 +40,6 @@ class _HomepageState extends State<Homepage> {
             Container(
               child: HomepagePopularTeacher(),
             ),
-            // HomepageAdsslider()
             Container(
               child: HomepageMyPopularGigs(),
             ),
