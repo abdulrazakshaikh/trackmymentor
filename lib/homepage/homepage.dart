@@ -34,6 +34,11 @@ class _HomepageState extends State<Homepage> {
             Container(
               child: HomepageMyPopularGigs(),
             ),
+            
+            Container(
+              child: HomepageCategories(),
+            ),
+
             Container(
               child: HomepagePopularGigs(),
             ),
@@ -45,9 +50,9 @@ class _HomepageState extends State<Homepage> {
             Container(
               child: HomepagePopularTeacher(),
             ),
-            // Container(
-            //   child: HomepageCategories(),
-            // )
+
+
+            
 
           ],
         ),
