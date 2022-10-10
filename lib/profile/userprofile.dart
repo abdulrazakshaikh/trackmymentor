@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trackmy_mentor/common_widgets/bottom_navigation.dart';
+import 'package:trackmy_mentor/profile/userprofile_edit.dart';
 
 class UserProfile extends StatefulWidget {
 
@@ -61,7 +62,13 @@ List myaccountmenuList = [
                 padding: EdgeInsets.all(10),
 
                 child: IconButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.pushReplacement<void, void>(
+                    context, MaterialPageRoute(
+                      builder: (BuildContext context) => UserProfileEdit()
+                    )
+                  );
+                },
                 icon: Icon(Icons.mode_edit_outlined),
                 style: IconButton.styleFrom(
                   fixedSize: Size(40, 44),
