@@ -20,51 +20,53 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      //bottomNavigationBar: BottomNavigation(),
-      appBar: AppBar(
-        title: Text('Dashboard'.toUpperCase()),
-        actions: [],
-        leading:  Container(
-          child: Image.asset(
-            'assets/images/logo.png',
-            fit: BoxFit.contain,
+    return SafeArea(
+      child: Scaffold(
+        //bottomNavigationBar: BottomNavigation(),
+        appBar: AppBar(
+          title: Text('Dashboard'.toUpperCase()),
+          actions: [],
+          leading:  Container(
+            child: Image.asset(
+              'assets/images/logo.png',
+              fit: BoxFit.contain,
+            ),
           ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              child: HomepagePopularTeacher(),
-            ),
-            Container(
-              child: HomepageMyPopularGigs(),
-            ),
-            
-            Container(
-              child: HomepageCategories(),
-            ),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                child: HomepagePopularTeacher(),
+              ),
+              Container(
+                child: HomepageMyPopularGigs(),
+              ),
 
-            Container(
-              child: HomepagePopularGigs(),
-            ),
+              Container(
+                child: HomepageCategories(),
+              ),
 
-            Container(
-              child: HomepageTopGigs(),
-            ),
+              Container(
+                child: HomepagePopularGigs(),
+              ),
 
+              Container(
+                child: HomepageTopGigs(),
+              ),
 
 
 
-            
 
-          ],
+
+
+            ],
+          ),
         ),
+
       ),
-      
     );
   }
 }

@@ -16,7 +16,7 @@ const arssecondarycontainer = Color(0x406c757d);
 const arstertiarycontainer = Color(0x4091552C);
 
 const arsbackgroundLight = Color(0xFFFFFFFF);
-const arssurfaceLight = Color(0xFFfdfdfd);
+const arssurfaceLight = Color(0xFFDFDFDF);
 
 
 const arscardLight = Color(0xFFFFFFFF);
