@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cool_stepper_reloaded/cool_stepper_reloaded.dart';
 import 'package:trackmy_mentor/login/dropdown_bottomsheet.dart';
+import 'package:trackmy_mentor/login/dropdown_bottomsheet_single.dart';
 
 
 class AddStepTwo extends StatefulWidget {
@@ -101,92 +102,86 @@ class _AddStepTwoState extends State<AddStepTwo> with TickerProviderStateMixin {
 
                 Container(
                   margin: EdgeInsets.only(bottom: 15),
-                  child: DropdownButtonFormField(
-                    style: GoogleFonts.lato(
-                      textStyle: Theme.of(context).textTheme.bodyMedium,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1.2,
-                    ),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(10),
-                      floatingLabelBehavior: FloatingLabelBehavior.auto,
-                      labelText: 'Class'.toLowerCase(),
-                      labelStyle: GoogleFonts.lato(
-                        textStyle: Theme.of(context).textTheme.bodyMedium,
-                        letterSpacing: 1.8,
-                        fontWeight: FontWeight.w300),
-                      
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                      ),
-                    ),
-                    items: _options.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value,
+                  child: TextField(
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
                         ),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(10),
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          labelText: 'Class'.toLowerCase(),
+                          labelStyle: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.bodyMedium,
+                            letterSpacing: 1.8,
+                            fontWeight: FontWeight.w300
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
+                          ),
+                          suffixIcon: Icon(Icons.arrow_drop_down)
                         ),
-                      );
-                    }).toList(), 
-                    focusColor: Colors.white,
-                    onChanged: (String? newValue){
-                      setState(() {
-                        selectOptions = newValue!;
-                      });
-                    },
-                  ),
+                        onTap: (){
+                          showModalBottomSheet(
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
+                              ),
+                            ),
+                            context: context, builder: (BuildContext context) { 
+                              return DropdownBottomSheetSingle();
+                            }, 
+                          );
+                        },
+                      ),
                 ),
 
                 Container(
                   margin: EdgeInsets.only(bottom: 15),
-                  child: DropdownButtonFormField(
-                    style: GoogleFonts.lato(
-                      textStyle: Theme.of(context).textTheme.bodyMedium,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1.2,
-                    ),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(10),
-                      floatingLabelBehavior: FloatingLabelBehavior.auto,
-                      labelText: 'Subject'.toLowerCase(),
-                      labelStyle: GoogleFonts.lato(
-                        textStyle: Theme.of(context).textTheme.bodyMedium,
-                        letterSpacing: 1.8,
-                        fontWeight: FontWeight.w300),
-                      
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                      ),
-                    ),
-                    items: _options.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value,
+                  child: TextField(
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
                         ),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(10),
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          labelText: 'Subject'.toLowerCase(),
+                          labelStyle: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.bodyMedium,
+                            letterSpacing: 1.8,
+                            fontWeight: FontWeight.w300
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
+                          ),
+                          suffixIcon: Icon(Icons.arrow_drop_down)
                         ),
-                      );
-                    }).toList(), 
-                    focusColor: Colors.white,
-                    onChanged: (String? newValue){
-                      setState(() {
-                        selectOptions = newValue!;
-                      });
-                    },
-                  ),
+                        onTap: (){
+                          showModalBottomSheet(
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
+                              ),
+                            ),
+                            context: context, builder: (BuildContext context) { 
+                              return DropdownBottomSheetSingle();
+                            }, 
+                          );
+                        },
+                      ),
                 ),
 
                 Container(
