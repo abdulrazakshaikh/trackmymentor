@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trackmy_mentor/project/project_details.dart';
 
 class SeeAllProjectList extends StatefulWidget{
   String title;
@@ -58,8 +59,7 @@ class SeeAllProjectListState extends State<SeeAllProjectList>{
         title: Text(widget.title.toUpperCase()),
         actions: [],
       ),
-      body: Center(
-        child: ListView(
+      body: ListView(
           children: [
 
             Padding(
@@ -74,7 +74,13 @@ class SeeAllProjectListState extends State<SeeAllProjectList>{
                     return Container(
                       margin: EdgeInsets.only(bottom: 5, left: 10,right: 10),
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context, MaterialPageRoute(
+                              builder: (BuildContext context) => ProjectDetails('${item["title"]}')
+                            )
+                          );
+                        },
                         child: Card(
                           elevation: 5,
                           shadowColor: Theme.of(context).shadowColor.withOpacity(0.35),
@@ -139,8 +145,6 @@ class SeeAllProjectListState extends State<SeeAllProjectList>{
 
           ],
         ),
-      ),
-
     );
   }
 

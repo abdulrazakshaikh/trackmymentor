@@ -111,8 +111,8 @@ class _AddStepTwoState extends State<AddStepTwo> with TickerProviderStateMixin {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(10),
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
-                          hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.lato(
+                          labelText: 'Class'.toLowerCase(),
+                          labelStyle: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             letterSpacing: 1.8,
                             fontWeight: FontWeight.w300
@@ -153,8 +153,8 @@ class _AddStepTwoState extends State<AddStepTwo> with TickerProviderStateMixin {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(10),
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
-                          hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.lato(
+                          labelText: 'Subject'.toLowerCase(),
+                          labelStyle: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             letterSpacing: 1.8,
                             fontWeight: FontWeight.w300

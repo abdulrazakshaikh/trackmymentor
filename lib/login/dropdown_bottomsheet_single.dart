@@ -35,42 +35,51 @@ Widget build(BuildContext context) {
               topLeft: Radius.circular(15),
               topRight: Radius.circular(15)
             ),
-            color: Theme.of(context).colorScheme.surface,
+            // color: Theme.of(context).colorScheme.surface,
           ),
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Row(
               children: [
                 Expanded(
-                  child: Text('Select an options',
-                    style: GoogleFonts.lato(
-                      textStyle: Theme.of(context).textTheme.bodyMedium,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1.2,
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      
+                      TextField(
+                        style: GoogleFonts.lato(
+                          textStyle: Theme.of(context).textTheme.bodyMedium,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1.2,
+                        ),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(15),
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          hintText: 'Search for Degree'.toLowerCase(),
+                          hintStyle: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.labelMedium,
+                            letterSpacing: 1.8,
+                            fontWeight: FontWeight.w300),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
+                          ),
+                          prefixIcon: Icon(Icons.search),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Text('Select an options',
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.bodyMedium,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  // child : TextField(
-                  //   style: GoogleFonts.lato(
-                  //     textStyle: Theme.of(context).textTheme.bodyMedium,
-                  //     fontWeight: FontWeight.w600,
-                  //     letterSpacing: 1.2,
-                  //   ),
-                  //   decoration: InputDecoration(
-                  //     contentPadding: EdgeInsets.all(15),
-                  //     floatingLabelBehavior: FloatingLabelBehavior.auto,
-                  //     hintText: 'Search for Degree'.toLowerCase(),
-                  //     hintStyle: GoogleFonts.lato(
-                  //       textStyle: Theme.of(context).textTheme.labelMedium,
-                  //       letterSpacing: 1.8,
-                  //       fontWeight: FontWeight.w300),
-                  //     enabledBorder: UnderlineInputBorder(
-                  //       borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                  //     ),
-                  //     focusedBorder: UnderlineInputBorder(
-                  //       borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                  //     ),
-                  //     prefixIcon: Icon(Icons.search),
-                  //   ),
-                  // ),
                 ),
               ],
             ),
@@ -79,11 +88,10 @@ Widget build(BuildContext context) {
           Expanded(
             child: ListView(
               children: <Widget>[  
-                   
                 ListTileTheme(    
                   horizontalTitleGap: 0,
                   child: RadioListTile<SelectedOptions>(
-                    
+                    dense: true,
                     title: Text('One Lorem Ipsum',
                     style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.bodyMedium,
@@ -105,6 +113,7 @@ Widget build(BuildContext context) {
                 ListTileTheme(    
                   horizontalTitleGap: 0,
                   child: RadioListTile<SelectedOptions>(
+                    dense: true,
                     title: Text('Two Lorem Ipsum',
                     style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.bodyMedium,
@@ -126,6 +135,7 @@ Widget build(BuildContext context) {
                 ListTileTheme(    
                   horizontalTitleGap: 0,
                   child: RadioListTile<SelectedOptions>(
+                    dense: true,
                     
                     title: Text('Three Lorem Ipsum',
                     style: GoogleFonts.lato(
@@ -148,6 +158,7 @@ Widget build(BuildContext context) {
                 ListTileTheme(    
                   horizontalTitleGap: 0,
                   child: RadioListTile<SelectedOptions>(
+                    dense: true,
                     
                     title: Text('Four Lorem Ipsum',
                     style: GoogleFonts.lato(
@@ -170,6 +181,7 @@ Widget build(BuildContext context) {
                 ListTileTheme(    
                   horizontalTitleGap: 0,
                   child: RadioListTile<SelectedOptions>(
+                    dense: true,
                     
                     title: Text('Five Lorem Ipsum',
                     style: GoogleFonts.lato(
@@ -192,6 +204,7 @@ Widget build(BuildContext context) {
                 ListTileTheme(    
                   horizontalTitleGap: 0,
                   child: RadioListTile<SelectedOptions>(
+                    dense: true,
                     
                     title: Text('Six Lorem Ipsum',
                     style: GoogleFonts.lato(
@@ -214,6 +227,7 @@ Widget build(BuildContext context) {
                 ListTileTheme(    
                   horizontalTitleGap: 0,
                   child: RadioListTile<SelectedOptions>(
+                    dense: true,
                     
                     title: Text('Seven Lorem Ipsum',
                     style: GoogleFonts.lato(
@@ -236,6 +250,7 @@ Widget build(BuildContext context) {
                 ListTileTheme(    
                   horizontalTitleGap: 0,
                   child: RadioListTile<SelectedOptions>(
+                    dense: true,
                     
                     title: Text('Eight Lorem Ipsum',
                     style: GoogleFonts.lato(
@@ -258,6 +273,7 @@ Widget build(BuildContext context) {
                 ListTileTheme(    
                   horizontalTitleGap: 0,
                   child: RadioListTile<SelectedOptions>(
+                    dense: true,
                     
                     title: Text('Nine Lorem Ipsum',
                     style: GoogleFonts.lato(
@@ -280,6 +296,7 @@ Widget build(BuildContext context) {
                 ListTileTheme(    
                   horizontalTitleGap: 0,
                   child: RadioListTile<SelectedOptions>(
+                    dense: true,
                     
                     title: Text('Ten Lorem Ipsum',
                     style: GoogleFonts.lato(
