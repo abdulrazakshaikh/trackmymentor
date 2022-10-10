@@ -149,7 +149,7 @@ class _UserProfileEditState extends State<UserProfileEdit> {
                     padding: EdgeInsets.all(10),
                     child: Text('Update your User Profile'.toUpperCase(),
                       style: GoogleFonts.lato(
-                        textStyle: Theme.of(context).textTheme.titleMedium,
+                        textStyle: Theme.of(context).textTheme.titleSmall,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1.75,
                         color: Theme.of(context).colorScheme.secondary,

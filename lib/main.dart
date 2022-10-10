@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:trackmy_mentor/homepage/homepage.dart';
 import 'package:trackmy_mentor/login/login.dart';
 import 'package:trackmy_mentor/login/step_four.dart';
 import 'package:trackmy_mentor/profile/userprofile.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       home: SafeArea(
         child: 
-        UserProfile()
+        // UserProfile()
+        Homepage()
         // SplashScreen()
       )
     );
