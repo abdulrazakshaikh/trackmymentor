@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'constant.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -86,6 +87,11 @@ const lightColorScheme = ColorScheme(
 
 // ------APPBAR--------//
 AppBarTheme lightAppbarTheme = AppBarTheme(
+  systemOverlayStyle: SystemUiOverlayStyle( 
+        statusBarColor: Colors.green,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
   backgroundColor: arsappbarbackgroundLight,
   surfaceTintColor: arsappbarbackgroundLight,
   elevation: 4,
