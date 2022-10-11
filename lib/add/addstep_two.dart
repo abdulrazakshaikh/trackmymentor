@@ -103,6 +103,7 @@ class _AddStepTwoState extends State<AddStepTwo> with TickerProviderStateMixin {
                 Container(
                   margin: EdgeInsets.only(bottom: 15),
                   child: TextField(
+                    readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
@@ -145,6 +146,7 @@ class _AddStepTwoState extends State<AddStepTwo> with TickerProviderStateMixin {
                 Container(
                   margin: EdgeInsets.only(bottom: 15),
                   child: TextField(
+                    readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
@@ -154,6 +156,7 @@ class _AddStepTwoState extends State<AddStepTwo> with TickerProviderStateMixin {
                           contentPadding: EdgeInsets.all(10),
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
                           labelText: 'Subject'.toLowerCase(),
+                          hintText: "Select Subject",
                           labelStyle: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             letterSpacing: 1.8,

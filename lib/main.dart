@@ -13,7 +13,6 @@ void main() {
       [SystemUiOverlay.top, SystemUiOverlay.bottom]).then((_) {
     runApp(const MyApp());
   });
-
 }
 
 class MyApp extends StatelessWidget {
@@ -23,17 +22,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Track My Mentor',
-      theme: lightthemeData(context),
-      themeMode: ThemeMode.light,
-      home: SafeArea(
-        child: 
-        // UserProfile()
-        // Homepage()
-        Login()
-        // SplashScreen()
-      )
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Track My Mentor',
+        theme: lightthemeData(context),
+        themeMode: ThemeMode.light,
+        home: SafeArea(
+            child:
+                // UserProfile()
+                // Homepage()
+            //    Login()
+            SplashScreen()
+            ));
   }
 }

@@ -71,6 +71,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                         ),
                       ),
                       TextField(
+                        readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
@@ -170,6 +171,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                         ),
                       ),
                       TextField(
+                        readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
@@ -227,6 +229,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                         ),
                       ),
                       TextField(
+                        readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
@@ -284,6 +287,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                         ),
                       ),
                       TextField(
+                        readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,

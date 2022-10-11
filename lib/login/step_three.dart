@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cool_stepper_reloaded/cool_stepper_reloaded.dart';
 import 'package:trackmy_mentor/login/dropdown_bottomsheet.dart';
 
+import 'dropdown_bottomsheet_single.dart';
+
 
 class StepThree extends StatefulWidget {
   @override
@@ -73,6 +75,7 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                         ),
                       ),
                       TextField(
+                        readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
@@ -105,7 +108,7 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                               ),
                             ),
                             context: context, builder: (BuildContext context) { 
-                              return DropdownBottomSheet();
+                              return DropdownBottomSheetSingle();
                             }, 
                           );
                         },
@@ -130,6 +133,7 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                         ),
                       ),
                       TextField(
+                        readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
@@ -162,7 +166,7 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                               ),
                             ),
                             context: context, builder: (BuildContext context) { 
-                              return DropdownBottomSheet();
+                              return DropdownBottomSheetSingle();
                             }, 
                           );
                         },
@@ -187,6 +191,7 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                         ),
                       ),
                       TextField(
+                        readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
                           fontWeight: FontWeight.w600,
@@ -219,7 +224,7 @@ class _StepThreeState extends State<StepThree> with TickerProviderStateMixin {
                               ),
                             ),
                             context: context, builder: (BuildContext context) { 
-                              return DropdownBottomSheet();
+                              return DropdownBottomSheetSingle();
                             }, 
                           );
                         },

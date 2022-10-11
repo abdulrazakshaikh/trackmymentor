@@ -119,7 +119,7 @@ List carouselitemlist = [
                   Map item = carouselitemlist[index];
                   return Container(
                   margin: EdgeInsets.only(bottom: 25, left: index==0 ? 10 : 0,), 
-                  child: GigsItem(value: '0'),
+                  child: GigsItem(value: item),
               );
             }  
           ),  

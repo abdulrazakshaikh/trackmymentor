@@ -133,7 +133,7 @@ class _HomepagePopularGigsState extends State<HomepagePopularGigs> {
                       bottom: 25,
                       left: index == 0 ? 10 : 0,
                     ),
-                    child: GigsItem(value: '0'),
+                    child: GigsItem(value: item),
                   );
                 }),
           ),
