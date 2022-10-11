@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
         child: 
         // UserProfile()
         // Homepage()
-        Login()
-        // SplashScreen()
+        // Login()
+        SplashScreen()
       )
     );
   }

@@ -145,7 +145,7 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
 
                     ],
                   ),
-                )
+                ),
 
               ],
             ),
