@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../project/project_details.dart';
 import '../see_all_project_list.dart';
 
 class GigsItem extends StatefulWidget {
@@ -12,7 +13,7 @@ class GigsItem extends StatefulWidget {
   _GigsItemState createState() => new _GigsItemState();
 
   const GigsItem({Key? key, required this.value}) : super(key: key);
-  final String value;
+  final Map value;
 
 }
 
@@ -22,7 +23,13 @@ class _GigsItemState extends State<GigsItem> {
   @override
   Widget build(BuildContext context) {
       return GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(
+              builder: (BuildContext context) => ProjectDetails('${widget.value["title"]}')
+          )
+          );
+        },
         child: Card(
           elevation: 5,
           shadowColor: Theme.of(context).shadowColor.withOpacity(0.35),

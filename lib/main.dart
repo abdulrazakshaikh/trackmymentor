@@ -13,7 +13,6 @@ void main() {
       [SystemUiOverlay.top, SystemUiOverlay.bottom]).then((_) {
     runApp(const MyApp());
   });
-
 }
 
 class MyApp extends StatelessWidget {

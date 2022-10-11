@@ -21,9 +21,34 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> with TickerProviderStateMixin {
   bool _passwordVisible = false;
   int selectedIndex = 0;
-
+  String selectedType="teacher";
   @override
   Widget build(BuildContext context) {
+    var steps2 = [
+            CoolStep(
+              content: StepOne((value){
+                setState(() {
+                    selectedType=value;
+                });
+              })
+            ),
+            CoolStep(
+              content: StepTwo()
+            ),
+            CoolStep(
+              content: StepThree()
+            ),
+            CoolStep(
+              content: StepFour()
+            ),
+            /*CoolStep(
+              content: StepFive()
+            ),*/
+          ];
+    if(selectedType=='student'){
+      steps2.removeAt(2);
+      steps2.removeAt(2);
+    }
     return SafeArea(
       child: Scaffold(
         body: CoolStepper(
@@ -129,23 +154,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
               letterSpacing: 1.5,
             ),
           ),
-          steps: [
-            CoolStep(
-              content: StepOne()
-            ),
-            CoolStep(
-              content: StepTwo()
-            ),
-            CoolStep(
-              content: StepThree()
-            ),
-            CoolStep(
-              content: StepFour()
-            ),
-            CoolStep(
-              content: StepFive()
-            ),
-          ]
+          steps: steps2
         ),
       ),
     );
