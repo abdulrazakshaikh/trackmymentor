@@ -193,8 +193,7 @@ ButtonThemeData lightButtonTheme = ButtonThemeData(
 // ------EXPANSIONTILE THEME--------//
 ExpansionTileThemeData lightExpansionTileTheme = ExpansionTileThemeData(
   iconColor: arstextColorLight,
-  collapsedIconColor: arstextColorLight,
-  
+  collapsedIconColor: arstextColorLight, 
 );
 
 // ------FLOATING ACTION BUTTON THEME--------//

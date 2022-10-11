@@ -4,6 +4,7 @@ import 'package:trackmy_mentor/homepage/homepage.dart';
 import 'package:trackmy_mentor/login/login.dart';
 import 'package:trackmy_mentor/login/step_four.dart';
 import 'package:trackmy_mentor/profile/userprofile.dart';
+import 'package:trackmy_mentor/project/project_details.dart';
 import 'package:trackmy_mentor/splashscreen.dart';
 import 'package:trackmy_mentor/theme/color_schemes.g.dart';
 
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
         // UserProfile()
         // Homepage()
         // Login()
-        SplashScreen()
+        // SplashScreen()
+        ProjectDetails('Lorem Ipsum Project Title')
       )
     );
   }
