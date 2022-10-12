@@ -258,16 +258,15 @@ bool newState = false;
                 },
                 tilePadding: EdgeInsets.symmetric(horizontal: 15, vertical: newState == true ? 0 : 10),
                 childrenPadding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                title: Container(
-                  
+                title: Container(                 
                   child: Text('Project Description'.toUpperCase(),
-                  style: GoogleFonts.lato(
-                    textStyle: Theme.of(context).textTheme.titleSmall,
-                    fontWeight: FontWeight.w400,
-                    color: Theme.of(context).colorScheme.secondary,
-                    letterSpacing: 1.85,
+                    style: GoogleFonts.lato(
+                      textStyle: Theme.of(context).textTheme.titleSmall,
+                      fontWeight: FontWeight.w400,
+                      color: Theme.of(context).colorScheme.secondary,
+                      letterSpacing: 1.85,
+                    ),
                   ),
-                ),
                 ),
                 subtitle: newState == true ? null :
                 Container(
