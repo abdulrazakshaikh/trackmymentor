@@ -30,10 +30,10 @@ class MyApp extends StatelessWidget {
       home: SafeArea(
         child: 
         // UserProfile()
-        // Homepage()
+        Homepage()
         // Login()
         // SplashScreen()
-        ProjectDetails('Lorem Ipsum Project Title')
+        // ProjectDetails('Lorem Ipsum Project Title')
       )
     );
   }
