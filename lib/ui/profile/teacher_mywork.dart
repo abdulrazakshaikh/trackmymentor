@@ -5,16 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../project/project_details.dart';
+
 class TeacherMyWork extends StatefulWidget {
   @override
   _TeacherMyWorkState createState() => new _TeacherMyWorkState();
 }
 
 class _TeacherMyWorkState extends State<TeacherMyWork> {
-
-List carouselitemlist = [
-  {
-    "id": "001",
+  List carouselitemlist = [
+    {
+      "id": "001",
     "title" : "Lorem Ipsum",
     "category": "Categrory",
     "img": "assets/images/bg1.jpg",
@@ -119,18 +120,25 @@ List carouselitemlist = [
                   return Container(
                   margin: EdgeInsets.only(bottom: 25, left: index==0 ? 10 : 0,), 
                   child: GestureDetector(
-                onTap: () {},
-                  child: Card(
-                    elevation: 5,
-                    shadowColor: Theme.of(context).shadowColor.withOpacity(0.35),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      side: BorderSide(width: 1, color: Colors.grey.withOpacity(0.2))
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        children: [
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    ProjectDetails('${item["title"]}')));
+                      },
+                      child: Card(
+                        elevation: 5,
+                        shadowColor:
+                            Theme.of(context).shadowColor.withOpacity(0.35),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            side: BorderSide(
+                                width: 1, color: Colors.grey.withOpacity(0.2))),
+                        child: Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            children: [
                           Container(
                             height: 130,
                             decoration: BoxDecoration(
