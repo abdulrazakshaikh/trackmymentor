@@ -6,6 +6,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../project/project_details.dart';
+import '../see_all_project_list.dart';
 
 class TeacherMyWork extends StatefulWidget {
   @override
@@ -75,18 +76,26 @@ class _TeacherMyWorkState extends State<TeacherMyWork> {
               ),
               Container(
                 child: TextButton(
-                  onPressed: (){},
-                  child: Row(
-                    children: [
-                      Text('Show All',
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.titleSmall,
-                          letterSpacing: 1.2,
-                          fontSize: MediaQuery.of(context).size.width < 321 ? 12 : 13,
-                          color: Theme.of(context).colorScheme.secondary,
-                          fontWeight: FontWeight.w600
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SeeAllProjectList("My Work")));
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          'Show All',
+                          style: GoogleFonts.lato(
+                              textStyle: Theme.of(context).textTheme.titleSmall,
+                              letterSpacing: 1.2,
+                              fontSize: MediaQuery.of(context).size.width < 321
+                                  ? 12
+                                  : 13,
+                              color: Theme.of(context).colorScheme.secondary,
+                              fontWeight: FontWeight.w600),
                         ),
-                      ),
                       SizedBox(width: 5),
                       Icon(Icons.arrow_forward, size: 14,), 
                     ],
