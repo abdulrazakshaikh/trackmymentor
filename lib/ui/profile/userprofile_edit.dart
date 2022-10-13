@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trackmy_mentor/ui/profile/userprofile.dart';
 
 class UserProfileEdit extends StatefulWidget {
 
@@ -31,12 +30,8 @@ class _UserProfileEditState extends State<UserProfileEdit> {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacement<void, void>(
-                    context, MaterialPageRoute(
-                      builder: (BuildContext context) => UserProfile()
-                    )
-                  );
-                },
+                 Navigator.pop(context);
+                  },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
                   alignment: Alignment.center,
@@ -59,11 +54,7 @@ class _UserProfileEditState extends State<UserProfileEdit> {
                 padding: EdgeInsets.all(10),
                   child: IconButton(
                   onPressed: (){
-                    Navigator.pushReplacement<void, void>(
-                      context, MaterialPageRoute(
-                        builder: (BuildContext context) => UserProfile()
-                      )
-                    );
+                    Navigator.pop(context);
                   },
                   icon: Icon(Icons.arrow_back),
                   style: IconButton.styleFrom(

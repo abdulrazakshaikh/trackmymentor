@@ -61,11 +61,11 @@ List myaccountmenuList = [
 
                 child: IconButton(
                 onPressed: (){
-                  Navigator.pushReplacement<void, void>(
-                    context, MaterialPageRoute(
-                      builder: (BuildContext context) => UserProfileEdit()
-                    )
-                  );
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              UserProfileEdit()));
                 },
                 icon: Icon(Icons.mode_edit_outlined),
                 style: IconButton.styleFrom(
