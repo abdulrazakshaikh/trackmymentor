@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:trackmy_mentor/ui/homepage/homepage.dart';
+import 'package:trackmy_mentor/ui/project/project_details.dart';
 import 'package:trackmy_mentor/ui/splashscreen.dart';
 import 'package:trackmy_mentor/ui/theme/color_schemes.g.dart';
 
@@ -25,9 +27,9 @@ class MyApp extends StatelessWidget {
       home: SafeArea(
         child: 
         // UserProfile()
-                //Homepage()
+                Homepage()
                 // Login()
-                SplashScreen()
+                // SplashScreen()
             // ProjectDetails('Lorem Ipsum Project Title')
       )
     );

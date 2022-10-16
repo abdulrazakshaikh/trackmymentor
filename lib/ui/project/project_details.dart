@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trackmy_mentor/ui/project/project_quotationlist.dart';
 import 'package:trackmy_mentor/ui/project/projectimage_slider.dart';
 import 'package:trackmy_mentor/ui/project/quotation_bottomsheet.dart';
 
@@ -365,6 +366,86 @@ bool newState = false;
               ],
             )
           ),
+
+          Divider(height: 1),
+
+
+          Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Quotation Received'.toUpperCase(),
+                        style: GoogleFonts.lato(
+                          textStyle: Theme.of(context).textTheme.titleSmall,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).colorScheme.secondary,
+                          letterSpacing: 1.85,
+                        ),
+                      ),
+                      Text('What others have quotated for the project',
+                        style: GoogleFonts.lato(
+                          textStyle: Theme.of(context).textTheme.bodySmall,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1.85,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                Container(
+                  margin: EdgeInsets.only(bottom: 15),
+                  child: Column(
+                    children: [
+                      ProjectQuotationList(),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            TextButton(
+                              onPressed: (){}, 
+                              child: Row(
+                                children: [
+                                  Text('View all'.toLowerCase(),
+                                    style: GoogleFonts.lato(
+                                      textStyle: Theme.of(context).textTheme.titleSmall,
+                                      letterSpacing: 1.2,
+                                      fontSize: MediaQuery.of(context).size.width < 321 ? 12 : 14,
+                                      color: Theme.of(context).colorScheme.primary,
+                                      fontWeight: FontWeight.w600
+                                    ),
+                                  ),
+                                  SizedBox(width: 5),
+                                  Icon(Icons.arrow_forward, size: 16,), 
+                                ],
+                              ),
+                              style: TextButton.styleFrom(
+                                shape: StadiumBorder(),
+                                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                                foregroundColor: Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  )
+                ),
+
+
+
+              ],
+            ),
+          ),
+
+
 
           Divider(height: 1),
 
