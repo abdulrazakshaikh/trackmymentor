@@ -1,7 +1,15 @@
 class AppUrl {
   static String baseUrl = "https://www.appcul.com/trackmymentor/api/Mobileapi/";
-
   static String login = "login";
+  static String signup = "signup";
+  static String personalInfo = "personalinformation";
+  static String degree = "degree";
+  static String courses = "courses";
+  static String category = "category";
+  static String classes = "classes";
+  static String subject = "subject";
+  static String language = "language";
+
   static String forgotPwdUid = "Users/ForgotPwdUid";
 
   static debugPrint(dynamic data) {

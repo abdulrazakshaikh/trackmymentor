@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../data/userdata.dart';
 import '../../ui/login/login.dart';
 
 class SharedPrefs extends ChangeNotifier {
@@ -16,7 +19,7 @@ class SharedPrefs extends ChangeNotifier {
     _sharedPrefs = await SharedPreferences.getInstance();
   }
 
-  /*UserData? get userdata {
+  UserData? get userdata {
     String uD = _sharedPrefs.getString(keyUserData) ?? "";
     if (uD == "null" || uD.isEmpty) {
       return null;
@@ -27,7 +30,7 @@ class SharedPrefs extends ChangeNotifier {
 
   set userdata(UserData? value) {
     _sharedPrefs.setString(keyUserData, json.encode(value));
-  }*/
+  }
 
   set isLogin(bool value) {
     _sharedPrefs.setBool(keyIsLogin, value);
@@ -35,19 +38,11 @@ class SharedPrefs extends ChangeNotifier {
 
   bool get isLogin => _sharedPrefs.getBool(keyIsLogin) ?? false;
 
-  set selectedClientCode(String value) {
-    _sharedPrefs.setString(keySelectedClientCode, value);
-    notifyListeners();
-  }
-
-  set selectedUserId(String value) {
-    _sharedPrefs.setString(keySelectedUserId, value);
-  }
 
   void logout() {
     SharedPrefs().isLogin = false;
     //SharedPrefs().userdata = null;
-    SharedPrefs().selectedClientCode = "";
+    SharedPrefs().userdata = null;
     //  Navigator.pop(navigatorKey.currentContext);
     Navigator.pushAndRemoveUntil(
       navigatorKey.currentContext!,

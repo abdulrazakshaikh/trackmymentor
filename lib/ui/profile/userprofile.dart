@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trackmy_mentor/model/storage/shared_prefs.dart';
 import 'package:trackmy_mentor/ui/profile/userprofile_edit.dart';
 
 class UserProfile extends StatefulWidget {
@@ -268,18 +269,28 @@ List myaccountmenuList = [
                                 horizontalTitleGap: 0,
                                 contentPadding: EdgeInsets.symmetric(horizontal: 15),
                                 leading: Icon(item["icon"]),
-                                title: Text('${item["title"]}',
-                                style: GoogleFonts.lato(
-                                textStyle: Theme.of(context).textTheme.titleSmall,
+                            title: Text(
+                              '${item["title"]}',
+                              style: GoogleFonts.lato(
+                                textStyle:
+                                    Theme.of(context).textTheme.titleSmall,
                                 fontWeight: FontWeight.w600,
                                 letterSpacing: 1.2,
-                                ),
-                                ),
-                                trailing: Icon(Icons.chevron_right,
-                                color: Theme.of(context).colorScheme.secondary.withOpacity(0.6),
-                                ),
-                                onTap: (){},
                               ),
+                            ),
+                            trailing: Icon(
+                              Icons.chevron_right,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .secondary
+                                  .withOpacity(0.6),
+                            ),
+                            onTap: () {
+                              if (item['id'] == "004") {
+                                SharedPrefs().logout();
+                              }
+                            },
+                          ),
                               );
                             },
                         ),

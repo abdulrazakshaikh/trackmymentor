@@ -1,23 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:trackmy_mentor/model/storage/shared_prefs.dart';
 
 import '../data/userdata.dart';
-import '../model/apis/api_response.dart';
 import '../model/auth_repository.dart';
 
 class AuthViewModel extends ChangeNotifier {
-  ApiResponse _apiResponse = ApiResponse.initial('Empty data');
-
-  UserData? _userdata;
   bool _isLoading = false;
   String? _error;
 
-  ApiResponse get response {
-    return _apiResponse;
-  }
 
-  UserData? get userdata {
-    return _userdata;
-  }
 
   String? get error {
     return _error;
@@ -31,12 +22,26 @@ class AuthViewModel extends ChangeNotifier {
     try {
       _isLoading = true;
       notifyListeners();
-      _userdata = await new AuthRepository()
-          .getUserlogin({"userId": "$username", "pwd": "$password"});
+      var _userdata = await new AuthRepository().getUserLogin({
+        "email": "$username",
+        "password": "$password",
+        "device_type": "Android",
+        "device_token": "Firebase Pending"
+      });
       _isLoading = false;
       notifyListeners();
-      return true;
+      if (!_userdata.isSuccess) {
+        _error = _userdata.message;
+        return false;
+      } else {
+        var data = _userdata.data as List;
+        SharedPrefs().userdata = UserData.fromJson(data[0]);
+        SharedPrefs().isLogin = true;
+        notifyListeners();
+        return true;
+      }
     } catch (e) {
+      print(e);
       _isLoading = false;
       _error = e.toString();
       notifyListeners();
@@ -44,43 +49,36 @@ class AuthViewModel extends ChangeNotifier {
     }
   }
 
-  Future<bool> getLoginId(String userid, String mobile) async {
+  Future<bool> userSignUp(String type, String username, String password) async {
     try {
       _isLoading = true;
       notifyListeners();
-      String _useridResponse = await new AuthRepository().getUserId(
-          {"CallFor": "LoginId", "UserId": "$userid", "Mobile": "$mobile"});
+      var _userdata = await new AuthRepository().getUserSignUp({
+        "type": "$type",
+        "email": "$username",
+        "password": "$password",
+        "confirm_pass": "$password",
+        "device_type": "Android",
+        "device_token": "Firebase Pending"
+      });
       _isLoading = false;
       notifyListeners();
-      print(_useridResponse);
-      return _useridResponse.contains("success") ? true : false;
+      if (!_userdata.isSuccess) {
+        _error = _userdata.message;
+        return false;
+      } else {
+        var data = _userdata.data as List;
+        SharedPrefs().userdata = UserData.fromJson(data[0]);
+        SharedPrefs().isLogin = true;
+        notifyListeners();
+        return true;
+      }
     } catch (e) {
+      print(e);
       _isLoading = false;
       _error = e.toString();
       notifyListeners();
       return false;
     }
-  }
-
-  Future<bool> getPassword(String userid, String dob) async {
-    try {
-      _isLoading = true;
-      notifyListeners();
-      String _pwdResponse = await new AuthRepository().getUserPassword(
-          {"CallFor": "Pwd", "UserId": "$userid", "DOB": "$dob"});
-      _isLoading = false;
-      notifyListeners();
-      return _pwdResponse.contains("success") ? true : false;
-    } catch (e) {
-      _isLoading = false;
-      _error = e.toString();
-      notifyListeners();
-      return false;
-    }
-  }
-
-  void setSelectedMedia(UserData? media) {
-    _userdata = media;
-    notifyListeners();
   }
 }

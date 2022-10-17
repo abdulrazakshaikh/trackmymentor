@@ -1,5 +1,10 @@
 # This is a generated file; do not edit or check into version control.
-fluttertoast=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.9/
+connectivity_plus=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/connectivity_plus-2.3.9/
+connectivity_plus_linux=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_linux-1.3.1/
+connectivity_plus_macos=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_macos-1.2.6/
+connectivity_plus_web=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_web-1.2.5/
+connectivity_plus_windows=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_windows-1.2.2/
+fluttertoast=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.1.1/
 path_provider=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.11/
 path_provider_android=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.20/
 path_provider_ios=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/path_provider_ios-2.0.11/
@@ -7,7 +12,7 @@ path_provider_linux=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/path_pr
 path_provider_macos=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.6/
 path_provider_windows=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.1.3/
 shared_preferences=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.15/
-shared_preferences_android=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/shared_preferences_android-2.0.13/
+shared_preferences_android=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/shared_preferences_android-2.0.14/
 shared_preferences_ios=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/shared_preferences_ios-2.1.1/
 shared_preferences_linux=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-2.1.1/
 shared_preferences_macos=/Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-2.0.4/

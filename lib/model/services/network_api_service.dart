@@ -1,30 +1,67 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 
 import '../apis/app_exception.dart';
+import '../apis/new_api_response.dart';
 import 'app_url.dart';
 import 'base_service.dart';
 
 class NetworkApiService extends BaseService {
   String baseUrl = AppUrl.baseUrl;
 
-  @override
-  Future get(String url) async {
-    dynamic responseJson;
-    try {
-      final response = await http.get(Uri.parse(baseUrl + url));
-      responseJson = returnResponse(response);
-    } on SocketException {
-      throw FetchDataException('No Internet Connection');
+  Future<bool> checkInternetConnection() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult != ConnectivityResult.mobile &&
+        connectivityResult != ConnectivityResult.wifi) {
+      return false;
+    } else {
+      return true;
     }
-    return responseJson;
+  }
+
+  @override
+  Future get(String url, {data}) async {
+    if (!await checkInternetConnection()) {
+      return NewAPIResponse(
+          status: "FAILURE", message: "No internet connection! ", data: null);
+    }
+    dynamic responseJson;
+
+    try {
+      var header = {
+        "content-type": "application/x-www-form-urlencoded",
+        "accept": "application/json"
+      };
+
+      var parse = Uri.parse(baseUrl + url);
+      print("dsvv");
+      AppUrl.debugPrint("*********API Call Started************");
+      AppUrl.debugPrint("API Request Type:GET");
+      AppUrl.debugPrint("API Call URL :" + parse.toString());
+      AppUrl.debugPrint("API Header :" + header.toString());
+      final response = await http.get(parse, headers: header);
+      AppUrl.debugPrint(
+          " Response  Status : " + response.statusCode.toString());
+      AppUrl.debugPrint("Response  Body: " + response.body);
+      responseJson = returnResponse(response);
+      // AppUrl.debugPrint("Dencrypted Response  : " + responseJson);
+      AppUrl.debugPrint("*********API Call End************");
+      return responseJson;
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
   Future post(String url, data) async {
+    if (!await checkInternetConnection()) {
+      return NewAPIResponse(
+          status: "FAILURE", message: "No internet connection! ", data: {});
+    }
     dynamic responseJson;
     try {
       var header = {
@@ -33,6 +70,7 @@ class NetworkApiService extends BaseService {
       };
       var parse = Uri.parse(baseUrl + url);
       AppUrl.debugPrint("*********API Call Started************");
+      AppUrl.debugPrint("API Request Type:POST");
       AppUrl.debugPrint("API Call URL :" + parse.toString());
       AppUrl.debugPrint("API Header :" + header.toString());
       AppUrl.debugPrint("Request Data : " + data.toString());
@@ -40,9 +78,9 @@ class NetworkApiService extends BaseService {
       final response = await http.post(parse, body: data, headers: header);
       AppUrl.debugPrint(
           " Response  Status : " + response.statusCode.toString());
-      AppUrl.debugPrint("Encrypted Response  : " + response.body);
+      AppUrl.debugPrint("Response  Body: " + response.body);
       responseJson = returnResponse(response);
-      AppUrl.debugPrint("Dencrypted Response  : " + responseJson);
+      // AppUrl.debugPrint("Dencrypted Response  : " + responseJson);
       AppUrl.debugPrint("*********API Call End************");
       return responseJson;
     } catch (e) {
@@ -74,17 +112,24 @@ class NetworkApiService extends BaseService {
     switch (response.statusCode) {
       case 200:
         dynamic responseJson = jsonDecode(response.body);
-        return responseJson;
+        return NewAPIResponse.fromJson(responseJson);
       case 400:
-        throw BadRequestException(response.body.toString());
+        //throw BadRequestException(response.body.toString());
+        return NewAPIResponse(
+            status: "FAILURE", message: "Invalid Request: ", data: null);
       case 401:
       case 403:
-        throw UnauthorisedException(response.body.toString());
+        //throw UnauthorisedException(response.body.toString());
+        return NewAPIResponse(
+            status: "FAILURE", message: "Unauthorised Request: ", data: null);
       case 500:
       default:
-        throw FetchDataException(
-            'Error occured while communication with server' +
-                ' with status code : ${response.statusCode}');
+        //throw FetchDataException('Error occured while communication with server' + ' with status code : ${response.statusCode}');
+        return NewAPIResponse(
+            status: "FAILURE",
+            message: 'Error occured while communication with server' +
+                ' with status code : ${response.statusCode}',
+            data: null);
     }
   }
 }

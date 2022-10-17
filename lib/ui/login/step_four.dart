@@ -4,8 +4,11 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trackmy_mentor/ui/login/dropdown_bottomsheet_single.dart';
+import 'package:trackmy_mentor/model/services/app_url.dart';
 
+import '../../data/helperdata.dart';
+import '../common_widgets/helper_multiple_selection_bottomsheet.dart';
+import '../common_widgets/helper_single_selection_bottomsheet.dart';
 
 class StepFour extends StatefulWidget {
   @override
@@ -13,7 +16,6 @@ class StepFour extends StatefulWidget {
 }
 
 class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
-  
   var _options = [
     "1 Option",
     "2 Option",
@@ -27,10 +29,33 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
     "10 Option",
   ];
 
-  var selectOptions = '';
+  List<HelperData> selectedCategory = [];
+  List<HelperData> selectedClass = [];
+  List<HelperData> selectedSubject = [];
+  TextEditingController categoryController = TextEditingController();
+  TextEditingController classController = TextEditingController();
+  TextEditingController subjectController = TextEditingController();
+  TextEditingController yearExController = TextEditingController();
+  HelperData? selectedYearEx;
 
   @override
   Widget build(BuildContext context) {
+    categoryController.text = "";
+    classController.text = "";
+    subjectController.text = "";
+    selectedCategory.forEach((element) {
+      categoryController.text += element.name.toString() +
+          "${selectedCategory.indexOf(element) == selectedCategory.length - 1 ? "" : ","}";
+    });
+    selectedClass.forEach((element) {
+      classController.text += element.name.toString() +
+          "${selectedClass.indexOf(element) == selectedClass.length - 1 ? "" : ","}";
+    });
+    selectedSubject.forEach((element) {
+      subjectController.text += element.name.toString() +
+          "${selectedSubject.indexOf(element) == selectedSubject.length - 1 ? "" : ","}";
+    });
+    yearExController.text = selectedYearEx?.name ?? "";
     return Container(
       child: Column(
         children: [
@@ -47,13 +72,10 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
               ),
             ),
           ),
-
           Container(
             margin: EdgeInsets.only(top: 20),
             child: Column(
               children: [
-
-
                 Container(
                   margin: EdgeInsets.only(bottom: 15),
                   child: Column(
@@ -61,15 +83,17 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                       Container(
                         alignment: Alignment.topLeft,
                         padding: EdgeInsets.only(bottom: 5),
-                        child: Text('No. of Years',
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          letterSpacing: 1.75,
-                          fontWeight: FontWeight.w400,
-                        ),
+                        child: Text(
+                          'No. of Years Experience',
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            letterSpacing: 1.75,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                       TextField(
+                        controller: yearExController,
                         readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
@@ -77,23 +101,25 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                           letterSpacing: 1.2,
                         ),
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          floatingLabelBehavior: FloatingLabelBehavior.auto,
-                          hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.bodyMedium,
-                            letterSpacing: 1.8,
-                            fontWeight: FontWeight.w300
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                          ),
-                          suffixIcon: Icon(Icons.arrow_drop_down)
-                        ),
-                        onTap: (){
+                            contentPadding: EdgeInsets.all(10),
+                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                            hintText: 'Select an Options'.toLowerCase(),
+                            hintStyle: GoogleFonts.lato(
+                                textStyle:
+                                    Theme.of(context).textTheme.bodyMedium,
+                                letterSpacing: 1.8,
+                                fontWeight: FontWeight.w300),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.outline),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  width: 1),
+                            ),
+                            suffixIcon: Icon(Icons.arrow_drop_down)),
+                        onTap: () {
                           showModalBottomSheet(
                             elevation: 2,
                             shape: RoundedRectangleBorder(
@@ -102,9 +128,15 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                                 topRight: Radius.circular(20),
                               ),
                             ),
-                            context: context, builder: (BuildContext context) { 
-                              return DropdownBottomSheetSingle();
-                            }, 
+                            context: context,
+                            builder: (BuildContext context) {
+                              return HelperSingleSelectionBottomSheet(
+                                  "Experience", selectedYearEx, (selectedItem) {
+                                setState(() {
+                                  selectedYearEx = selectedItem;
+                                });
+                              });
+                            },
                           );
                         },
                       ),
@@ -122,7 +154,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                       //       textStyle: Theme.of(context).textTheme.bodyMedium,
                       //       letterSpacing: 1.8,
                       //       fontWeight: FontWeight.w300),
-                          
+
                       //     enabledBorder: OutlineInputBorder(
                       //       borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
                       //     ),
@@ -131,7 +163,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                       //     ),
                       //   ),
                       //   items: _options.map((String value) {
-                          
+
                       //     return DropdownMenuItem<String>(
                       //       value: value,
                       //       child: Text(value,
@@ -142,7 +174,7 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                       //       ),
                       //       ),
                       //     );
-                      //   }).toList(), 
+                      //   }).toList(),
                       //   focusColor: Colors.white,
                       //   onChanged: (String? newValue){
                       //     setState(() {
@@ -153,7 +185,6 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                     ],
                   ),
                 ),
-
                 Container(
                   margin: EdgeInsets.only(bottom: 15),
                   child: Column(
@@ -161,15 +192,17 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                       Container(
                         alignment: Alignment.topLeft,
                         padding: EdgeInsets.only(bottom: 5),
-                        child: Text('Select Category',
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          letterSpacing: 1.75,
-                          fontWeight: FontWeight.w400,
-                        ),
+                        child: Text(
+                          'Select Category',
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            letterSpacing: 1.75,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                       TextField(
+                        controller: categoryController,
                         readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
@@ -177,23 +210,25 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                           letterSpacing: 1.2,
                         ),
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          floatingLabelBehavior: FloatingLabelBehavior.auto,
-                          hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.bodyMedium,
-                            letterSpacing: 1.8,
-                            fontWeight: FontWeight.w300
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                          ),
-                          suffixIcon: Icon(Icons.arrow_drop_down)
-                        ),
-                        onTap: (){
+                            contentPadding: EdgeInsets.all(10),
+                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                            hintText: 'Select an Options'.toLowerCase(),
+                            hintStyle: GoogleFonts.lato(
+                                textStyle:
+                                    Theme.of(context).textTheme.bodyMedium,
+                                letterSpacing: 1.8,
+                                fontWeight: FontWeight.w300),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.outline),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  width: 1),
+                            ),
+                            suffixIcon: Icon(Icons.arrow_drop_down)),
+                        onTap: () {
                           showModalBottomSheet(
                             elevation: 2,
                             shape: RoundedRectangleBorder(
@@ -202,16 +237,22 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                                 topRight: Radius.circular(20),
                               ),
                             ),
-                            context: context, builder: (BuildContext context) { 
-                              return DropdownBottomSheetSingle();
-                            }, 
+                            context: context,
+                            builder: (BuildContext context) {
+                              return HelperMultipleSelectionBottomSheet(
+                                  AppUrl.category, selectedCategory,
+                                  (selectedCat) {
+                                setState(() {
+                                  selectedCategory = selectedCat;
+                                });
+                              });
+                            },
                           );
                         },
                       ),
                     ],
                   ),
                 ),
-
                 Container(
                   margin: EdgeInsets.only(bottom: 15),
                   child: Column(
@@ -219,15 +260,17 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                       Container(
                         alignment: Alignment.topLeft,
                         padding: EdgeInsets.only(bottom: 5),
-                        child: Text('Choose a Class',
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          letterSpacing: 1.75,
-                          fontWeight: FontWeight.w400,
-                        ),
+                        child: Text(
+                          'Choose a Class',
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            letterSpacing: 1.75,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                       TextField(
+                        controller: classController,
                         readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
@@ -235,23 +278,25 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                           letterSpacing: 1.2,
                         ),
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          floatingLabelBehavior: FloatingLabelBehavior.auto,
-                          hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.bodyMedium,
-                            letterSpacing: 1.8,
-                            fontWeight: FontWeight.w300
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                          ),
-                          suffixIcon: Icon(Icons.arrow_drop_down)
-                        ),
-                        onTap: (){
+                            contentPadding: EdgeInsets.all(10),
+                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                            hintText: 'Select an Options'.toLowerCase(),
+                            hintStyle: GoogleFonts.lato(
+                                textStyle:
+                                    Theme.of(context).textTheme.bodyMedium,
+                                letterSpacing: 1.8,
+                                fontWeight: FontWeight.w300),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.outline),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  width: 1),
+                            ),
+                            suffixIcon: Icon(Icons.arrow_drop_down)),
+                        onTap: () {
                           showModalBottomSheet(
                             elevation: 2,
                             shape: RoundedRectangleBorder(
@@ -260,16 +305,21 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                                 topRight: Radius.circular(20),
                               ),
                             ),
-                            context: context, builder: (BuildContext context) { 
-                              return DropdownBottomSheetSingle();
-                            }, 
+                            context: context,
+                            builder: (BuildContext context) {
+                              return HelperMultipleSelectionBottomSheet(
+                                  AppUrl.classes, selectedClass, (selectedCat) {
+                                setState(() {
+                                  selectedClass = selectedCat;
+                                });
+                              });
+                            },
                           );
                         },
                       ),
                     ],
                   ),
                 ),
-
                 Container(
                   margin: EdgeInsets.only(bottom: 15),
                   child: Column(
@@ -277,15 +327,17 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                       Container(
                         alignment: Alignment.topLeft,
                         padding: EdgeInsets.only(bottom: 5),
-                        child: Text('Choose Subject',
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.labelLarge,
-                          letterSpacing: 1.75,
-                          fontWeight: FontWeight.w400,
-                        ),
+                        child: Text(
+                          'Choose Subject',
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.labelLarge,
+                            letterSpacing: 1.75,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                       TextField(
+                        controller: subjectController,
                         readOnly: true,
                         style: GoogleFonts.lato(
                           textStyle: Theme.of(context).textTheme.bodyMedium,
@@ -293,23 +345,25 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                           letterSpacing: 1.2,
                         ),
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          floatingLabelBehavior: FloatingLabelBehavior.auto,
-                          hintText: 'Select an Options'.toLowerCase(),
-                          hintStyle: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.bodyMedium,
-                            letterSpacing: 1.8,
-                            fontWeight: FontWeight.w300
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                          ),
-                          suffixIcon: Icon(Icons.arrow_drop_down)
-                        ),
-                        onTap: (){
+                            contentPadding: EdgeInsets.all(10),
+                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                            hintText: 'Select an Options'.toLowerCase(),
+                            hintStyle: GoogleFonts.lato(
+                                textStyle:
+                                    Theme.of(context).textTheme.bodyMedium,
+                                letterSpacing: 1.8,
+                                fontWeight: FontWeight.w300),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.outline),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  width: 1),
+                            ),
+                            suffixIcon: Icon(Icons.arrow_drop_down)),
+                        onTap: () {
                           showModalBottomSheet(
                             elevation: 2,
                             shape: RoundedRectangleBorder(
@@ -318,22 +372,25 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
                                 topRight: Radius.circular(20),
                               ),
                             ),
-                            context: context, builder: (BuildContext context) { 
-                              return DropdownBottomSheetSingle();
-                            }, 
+                            context: context,
+                            builder: (BuildContext context) {
+                              return HelperMultipleSelectionBottomSheet(
+                                  AppUrl.subject, selectedSubject,
+                                  (selectedCat) {
+                                setState(() {
+                                  selectedSubject = selectedCat;
+                                });
+                              });
+                            },
                           );
                         },
                       ),
                     ],
                   ),
                 ),
-                
               ],
             ),
           ),
-          
-          
-          
         ],
       ),
     );
