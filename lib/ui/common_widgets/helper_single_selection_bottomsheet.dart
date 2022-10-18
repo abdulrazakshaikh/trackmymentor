@@ -102,7 +102,7 @@ class _HelperSingleSelectionBottomSheetState
                       Container(
                         padding: EdgeInsets.only(top: 10),
                         child: Text(
-                          'Select an options',
+                          'Select an ${widget.type}',
                           style: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             fontWeight: FontWeight.w600,
@@ -121,50 +121,56 @@ class _HelperSingleSelectionBottomSheetState
                 ? Center(
                     child: CircularProgressIndicator(),
                   )
-                : ListView(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 5),
-                        child: ListView.builder(
-                            primary: false,
-                            physics: NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: helperDataList == null
-                                ? 0
-                                : helperDataList.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              HelperData item = helperDataList[index];
-                              return ListTileTheme(
-                                horizontalTitleGap: 0,
-                                child: RadioListTile<HelperData>(
-                                  dense: true,
-                                  title: Text(
-                                    "${item.name}",
-                                    style: GoogleFonts.lato(
-                                        textStyle: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium,
-                                        letterSpacing: 1.5,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  activeColor:
-                                      Theme.of(context).colorScheme.primary,
-                                  // checkColor: Theme.of(context).colorScheme.onPrimary,
-                                  groupValue: widget.selectedItem,
-                                  controlAffinity:
-                                      ListTileControlAffinity.leading,
-                                  value: item,
-                                  onChanged: (HelperData? value) {
-                                    setState(() {
-                                      widget.selectedItem = value;
-                                    });
-                                  },
-                                ),
-                              );
-                            }),
+                : (helperViewModel.error ?? "").isNotEmpty
+                    ? Center(
+                        child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 30),
+                            child: Text("${helperViewModel.error}")),
+                      )
+                    : ListView(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 5),
+                            child: ListView.builder(
+                                primary: false,
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: helperDataList == null
+                                    ? 0
+                                    : helperDataList.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  HelperData item = helperDataList[index];
+                                  return ListTileTheme(
+                                    horizontalTitleGap: 0,
+                                    child: RadioListTile<HelperData>(
+                                      dense: true,
+                                      title: Text(
+                                        "${item.name}",
+                                        style: GoogleFonts.lato(
+                                            textStyle: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium,
+                                            letterSpacing: 1.5,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      activeColor:
+                                          Theme.of(context).colorScheme.primary,
+                                      // checkColor: Theme.of(context).colorScheme.onPrimary,
+                                      groupValue: widget.selectedItem,
+                                      controlAffinity:
+                                          ListTileControlAffinity.leading,
+                                      value: item,
+                                      onChanged: (HelperData? value) {
+                                        setState(() {
+                                          widget.selectedItem = value;
+                                        });
+                                      },
+                                    ),
+                                  );
+                                }),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
           ),
           Container(
             margin: EdgeInsets.only(top: 15),

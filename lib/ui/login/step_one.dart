@@ -14,9 +14,12 @@ class StepOne extends StatefulWidget {
 }
 
 class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
-  
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
   int selectedIndex = 0;
   bool _passwordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,7 +62,7 @@ class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
                 Container(
                   margin: EdgeInsets.only(bottom: 15),
                   child: TextField(
-
+                    controller: usernameController,
                     style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.bodyMedium,
                       fontWeight: FontWeight.w600,
@@ -86,6 +89,7 @@ class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
                   child: TextField(
+                    controller: passwordController,
                     style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.bodyMedium,
                       fontWeight: FontWeight.w600,
@@ -120,10 +124,10 @@ class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
                   child: TextField(
+                    controller: confirmPasswordController,
                     style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.bodyMedium,
                       fontWeight: FontWeight.w600,
@@ -158,7 +162,6 @@ class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-
               ],
             ),
           ),

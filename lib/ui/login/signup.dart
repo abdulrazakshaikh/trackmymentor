@@ -20,25 +20,33 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> with TickerProviderStateMixin {
   bool _passwordVisible = false;
   int selectedIndex = 0;
-  String selectedType="teacher";
+  String selectedType = "teacher";
+  late StepOne stepOne;
+  late StepTwo stepTwo;
+  late StepThree stepThree;
+  late StepFour stepFour;
+
+  @override
+  void initState() {
+    stepOne = StepOne((value) {
+      setState(() {
+        selectedType = value;
+      });
+    });
+    stepTwo = StepTwo();
+    stepThree = StepThree();
+    stepFour = StepFour();
+  }
+
   @override
   Widget build(BuildContext context) {
     var steps2 = [
-            CoolStep(
-              content: StepOne((value){
-                setState(() {
-                    selectedType=value;
-                });
-              })
+      CoolStep(content: stepOne),
+      CoolStep(content: stepTwo),
+      CoolStep(content: stepThree
             ),
             CoolStep(
-              content: StepTwo()
-            ),
-            CoolStep(
-              content: StepThree()
-            ),
-            CoolStep(
-              content: StepFour()
+                content: stepFour
             ),
             /*CoolStep(
               content: StepFive()
@@ -90,16 +98,24 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
             nextButton: Container(
               padding: EdgeInsets.all(5),
               child: ElevatedButton(
-                onPressed: (){},
+                onPressed: () {
+
+                },
                 child: Row(
                   children: [
                     Text('Next'.toUpperCase(),
-                    style: GoogleFonts.lato(
-                      textStyle: Theme.of(context).textTheme.titleSmall,
-                      color: Theme.of(context).colorScheme.onPrimary,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 1.2,
-                    ),
+                      style: GoogleFonts.lato(
+                        textStyle: Theme
+                            .of(context)
+                            .textTheme
+                            .titleSmall,
+                        color: Theme
+                            .of(context)
+                            .colorScheme
+                            .onPrimary,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1.2,
+                      ),
                     ),
                     SizedBox(width: 5),
                     Icon(Icons.arrow_forward, color: Theme.of(context).colorScheme.onPrimary,)
