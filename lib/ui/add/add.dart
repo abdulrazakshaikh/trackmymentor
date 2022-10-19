@@ -1,4 +1,3 @@
-import 'package:cool_stepper_reloaded/cool_stepper_reloaded.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -8,6 +7,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:trackmy_mentor/ui/add/addstep_one.dart';
 import 'package:trackmy_mentor/ui/add/addstep_three.dart';
 import 'package:trackmy_mentor/ui/add/addstep_two.dart';
+
+import '../common_widgets/my_stepper/cool_stepper_reloaded.dart';
+import '../common_widgets/my_stepper/src/models/cool_step.dart';
+import '../common_widgets/my_stepper/src/models/cool_stepper_config.dart';
 
 class Add extends StatefulWidget {
   @override

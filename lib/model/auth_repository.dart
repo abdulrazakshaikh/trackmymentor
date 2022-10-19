@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import '../data/userdata.dart';
 import 'apis/new_api_response.dart';
 import 'services/app_url.dart';
 import 'services/base_service.dart';
@@ -20,10 +17,20 @@ class AuthRepository {
     return response;
   }
 
-  Future<UserData> getPersonalInfo(dynamic map) async {
-    dynamic response = await _netoworkService.post(AppUrl.personalInfo, map);
-    final jsonData = response;
-    return UserData.fromJson(json.decode(jsonData));
+  Future<NewAPIResponse> getPersonalInfo(dynamic map, dynamic imagePath) async {
+    dynamic response = await _netoworkService.postMultiPart(
+        AppUrl.personalInfo, map, imagePath);
+    return response;
+  }
+
+  Future<NewAPIResponse> getQualifications(dynamic map) async {
+    dynamic response = await _netoworkService.post(AppUrl.qualifications, map);
+    return response;
+  }
+
+  Future<NewAPIResponse> getExperiences(dynamic map) async {
+    dynamic response = await _netoworkService.post(AppUrl.experiences, map);
+    return response;
   }
 
   Future<String> getUserPassword(dynamic map) async {

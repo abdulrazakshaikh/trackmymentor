@@ -132,4 +132,48 @@ class NetworkApiService extends BaseService {
             data: null);
     }
   }
+
+  @override
+  Future postMultiPart(String url, data, imagePath) async {
+    if (!await checkInternetConnection()) {
+      return NewAPIResponse(
+          status: "FAILURE", message: "No internet connection! ", data: {});
+    }
+    dynamic responseJson;
+    try {
+      var header = {
+        "content-type": "application/x-www-form-urlencoded",
+        "accept": "application/json"
+      };
+      var parse = Uri.parse(baseUrl + url);
+      AppUrl.debugPrint("*********API Call Started************");
+      AppUrl.debugPrint("API Request Type:POST");
+      AppUrl.debugPrint("API Call URL :" + parse.toString());
+      AppUrl.debugPrint("API Header :" + header.toString());
+      AppUrl.debugPrint("Request Data : " + data.toString());
+      AppUrl.debugPrint("Request Data : " + json.encode(data).toString());
+      var request = http.MultipartRequest('POST', parse);
+      request.fields.addAll(data);
+      request.headers.addAll(header);
+      imagePath.forEach((key, value) {
+        print(value);
+        request.files.add(http.MultipartFile.fromBytes(
+            key, File(value).readAsBytesSync(),
+            filename: value.split("/").last));
+      });
+
+      var res = await request.send();
+
+      var response = await http.Response.fromStream(res);
+      AppUrl.debugPrint(
+          " Response  Status : " + response.statusCode.toString());
+      AppUrl.debugPrint("Response  Body: ${response.body}");
+      responseJson = returnResponse(response);
+      // AppUrl.debugPrint("Dencrypted Response  : " + responseJson);
+      AppUrl.debugPrint("*********API Call End************");
+      return responseJson;
+    } catch (e) {
+      print(e);
+    }
+  }
 }

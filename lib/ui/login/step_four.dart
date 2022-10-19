@@ -11,6 +11,11 @@ import '../common_widgets/helper_multiple_selection_bottomsheet.dart';
 import '../common_widgets/helper_single_selection_bottomsheet.dart';
 
 class StepFour extends StatefulWidget {
+  var onSave;
+  GlobalKey<FormState> formKey;
+
+  StepFour(this.formKey, this.onSave);
+
   @override
   _StepFourState createState() => _StepFourState();
 }
@@ -56,342 +61,439 @@ class _StepFourState extends State<StepFour> with TickerProviderStateMixin {
           "${selectedSubject.indexOf(element) == selectedSubject.length - 1 ? "" : ","}";
     });
     yearExController.text = selectedYearEx?.name ?? "";
-    return Container(
-      child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.only(bottom: 15),
-            child: Text(
-              'Experience',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.lato(
-                textStyle: Theme.of(context).textTheme.headlineSmall,
-                letterSpacing: 1.5,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+    return Form(
+      key: widget.formKey,
+      child: Container(
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 15),
+              child: Text(
+                'Experience',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.lato(
+                  textStyle: Theme.of(context).textTheme.headlineSmall,
+                  letterSpacing: 1.5,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 20),
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.topLeft,
-                        padding: EdgeInsets.only(bottom: 5),
-                        child: Text(
-                          'No. of Years Experience',
-                          style: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            letterSpacing: 1.75,
-                            fontWeight: FontWeight.w400,
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.only(bottom: 5),
+                          child: Text(
+                            'No. of Years Experience',
+                            style: GoogleFonts.lato(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              letterSpacing: 1.75,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
-                      ),
-                      TextField(
-                        controller: yearExController,
-                        readOnly: true,
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.bodyMedium,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1.2,
-                        ),
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(10),
-                            floatingLabelBehavior: FloatingLabelBehavior.auto,
-                            hintText: 'Select an Options'.toLowerCase(),
-                            hintStyle: GoogleFonts.lato(
-                                textStyle:
-                                    Theme.of(context).textTheme.bodyMedium,
-                                letterSpacing: 1.8,
-                                fontWeight: FontWeight.w300),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.outline),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  width: 1),
-                            ),
-                            suffixIcon: Icon(Icons.arrow_drop_down)),
-                        onTap: () {
-                          showModalBottomSheet(
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20),
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Select Experience';
+                            } else {
+                              return null;
+                            }
+                          },
+                          controller: yearExController,
+                          readOnly: true,
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.bodyMedium,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
+                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                              hintText: 'Select an Options'.toLowerCase(),
+                              hintStyle: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.bodyMedium,
+                                  letterSpacing: 1.8,
+                                  fontWeight: FontWeight.w300),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.outline),
                               ),
-                            ),
-                            context: context,
-                            builder: (BuildContext context) {
-                              return HelperSingleSelectionBottomSheet(
-                                  "Experience", selectedYearEx, (selectedItem) {
-                                setState(() {
-                                  selectedYearEx = selectedItem;
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              suffixIcon: Icon(Icons.arrow_drop_down)),
+                          onTap: () {
+                            showModalBottomSheet(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                ),
+                              ),
+                              context: context,
+                              builder: (BuildContext context) {
+                                return HelperSingleSelectionBottomSheet(
+                                    "Experience", selectedYearEx,
+                                    (selectedItem) {
+                                  setState(() {
+                                    selectedYearEx = selectedItem;
+                                  });
                                 });
-                              });
-                            },
-                          );
-                        },
-                      ),
-                      // DropdownButtonFormField(
-                      //   style: GoogleFonts.lato(
-                      //     textStyle: Theme.of(context).textTheme.bodyMedium,
-                      //     fontWeight: FontWeight.w600,
-                      //     letterSpacing: 1.2,
-                      //   ),
-                      //   decoration: InputDecoration(
-                      //     contentPadding: EdgeInsets.all(10),
-                      //     floatingLabelBehavior: FloatingLabelBehavior.auto,
-                      //     hintText: 'Select an Options'.toLowerCase(),
-                      //     hintStyle: GoogleFonts.lato(
-                      //       textStyle: Theme.of(context).textTheme.bodyMedium,
-                      //       letterSpacing: 1.8,
-                      //       fontWeight: FontWeight.w300),
+                              },
+                            );
+                          },
+                        ),
+                        // DropdownButtonFormField(
+                        //   style: GoogleFonts.lato(
+                        //     textStyle: Theme.of(context).textTheme.bodyMedium,
+                        //     fontWeight: FontWeight.w600,
+                        //     letterSpacing: 1.2,
+                        //   ),
+                        //   decoration: InputDecoration(
+                        //     contentPadding: EdgeInsets.all(10),
+                        //     floatingLabelBehavior: FloatingLabelBehavior.auto,
+                        //     hintText: 'Select an Options'.toLowerCase(),
+                        //     hintStyle: GoogleFonts.lato(
+                        //       textStyle: Theme.of(context).textTheme.bodyMedium,
+                        //       letterSpacing: 1.8,
+                        //       fontWeight: FontWeight.w300),
 
-                      //     enabledBorder: OutlineInputBorder(
-                      //       borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                      //     ),
-                      //     focusedBorder: OutlineInputBorder(
-                      //       borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                      //     ),
-                      //   ),
-                      //   items: _options.map((String value) {
+                        //     enabledBorder: OutlineInputBorder(
+                        //       borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
+                        //     ),
+                        //     focusedBorder: OutlineInputBorder(
+                        //       borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
+                        //     ),
+                        //   ),
+                        //   items: _options.map((String value) {
 
-                      //     return DropdownMenuItem<String>(
-                      //       value: value,
-                      //       child: Text(value,
-                      //       style: GoogleFonts.lato(
-                      //         textStyle: Theme.of(context).textTheme.bodyMedium,
-                      //         fontWeight: FontWeight.w600,
-                      //         letterSpacing: 1.2,
-                      //       ),
-                      //       ),
-                      //     );
-                      //   }).toList(),
-                      //   focusColor: Colors.white,
-                      //   onChanged: (String? newValue){
-                      //     setState(() {
-                      //       selectOptions = newValue!;
-                      //     });
-                      //   },
-                      // ),
-                    ],
+                        //     return DropdownMenuItem<String>(
+                        //       value: value,
+                        //       child: Text(value,
+                        //       style: GoogleFonts.lato(
+                        //         textStyle: Theme.of(context).textTheme.bodyMedium,
+                        //         fontWeight: FontWeight.w600,
+                        //         letterSpacing: 1.2,
+                        //       ),
+                        //       ),
+                        //     );
+                        //   }).toList(),
+                        //   focusColor: Colors.white,
+                        //   onChanged: (String? newValue){
+                        //     setState(() {
+                        //       selectOptions = newValue!;
+                        //     });
+                        //   },
+                        // ),
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.topLeft,
-                        padding: EdgeInsets.only(bottom: 5),
-                        child: Text(
-                          'Select Category',
-                          style: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            letterSpacing: 1.75,
-                            fontWeight: FontWeight.w400,
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.only(bottom: 5),
+                          child: Text(
+                            'Select Category',
+                            style: GoogleFonts.lato(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              letterSpacing: 1.75,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
-                      ),
-                      TextField(
-                        controller: categoryController,
-                        readOnly: true,
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.bodyMedium,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1.2,
-                        ),
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(10),
-                            floatingLabelBehavior: FloatingLabelBehavior.auto,
-                            hintText: 'Select an Options'.toLowerCase(),
-                            hintStyle: GoogleFonts.lato(
-                                textStyle:
-                                    Theme.of(context).textTheme.bodyMedium,
-                                letterSpacing: 1.8,
-                                fontWeight: FontWeight.w300),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.outline),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  width: 1),
-                            ),
-                            suffixIcon: Icon(Icons.arrow_drop_down)),
-                        onTap: () {
-                          showModalBottomSheet(
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20),
-                              ),
-                            ),
-                            context: context,
-                            builder: (BuildContext context) {
-                              return HelperMultipleSelectionBottomSheet(
-                                  AppUrl.category, selectedCategory,
-                                  (selectedCat) {
-                                setState(() {
-                                  selectedCategory = selectedCat;
-                                });
-                              });
-                            },
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.topLeft,
-                        padding: EdgeInsets.only(bottom: 5),
-                        child: Text(
-                          'Choose a Class',
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Select Category';
+                            } else {
+                              return null;
+                            }
+                          },
+                          controller: categoryController,
+                          readOnly: true,
                           style: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            letterSpacing: 1.75,
-                            fontWeight: FontWeight.w400,
+                            textStyle: Theme.of(context).textTheme.bodyMedium,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
+                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                              hintText: 'Select an Options'.toLowerCase(),
+                              hintStyle: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.bodyMedium,
+                                  letterSpacing: 1.8,
+                                  fontWeight: FontWeight.w300),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.outline),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              suffixIcon: Icon(Icons.arrow_drop_down)),
+                          onTap: () {
+                            showModalBottomSheet(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                ),
+                              ),
+                              context: context,
+                              builder: (BuildContext context) {
+                                return HelperMultipleSelectionBottomSheet(
+                                    AppUrl.category, selectedCategory,
+                                    (selectedCat) {
+                                  setState(() {
+                                    selectedCategory = selectedCat;
+                                  });
+                                });
+                              },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.only(bottom: 5),
+                          child: Text(
+                            'Choose a Class',
+                            style: GoogleFonts.lato(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              letterSpacing: 1.75,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
-                      ),
-                      TextField(
-                        controller: classController,
-                        readOnly: true,
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.bodyMedium,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1.2,
-                        ),
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(10),
-                            floatingLabelBehavior: FloatingLabelBehavior.auto,
-                            hintText: 'Select an Options'.toLowerCase(),
-                            hintStyle: GoogleFonts.lato(
-                                textStyle:
-                                    Theme.of(context).textTheme.bodyMedium,
-                                letterSpacing: 1.8,
-                                fontWeight: FontWeight.w300),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.outline),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  width: 1),
-                            ),
-                            suffixIcon: Icon(Icons.arrow_drop_down)),
-                        onTap: () {
-                          showModalBottomSheet(
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20),
-                              ),
-                            ),
-                            context: context,
-                            builder: (BuildContext context) {
-                              return HelperMultipleSelectionBottomSheet(
-                                  AppUrl.classes, selectedClass, (selectedCat) {
-                                setState(() {
-                                  selectedClass = selectedCat;
-                                });
-                              });
-                            },
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.topLeft,
-                        padding: EdgeInsets.only(bottom: 5),
-                        child: Text(
-                          'Choose Subject',
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Select Class';
+                            } else {
+                              return null;
+                            }
+                          },
+                          controller: classController,
+                          readOnly: true,
                           style: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                            letterSpacing: 1.75,
-                            fontWeight: FontWeight.w400,
+                            textStyle: Theme.of(context).textTheme.bodyMedium,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
+                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                              hintText: 'Select an Options'.toLowerCase(),
+                              hintStyle: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.bodyMedium,
+                                  letterSpacing: 1.8,
+                                  fontWeight: FontWeight.w300),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.outline),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              suffixIcon: Icon(Icons.arrow_drop_down)),
+                          onTap: () {
+                            showModalBottomSheet(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                ),
+                              ),
+                              context: context,
+                              builder: (BuildContext context) {
+                                return HelperMultipleSelectionBottomSheet(
+                                    AppUrl.classes, selectedClass,
+                                    (selectedCat) {
+                                  setState(() {
+                                    selectedClass = selectedCat;
+                                  });
+                                });
+                              },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.only(bottom: 5),
+                          child: Text(
+                            'Choose Subject',
+                            style: GoogleFonts.lato(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              letterSpacing: 1.75,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
-                      ),
-                      TextField(
-                        controller: subjectController,
-                        readOnly: true,
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.bodyMedium,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1.2,
-                        ),
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(10),
-                            floatingLabelBehavior: FloatingLabelBehavior.auto,
-                            hintText: 'Select an Options'.toLowerCase(),
-                            hintStyle: GoogleFonts.lato(
-                                textStyle:
-                                    Theme.of(context).textTheme.bodyMedium,
-                                letterSpacing: 1.8,
-                                fontWeight: FontWeight.w300),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.outline),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  width: 1),
-                            ),
-                            suffixIcon: Icon(Icons.arrow_drop_down)),
-                        onTap: () {
-                          showModalBottomSheet(
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20),
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Select Subject';
+                            } else {
+                              return null;
+                            }
+                          },
+                          onSaved: (value) {
+                            widget.onSave({
+                              "category": selectedCategory,
+                              "year": selectedYearEx,
+                              "class": selectedClass,
+                              "subject": selectedSubject,
+                            });
+                          },
+                          controller: subjectController,
+                          readOnly: true,
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.bodyMedium,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
+                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                              hintText: 'Select an Options'.toLowerCase(),
+                              hintStyle: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.bodyMedium,
+                                  letterSpacing: 1.8,
+                                  fontWeight: FontWeight.w300),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.outline),
                               ),
-                            ),
-                            context: context,
-                            builder: (BuildContext context) {
-                              return HelperMultipleSelectionBottomSheet(
-                                  AppUrl.subject, selectedSubject,
-                                  (selectedCat) {
-                                setState(() {
-                                  selectedSubject = selectedCat;
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              suffixIcon: Icon(Icons.arrow_drop_down)),
+                          onTap: () {
+                            showModalBottomSheet(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                ),
+                              ),
+                              context: context,
+                              builder: (BuildContext context) {
+                                return HelperMultipleSelectionBottomSheet(
+                                    AppUrl.subject, selectedSubject,
+                                    (selectedCat) {
+                                  setState(() {
+                                    selectedSubject = selectedCat;
+                                  });
                                 });
-                              });
-                            },
-                          );
-                        },
-                      ),
-                    ],
+                              },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

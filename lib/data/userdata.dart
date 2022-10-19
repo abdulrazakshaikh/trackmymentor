@@ -43,7 +43,7 @@ class UserData {
       this.type});
 
   UserData.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id'].toString();
     degree = json['degree'];
     language = json['language'];
     courses = json['courses'];

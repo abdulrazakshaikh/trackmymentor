@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:trackmy_mentor/ui/homepage/homepage.dart';
 
+import '../../model/storage/shared_prefs.dart';
 import '../add/add.dart';
 import '../chat/chat_list.dart';
 import '../history/project_history.dart';
@@ -13,18 +14,20 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> with TickerProviderStateMixin {
-   int _selectedIndex = 0;
-    List<Map<String, Object>> _pages=[];
+  int _selectedIndex = 0;
+  List<Map<String, Object>> _pages = [];
+  var isTeacher = SharedPrefs().userdata?.type == "2";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   void _onItemTapped(int index) {
-    if(index==2){
-      Navigator.push(context,
-          MaterialPageRoute(
-              builder: (context) =>
-            Add()
-          )
-      );
-    }else {
+    if (!isTeacher && index == 2) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Add()));
+    } else {
       setState(() {
         _selectedIndex = index;
       });
@@ -34,29 +37,50 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
 
   @override
   Widget build(BuildContext context) {
-    _pages=[
-      {
-        'page': Homepage(),
-        'title': "",
-      },
-      {
-        'page': ChatList(),
-        'title': "",
-      },
-      {
-        'page': Add(),
-        'title': "",
-      },
-      {
-        'page': ProjectHistory(),
-        'title': "",
-      },
-      {
-        'page': UserProfile(),
-        'title': "",
-      },
+    if (isTeacher) {
+      _pages = [
+        {
+          'page': Homepage(),
+          'title': "",
+        },
+        {
+          'page': ChatList(),
+          'title': "",
+        },
+        {
+          'page': ProjectHistory(),
+          'title': "",
+        },
+        {
+          'page': UserProfile(),
+          'title': "",
+        },
+      ];
+    } else {
+      _pages = [
+        {
+          'page': Homepage(),
+          'title': "",
+        },
+        {
+          'page': ChatList(),
+          'title': "",
+        },
+        {
+          'page': Add(),
+          'title': "",
+        },
+        {
+          'page': ProjectHistory(),
+          'title': "",
+        },
+        {
+          'page': UserProfile(),
+          'title': "",
+        },
+      ];
+    }
 
-    ];
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -66,7 +90,7 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
         ),
         bottomNavigationBar: Container(
           margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
+          decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               boxShadow: <BoxShadow>[
                 BoxShadow(
@@ -80,20 +104,42 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
           child: ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: BottomNavigationBar(
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-              items: [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home_outlined),
-                  activeIcon: Icon(Icons.home_filled),
-                  label: '',
-                  tooltip: 'Homepage'
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.chat_outlined),
-                  activeIcon: Icon(Icons.chat),
-                  label: '',
-                  tooltip: 'Message'
+                currentIndex: _selectedIndex,
+                onTap: _onItemTapped,
+                items: isTeacher
+                    ? [
+                        BottomNavigationBarItem(
+                            icon: Icon(Icons.home_outlined),
+                            activeIcon: Icon(Icons.home_filled),
+                            label: '',
+                            tooltip: 'Homepage'),
+                        BottomNavigationBarItem(
+                            icon: Icon(Icons.chat_outlined),
+                            activeIcon: Icon(Icons.chat),
+                            label: '',
+                            tooltip: 'Message'),
+                        BottomNavigationBarItem(
+                            icon: Icon(Icons.list_alt_outlined),
+                            activeIcon: Icon(Icons.list_alt),
+                            label: '',
+                            tooltip: 'History'),
+                        BottomNavigationBarItem(
+                            icon: Icon(Icons.account_circle_outlined),
+                            activeIcon: Icon(Icons.account_circle),
+                            label: '',
+                            tooltip: 'Profile'),
+                      ]
+                    : [
+                        BottomNavigationBarItem(
+                            icon: Icon(Icons.home_outlined),
+                            activeIcon: Icon(Icons.home_filled),
+                            label: '',
+                            tooltip: 'Homepage'),
+                        BottomNavigationBarItem(
+                            icon: Icon(Icons.chat_outlined),
+                            activeIcon: Icon(Icons.chat),
+                            label: '',
+                            tooltip: 'Message'
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.add_circle_outline_outlined),

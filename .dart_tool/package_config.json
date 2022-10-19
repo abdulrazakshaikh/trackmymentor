@@ -2,12 +2,6 @@
   "configVersion": 2,
   "packages": [
     {
-      "name": "another_flushbar",
-      "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/another_flushbar-1.12.29",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "args",
       "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/args-2.3.1",
       "packageUri": "lib/",
@@ -28,6 +22,12 @@
     {
       "name": "card_swiper",
       "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/card_swiper-2.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "carousel_slider",
+      "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/carousel_slider-4.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -92,10 +92,10 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "cool_stepper_reloaded",
-      "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/cool_stepper_reloaded-3.2.5",
+      "name": "cross_file",
+      "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/cross_file-0.3.3+2",
       "packageUri": "lib/",
-      "languageVersion": "2.13"
+      "languageVersion": "2.12"
     },
     {
       "name": "crypto",
@@ -146,6 +146,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_plugin_android_lifecycle",
+      "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_rating_bar",
       "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/flutter_rating_bar-4.0.1",
       "packageUri": "lib/",
@@ -184,6 +190,36 @@
     {
       "name": "http_parser",
       "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "image_picker",
+      "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/image_picker-0.8.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "image_picker_android",
+      "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/image_picker_android-0.8.5+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "image_picker_for_web",
+      "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/image_picker_for_web-2.1.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "image_picker_ios",
+      "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/image_picker_ios-0.8.6+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "image_picker_platform_interface",
+      "rootUri": "file:///Users/dipeshjain/.pub-cache/hosted/pub.dartlang.org/image_picker_platform_interface-2.6.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -524,7 +560,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-10-16T20:02:34.884481Z",
+  "generated": "2022-10-19T14:30:18.777372Z",
   "generator": "pub",
   "generatorVersion": "2.18.1"
 }
