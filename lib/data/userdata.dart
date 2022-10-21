@@ -14,6 +14,7 @@ class UserData {
   String? lastname;
   String? mobile;
   String? email;
+  String? description;
   String? password;
   String? createdDate;
   String? updatedDate;
@@ -29,6 +30,7 @@ class UserData {
       this.category,
       this.class1,
       this.subject,
+      this.description,
       this.image,
       this.deviceType,
       this.deviceToken,
@@ -56,6 +58,7 @@ class UserData {
     deviceToken = json['device_token'];
     firstname = json['firstname'];
     lastname = json['lastname'];
+    description = json['description'];
     mobile = json['mobile'];
     email = json['email'];
     password = json['password'];
@@ -83,6 +86,7 @@ class UserData {
     data['mobile'] = this.mobile;
     data['email'] = this.email;
     data['password'] = this.password;
+    data['description'] = this.description;
     data['created_date'] = this.createdDate;
     data['updated_date'] = this.updatedDate;
     data['status'] = this.status;

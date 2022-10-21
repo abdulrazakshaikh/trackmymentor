@@ -12,12 +12,13 @@ import '../common_widgets/my_stepper/cool_stepper_reloaded.dart';
 import '../common_widgets/my_stepper/src/models/cool_step.dart';
 import '../common_widgets/my_stepper/src/models/cool_stepper_config.dart';
 
-class Add extends StatefulWidget {
+class AddProjectInfo extends StatefulWidget {
   @override
-  _AddState createState() => _AddState();
+  _AddProjectInfoState createState() => _AddProjectInfoState();
 }
 
-class _AddState extends State<Add> with TickerProviderStateMixin {
+class _AddProjectInfoState extends State<AddProjectInfo>
+    with TickerProviderStateMixin {
   bool _passwordVisible = false;
   int selectedIndex = 0;
 

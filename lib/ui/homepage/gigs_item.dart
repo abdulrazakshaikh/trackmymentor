@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trackmy_mentor/data/projectdata.dart';
 
 import '../project/project_details.dart';
 
@@ -12,8 +13,7 @@ class GigsItem extends StatefulWidget {
   _GigsItemState createState() => new _GigsItemState();
 
   const GigsItem({Key? key, required this.value}) : super(key: key);
-  final Map value;
-
+  final ProjectData value;
 }
 
 class _GigsItemState extends State<GigsItem> {
@@ -25,8 +25,8 @@ class _GigsItemState extends State<GigsItem> {
         onTap: () {
           Navigator.push(
               context, MaterialPageRoute(
-              builder: (BuildContext context) => ProjectDetails('${widget.value["title"]}')
-          )
+              builder: (BuildContext context) =>
+                    ProjectDetails(widget.value))
           );
         },
         child: Card(
@@ -59,14 +59,15 @@ class _GigsItemState extends State<GigsItem> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text('Lorem Ipsum',
-                        overflow: TextOverflow.clip,
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.titleMedium,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      Text(
+                      widget.value.title!,
+                      overflow: TextOverflow.clip,
+                      style: GoogleFonts.lato(
+                        textStyle: Theme.of(context).textTheme.titleMedium,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
                       ),
+                    ),
                       SizedBox(height: 5),
                       Text('lorem category',
                         overflow: TextOverflow.clip,

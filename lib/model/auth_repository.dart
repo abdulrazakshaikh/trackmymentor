@@ -33,6 +33,10 @@ class AuthRepository {
     return response;
   }
 
+  Future<NewAPIResponse> getTeachers(dynamic map) async {
+    return await _netoworkService.get(AppUrl.teacherList, data: map);
+  }
+
   Future<String> getUserPassword(dynamic map) async {
     dynamic response = await _netoworkService.post(AppUrl.forgotPwdUid, map);
     final jsonData = response;

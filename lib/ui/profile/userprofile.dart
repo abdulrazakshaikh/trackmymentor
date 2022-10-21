@@ -130,24 +130,33 @@ class _UserProfileState extends State<UserProfile> {
                             ]),
                             Container(
                               margin: EdgeInsets.only(bottom: 3, top: 10),
-                              child: Text('Augustus Harrell',
-                                style: GoogleFonts.lato(
-                                    textStyle: Theme.of(context).appBarTheme.titleTextStyle,
-                                    color: Theme.of(context).colorScheme.onPrimary,
-                                    fontSize: 18,
-                                    letterSpacing: 1.5
-                                ),
-                              ),
+                              child: Text(
+                            '${SharedPrefs().userdata!.firstname} ${SharedPrefs().userdata!.lastname}',
+                            style: GoogleFonts.lato(
+                                textStyle: Theme.of(context)
+                                    .appBarTheme
+                                    .titleTextStyle,
+                                color: Theme.of(context).colorScheme.onPrimary,
+                                fontSize: 18,
+                                letterSpacing: 1.5),
+                          ),
                             ),
                             Container(
-                              child: Text('Lorem Ipsum Designer',
-                                style: GoogleFonts.lato(
-                                    textStyle: Theme.of(context).appBarTheme.titleTextStyle,
-                                    color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500
-                                ),
-                              ),
+                              child: Text(
+                            SharedPrefs().userdata!.type == "1"
+                                ? "Student".toUpperCase()
+                                : "Teacher".toUpperCase(),
+                            style: GoogleFonts.lato(
+                                textStyle: Theme.of(context)
+                                    .appBarTheme
+                                    .titleTextStyle,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onPrimary
+                                    .withOpacity(0.8),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500),
+                          ),
                             ),
                           ],
                         ),
@@ -177,25 +186,27 @@ class _UserProfileState extends State<UserProfile> {
                                 dense: true,
                                 leading: Icon(Icons.phone_outlined),
                                 horizontalTitleGap: 0,
-                                title: Text('+91 9876543210',
-                                  style: GoogleFonts.lato(
-                                      textStyle: Theme.of(context).textTheme.titleMedium,
-                                      fontWeight: FontWeight.w600
-                                  ),
-                                ),
+                                title: Text(
+                          '+91 ${SharedPrefs().userdata!.mobile}',
+                          style: GoogleFonts.lato(
+                              textStyle:
+                                  Theme.of(context).textTheme.titleMedium,
+                              fontWeight: FontWeight.w600),
+                        ),
                               ),
                               Divider(),
                               ListTile(
                                 dense: true,
                                 leading: Icon(Icons.email_outlined),
                                 horizontalTitleGap: 0,
-                                title: Text('stephan1254979@gmail.com',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lato(
-                                      textStyle: Theme.of(context).textTheme.titleMedium,
-                                      fontWeight: FontWeight.w600
-                                  ),
-                                ),
+                                title: Text(
+                          '${SharedPrefs().userdata!.email}',
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.lato(
+                              textStyle:
+                                  Theme.of(context).textTheme.titleMedium,
+                              fontWeight: FontWeight.w600),
+                        ),
                               ),
                               Divider(),
                               Container(
@@ -203,29 +214,59 @@ class _UserProfileState extends State<UserProfile> {
                                 child: Column(
                                   children: [
                                     Container(
-                                      padding: EdgeInsets.only(bottom: 10),
-                                      width: double.infinity,
-                                      child: Text('Description'.toUpperCase(),
-                                        style: GoogleFonts.lato(
-                                          textStyle: Theme.of(context).textTheme.bodySmall,
-                                          fontWeight: FontWeight.w900,
-                                          color: Theme.of(context).colorScheme.secondary,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      child: Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                              padding: EdgeInsets.only(bottom: 10),
+                              width: double.infinity,
+                              child: Text(
+                                'Description'.toUpperCase(),
+                                style: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.bodySmall,
+                                  fontWeight: FontWeight.w900,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                child: (SharedPrefs().userdata!.description ==
+                                            null ||
+                                        SharedPrefs()
+                                            .userdata!
+                                            .description!
+                                            .isEmpty)
+                                    ? Text(
+                                        "add about you",
                                         maxLines: 4,
                                         overflow: TextOverflow.ellipsis,
                                         style: GoogleFonts.lato(
-                                          textStyle: Theme.of(context).textTheme.bodyMedium,
+                                          textStyle: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                          fontWeight: FontWeight.w300,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
+                                        ),
+                                      )
+                                    : Text(
+                                        "${SharedPrefs().userdata!.description}",
+                                        maxLines: 4,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.lato(
+                                          textStyle: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                           fontWeight: FontWeight.w500,
-                                          color: Theme.of(context).colorScheme.secondary,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary,
                                         ),
                                       ),
-                                    ),
-
-                                  ],
+                              ),
+                            ),
+                          ],
                                 ),
                               )
 

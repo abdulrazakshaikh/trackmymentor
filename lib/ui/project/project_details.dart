@@ -2,21 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trackmy_mentor/data/projectdata.dart';
 import 'package:trackmy_mentor/ui/project/project_quotationlist.dart';
 import 'package:trackmy_mentor/ui/project/projectimage_slider.dart';
 import 'package:trackmy_mentor/ui/project/quotation_bottomsheet.dart';
 
 
-class ProjectDetails extends StatefulWidget{
-  String title;
-  ProjectDetails(this.title);
+class ProjectDetails extends StatefulWidget {
+  ProjectData projectData;
+
+  ProjectDetails(this.projectData);
 
   @override
   State<StatefulWidget> createState() {
-   return ProjectDetailsState();
+    return ProjectDetailsState();
   }
-
 }
+
 class ProjectDetailsState extends State<ProjectDetails>{
 
 List commentsitemlist = [
@@ -154,15 +156,16 @@ bool newState = false;
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(widget.title,
-                            overflow: TextOverflow.clip,
-                            style: GoogleFonts.lato(
-                              textStyle: Theme.of(context).textTheme.titleLarge,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w900,
-                              letterSpacing: 1.25
+                          Text(
+                              widget.projectData!.title!,
+                              overflow: TextOverflow.clip,
+                              style: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.titleLarge,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w900,
+                                  letterSpacing: 1.25),
                             ),
-                          ),
                           SizedBox(height: 5),
                           Text('Assignments'.toUpperCase(),
                             overflow: TextOverflow.clip,

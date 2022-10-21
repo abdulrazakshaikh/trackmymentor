@@ -5,6 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trackmy_mentor/ui/splashscreen.dart';
 import 'package:trackmy_mentor/ui/theme/color_schemes.g.dart';
 import 'package:trackmy_mentor/view_model/auth_view_model.dart';
+import 'package:trackmy_mentor/view_model/project_view_model.dart';
+import 'package:trackmy_mentor/view_model/teacher_view_model.dart';
 
 import 'model/storage/shared_prefs.dart';
 import 'view_model/helper_view_model.dart';
@@ -21,6 +23,8 @@ void main() {
           ChangeNotifierProvider(create: (_) => SharedPrefs()),
           ChangeNotifierProvider(create: (_) => AuthViewModel()),
           ChangeNotifierProvider(create: (_) => HelperViewModel()),
+          ChangeNotifierProvider(create: (_) => TeacherViewModel()),
+          ChangeNotifierProvider(create: (_) => ProjectViewModel()),
         ],
         child: MyApp(),
       ));

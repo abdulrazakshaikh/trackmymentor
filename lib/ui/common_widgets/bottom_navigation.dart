@@ -26,7 +26,8 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
 
   void _onItemTapped(int index) {
     if (!isTeacher && index == 2) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Add()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => AddProjectInfo()));
     } else {
       setState(() {
         _selectedIndex = index;
@@ -67,7 +68,7 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
           'title': "",
         },
         {
-          'page': Add(),
+          'page': AddProjectInfo(),
           'title': "",
         },
         {

@@ -12,6 +12,8 @@ class AppUrl {
   static String language = "language";
   static String qualifications = "qualifications";
   static String experiences = "experiences";
+  static String teacherList = "teacherList";
+  static String projectList = "projectList";
 
   static String forgotPwdUid = "Users/ForgotPwdUid";
 
