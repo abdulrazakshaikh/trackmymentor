@@ -4,19 +4,54 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:trackmy_mentor/model/services/app_url.dart';
+import 'package:trackmy_mentor/view_model/helper_view_model.dart';
 
+import '../../data/helperdata.dart';
 
 class AddStepOne extends StatefulWidget {
+  HelperData? categoryId;
+  var onSave;
+
+  AddStepOne(this.categoryId, this.onSave);
+
   @override
   _AddStepOneState createState() => _AddStepOneState();
 }
 
 class _AddStepOneState extends State<AddStepOne> with TickerProviderStateMixin {
-  
-  int selectedIndex = 0;
+  List<HelperData> helperDataList = [];
+  late HelperViewModel helperViewModel;
+  int index = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      var a = await helperViewModel.getCategory(AppUrl.category);
+      if (helperViewModel.listData != null) {
+        helperDataList = helperViewModel.listData;
+        if (widget.categoryId != null)
+          helperDataList.forEach((element) {
+            if (widget.categoryId!.id! == element.id) {
+              print(element.name);
+              element.isSelected = true;
+              index = helperDataList.indexOf(element);
+            }
+          });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    helperViewModel = context.watch<HelperViewModel>();
+    if (widget.categoryId == null && helperDataList.length > 0) {
+      helperDataList[0].isSelected = true;
+      widget.onSave(helperDataList[0]);
+      index = 0;
+    }
     return Container(
       child: Column(
         children: [
@@ -33,7 +68,26 @@ class _AddStepOneState extends State<AddStepOne> with TickerProviderStateMixin {
               ),
             ),
           ),
-          Container(
+          helperViewModel.isLoading
+              ? Center(
+                  child: Container(
+                      margin: EdgeInsets.only(top: 300),
+                      child: CircularProgressIndicator()),
+                )
+              : SingleChildScrollView(
+                  child: GridView.count(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      crossAxisCount: 2,
+                      childAspectRatio: (1 / .4),
+                      crossAxisSpacing: 4.0,
+                      children: List.generate(helperDataList.length, (index) {
+                        return Center(
+                          child: anyItem(index, helperDataList[index]),
+                        );
+                      })),
+                )
+          /* Container(
             margin: EdgeInsets.only(top: 20),
             child: Wrap(
               spacing: 5,
@@ -73,103 +127,95 @@ class _AddStepOneState extends State<AddStepOne> with TickerProviderStateMixin {
                 ),
               ],
             ),
-          ),
-          
+          ),*/
         ],
       ),
     );
   }
-Widget anyItem(int index) {
-    
-  return InkWell(
-    onTap: () {
-      setState(() {
-        selectedIndex = index;
-      });
-    },
-    child: Card(
-      color:
-      selectedIndex == index ? Theme.of(context).colorScheme.primaryContainer :
-      Theme.of(context).colorScheme.background,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-        side: BorderSide(width: 1, 
-        color: 
-        selectedIndex == index ? Theme.of(context).colorScheme.primary : 
-        Theme.of(context).colorScheme.secondary
-        ),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Positioned(
-            top: 10, right: 10,
-            child: Container(
-              width: 20, height: 20, 
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1, 
-                  color: 
-                  selectedIndex == index ?
-                  Colors.transparent :
-                  Theme.of(context).colorScheme.secondary
-                ),
-                borderRadius: BorderRadius.circular(12),
-                color: 
-                selectedIndex == index ?
-                Theme.of(context).colorScheme.primary : Colors.transparent,
-              ),
-              child: Icon(Icons.check, color: Colors.white, size: 12,),
-            )
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(right: 10),
-                  width: 42,
-                  child: Image.asset(
-                  index == 0 ? 'assets/images/tutor.png' :
-                  index == 1 ? 'assets/images/project.png' :
-                  index == 2 ? 'assets/images/sports.png' :
-                  index == 3 ? 'assets/images/coach.png' :
-                  index == 4 ? 'assets/images/chart.png' :
-                  index == 5 ? 'assets/images/model.png' :
-                  index == 6 ? 'assets/images/activity.png' :
-                  index == 7 ? 'assets/images/assignment.png' :
-                  'null',
-                  fit: BoxFit.contain,
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                  index == 0 ? 'Tutor'.toUpperCase() : 
-                  index == 1 ? 'Project'.toUpperCase() : 
-                  index == 2 ? 'Sports'.toUpperCase() : 
-                  index == 3 ? 'Coach'.toUpperCase() : 
-                  index == 4 ? 'Chart'.toUpperCase() : 
-                  index == 5 ? 'Model'.toUpperCase() : 
-                  index == 6 ? 'Activity'.toUpperCase() : 
-                  index == 7 ? 'Assignments'.toUpperCase() : 
-                  '',
-                  style: GoogleFonts.lato(
-                    textStyle: Theme.of(context).textTheme.titleLarge,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14,
-                    letterSpacing: 1.2,
-                    color: selectedIndex == index ? Theme.of(context).colorScheme.primary : null,
-                  ),
-                ),
-                )
-              ],
-            ),
-          ),
-          
-        ],
-      )
-    ),
-  );
-}
 
+  Widget anyItem(int i, HelperData data) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          print(i);
+          print(index);
+          //selectedIndex = index;
+          helperDataList[index].isSelected = false;
+          index = i;
+          data.isSelected = true;
+          widget.onSave(data);
+          widget.categoryId = data;
+        });
+      },
+      child: Card(
+          color: data.isSelected
+              ? Theme.of(context).colorScheme.primaryContainer
+              : Theme.of(context).colorScheme.background,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            side: BorderSide(
+                width: 1,
+                color: data.isSelected
+                    ? Theme.of(context).colorScheme.primary
+                    : Theme.of(context).colorScheme.secondary),
+          ),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Positioned(
+                  top: 10,
+                  right: 10,
+                  child: Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 1,
+                          color: data.isSelected
+                              ? Colors.transparent
+                              : Theme.of(context).colorScheme.secondary),
+                      borderRadius: BorderRadius.circular(12),
+                      color: data.isSelected
+                          ? Theme.of(context).colorScheme.primary
+                          : Colors.transparent,
+                    ),
+                    child: Icon(
+                      Icons.check,
+                      color: Colors.white,
+                      size: 12,
+                    ),
+                  )),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      width: 42,
+                      child: Image.asset(
+                        'assets/images/tutor.png',
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        data.name.toString(),
+                        style: GoogleFonts.lato(
+                          textStyle: Theme.of(context).textTheme.titleLarge,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                          letterSpacing: 1.2,
+                          color: data.isSelected
+                              ? Theme.of(context).colorScheme.primary
+                              : null,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          )),
+    );
+  }
 }

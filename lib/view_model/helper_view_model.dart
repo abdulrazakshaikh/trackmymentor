@@ -4,7 +4,7 @@ import '../data/helperdata.dart';
 import '../model/helper_repository.dart';
 
 class HelperViewModel extends ChangeNotifier {
-  bool _isLoading = false;
+  bool _isLoading = true;
   String? _error;
 
   String? get error {
@@ -27,17 +27,18 @@ class HelperViewModel extends ChangeNotifier {
       _NewAPIResponseresponse = await new HelperRepository().getDegree(type, {
         "search": "$search",
       });
-      _isLoading = false;
-      notifyListeners();
+
       if (!_NewAPIResponseresponse.isSuccess) {
         _error = _NewAPIResponseresponse.message;
+        _isLoading = false;
+        notifyListeners();
         return false;
       } else {
         var data = _NewAPIResponseresponse.data as List;
-
         data.forEach((element) {
           listData.add(HelperData.fromJson(element));
         });
+        _isLoading = false;
         notifyListeners();
         return true;
       }

@@ -4,59 +4,62 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:trackmy_mentor/data/helperdata.dart';
+import 'package:trackmy_mentor/view_model/helper_view_model.dart';
 
-import '../common_widgets/dropdown_bottomsheet_single.dart';
+import '../../model/services/app_url.dart';
 
 class AddStepTwo extends StatefulWidget {
+  HelperData? classId;
+  var onSave;
+
+  AddStepTwo(this.classId, this.onSave);
+
   @override
   _AddStepTwoState createState() => _AddStepTwoState();
 }
 
 class _AddStepTwoState extends State<AddStepTwo> with TickerProviderStateMixin {
-  
-  int selectedIndex = 0;
-  
-  var _options = [
-    "1 Option",
-    "2 Option",
-    "3 Option",
-    "4 Option",
-    "5 Option",
-    "6 Option",
-    "7 Option",
-    "8 Option",
-    "9 Option",
-    "10 Option",
-  ];
+  List<HelperData> helperDataList = [];
+  late HelperViewModel helperViewModel;
 
-  var selectOptions = '';
-  DateTime selectedDate = DateTime.now();
-  late String _selectedDate;
+  var slider = 1.0;
 
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      var a = await helperViewModel.getCategory(AppUrl.classes);
+      if (helperViewModel.listData != null) {
+        helperDataList = helperViewModel.listData;
+        if (widget.classId != null) {
+          helperDataList.forEach((element) {
+            if (widget.classId!.id! == element.id) {
+              element.isSelected = true;
+              slider = helperDataList.indexOf(element) + 1.toDouble();
+            }
+          });
+        } else {
+          widget.classId = helperDataList[0];
+          widget.onSave(widget.classId);
+        }
+      }
+    });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
+    helperViewModel = context.watch<HelperViewModel>();
+    if (helperDataList.length > 0)
+      widget.classId = helperDataList[slider.round() - 1];
     return Container(
       child: Column(
         children: [
           Container(
             margin: EdgeInsets.only(bottom: 15),
             child: Text(
-              'Project Information',
+              'Class Information',
               textAlign: TextAlign.center,
               style: GoogleFonts.lato(
                 textStyle: Theme.of(context).textTheme.headlineSmall,
@@ -66,196 +69,100 @@ class _AddStepTwoState extends State<AddStepTwo> with TickerProviderStateMixin {
               ),
             ),
           ),
-        
           Container(
             margin: EdgeInsets.only(top: 20),
             child: Column(
               children: [
-
-                Container(
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: TextField(
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Select your class standard'.toLowerCase(),
                     style: GoogleFonts.lato(
-                      textStyle: Theme.of(context).textTheme.bodyMedium,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1.2,
-                    ),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(15),
-                      floatingLabelBehavior: FloatingLabelBehavior.auto,
-                      labelText: 'Project Title'.toLowerCase(),
-                      labelStyle: GoogleFonts.lato(
-                        textStyle: Theme.of(context).textTheme.bodyMedium,
-                        letterSpacing: 1.8,
-                        fontWeight: FontWeight.w300),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                      ),
-                    ),
+                        textStyle: Theme.of(context).textTheme.titleLarge,
+                        letterSpacing: 1.5,
+                        fontSize:
+                            MediaQuery.of(context).size.width < 321 ? 30 : 29,
+                        fontWeight: FontWeight.w700),
                   ),
                 ),
-
-                Container(
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: TextField(
-                    readOnly: true,
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.bodyMedium,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1.2,
-                        ),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          floatingLabelBehavior: FloatingLabelBehavior.auto,
-                          labelText: 'Class'.toLowerCase(),
-                          labelStyle: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.bodyMedium,
-                            letterSpacing: 1.8,
-                            fontWeight: FontWeight.w300
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                          ),
-                          suffixIcon: Icon(Icons.arrow_drop_down)
-                        ),
-                        onTap: (){
-                          showModalBottomSheet(
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20),
+                helperViewModel.isLoading
+                    ? Container(
+                        margin: EdgeInsets.only(top: 100),
+                        child: CircularProgressIndicator(),
+                      )
+                    : Container(
+                        margin: EdgeInsets.only(bottom: 15, top: 20),
+                        child: Column(
+                          children: [
+                            Image.asset("assets/images/school.png", width: 150),
+                            SizedBox(
+                              height: 40,
+                            ),
+                            SliderTheme(
+                              data: SliderTheme.of(context)
+                                  .copyWith(trackHeight: 10),
+                              child: Container(
+                                margin: EdgeInsets.symmetric(horizontal: 15),
+                                child: Slider(
+                                  min: 10,
+                                  max: helperDataList.length * 10,
+                                  divisions: helperDataList.length,
+                                  value: slider * 10,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      slider = value / 10;
+                                      widget.classId =
+                                          helperDataList[(slider).round()];
+                                      widget.onSave(widget.classId);
+                                    });
+                                  },
+                                ),
                               ),
                             ),
-                            context: context, builder: (BuildContext context) { 
-                              return DropdownBottomSheetSingle();
-                            }, 
-                          );
-                        },
-                      ),
-                ),
-
-                Container(
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: TextField(
-                    readOnly: true,
-                        style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.bodyMedium,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1.2,
-                        ),
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          floatingLabelBehavior: FloatingLabelBehavior.auto,
-                          labelText: 'Subject'.toLowerCase(),
-                          hintText: "Select Subject",
-                          labelStyle: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.bodyMedium,
-                            letterSpacing: 1.8,
-                            fontWeight: FontWeight.w300
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                          ),
-                          suffixIcon: Icon(Icons.arrow_drop_down)
-                        ),
-                        onTap: (){
-                          showModalBottomSheet(
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20),
-                              ),
+                            SizedBox(
+                              height: 40,
                             ),
-                            context: context, builder: (BuildContext context) { 
-                              return DropdownBottomSheetSingle();
-                            }, 
-                          );
-                        },
+                            SizedBox(
+                              width: 200,
+                              height: 60,
+                              child: Container(
+                                height: 60.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      offset: Offset(0.0, 1.0), //(x,y)
+                                      blurRadius: 6.0,
+                                    ),
+                                  ],
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    widget.classId!.name!.toString() +
+                                        " Class ",
+                                    style: GoogleFonts.lato(
+                                        textStyle: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge,
+                                        letterSpacing: 1.5,
+                                        fontSize:
+                                            MediaQuery.of(context).size.width <
+                                                    321
+                                                ? 16
+                                                : 18,
+                                        fontWeight: FontWeight.w900),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                ),
-
-                Container(
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: TextField(
-                    style: GoogleFonts.lato(
-                      textStyle: Theme.of(context).textTheme.bodyMedium,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1.2,
-                    ),
-                    maxLines: 4,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(15),
-                      floatingLabelBehavior: FloatingLabelBehavior.auto,
-                      
-                      labelText: 'Project Description'.toLowerCase(),
-                      labelStyle: GoogleFonts.lato(
-                        textStyle: Theme.of(context).textTheme.bodyMedium,
-                        letterSpacing: 1.8,
-                        fontWeight: FontWeight.w300),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                      ),
-                    ),
-                  ),
-                ),
-
-                Container(
-                  margin: EdgeInsets.only(bottom: 15),
-                  child: TextFormField(
-                    initialValue: '',
-                    style: GoogleFonts.lato(
-                      textStyle: Theme.of(context).textTheme.bodyMedium,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1.2,
-                    ),
-                    onTap: (){
-                       _selectDate(context);
-                    },
-                    onChanged: (value) {
-                      if (value.isNotEmpty) {
-                        setState(() {
-                        _selectedDate = value;
-                        });
-                      }
-                    },
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(15),
-                      floatingLabelBehavior: FloatingLabelBehavior.auto,
-                      labelText: 'Last Date to Submit'.toLowerCase(),
-                      labelStyle: GoogleFonts.lato(
-                        textStyle: Theme.of(context).textTheme.bodyMedium,
-                        letterSpacing: 1.8,
-                        fontWeight: FontWeight.w300),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.outline),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1),
-                      ),
-                    ),
-                  ),
-                ),
-
-
               ],
             ),
           ),
-          
-          
         ],
       ),
     );

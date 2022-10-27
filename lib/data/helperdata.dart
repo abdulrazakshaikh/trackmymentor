@@ -6,7 +6,6 @@ class HelperData {
   HelperData({this.id, this.name});
 
   HelperData.fromJson(Map<String, dynamic> json) {
-    print(json['name']);
     id = json['id'];
     name = json['name'];
   }

@@ -38,6 +38,7 @@ class CoolStepper extends StatefulWidget {
   ///
   /// [default] is true
   final bool hasRoundedCorner;
+  final bool hasBackButton;
 
   const CoolStepper({
     required this.steps,
@@ -47,6 +48,7 @@ class CoolStepper extends StatefulWidget {
     this.showErrorSnackbar = false,
     this.isHeaderEnabled = true,
     this.hasRoundedCorner = true,
+    this.hasBackButton = false,
   });
 
   @override
@@ -84,12 +86,14 @@ class _CoolStepperState extends State<CoolStepper> {
       if (widget.steps[currentStep].isValid == null ||
           await widget.steps[currentStep].isValid!()) {
         if (!_isLast(currentStep)) {
+          print("dsvsv");
           setState(() {
             currentStep++;
           });
           FocusScope.of(context).unfocus();
           switchToPage(currentStep);
         } else {
+          print("dsvsvaaaaaaa");
           final callback = widget.onCompleted ?? _doNothing;
           callback();
         }
@@ -230,9 +234,9 @@ class _CoolStepperState extends State<CoolStepper> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          //_backButton(),
+          widget.hasBackButton ? _backButton() : Container(),
           SizedBox(
-            width: 80,
+            width: widget.hasBackButton ? 0 : 80,
           ),
           counter,
           _nextButton(),

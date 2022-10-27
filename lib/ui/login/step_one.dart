@@ -85,7 +85,7 @@ class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
                     child: TextFormField(
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Mobile/Email Address is required';
+                          return 'Email Address is required';
                         }
                         return null;
                       },
@@ -98,8 +98,8 @@ class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(15),
                         floatingLabelBehavior: FloatingLabelBehavior.auto,
-                        labelText: 'Mobile/Email Address'.toLowerCase(),
-                        prefixIcon: Icon(Icons.phone_android),
+                        labelText: 'Email Address'.toLowerCase(),
+                        prefixIcon: Icon(Icons.email_outlined),
                         labelStyle: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.bodyMedium,
                             letterSpacing: 1.8,

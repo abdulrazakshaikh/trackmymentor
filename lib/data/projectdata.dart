@@ -27,7 +27,7 @@ class ProjectData {
       this.status});
 
   ProjectData.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id'].toString();
     email = json['email'];
     categoryId = json['category_id'];
     title = json['title'];

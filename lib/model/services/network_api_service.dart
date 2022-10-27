@@ -156,14 +156,11 @@ class NetworkApiService extends BaseService {
       request.fields.addAll(data);
       request.headers.addAll(header);
       imagePath.forEach((key, value) {
-        print(value);
         request.files.add(http.MultipartFile.fromBytes(
             key, File(value).readAsBytesSync(),
             filename: value.split("/").last));
       });
-
       var res = await request.send();
-
       var response = await http.Response.fromStream(res);
       AppUrl.debugPrint(
           " Response  Status : " + response.statusCode.toString());

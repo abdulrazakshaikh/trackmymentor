@@ -11,4 +11,20 @@ class ProjectRepository {
     // var newAPIResponse = NewAPIResponse.fromJson(response);
     return response!;
   }
+
+  Future<NewAPIResponse> postProjectInfo(dynamic map) async {
+    NewAPIResponse response =
+        await _netoworkService.post(AppUrl.projectInformation, map);
+    // var newAPIResponse = NewAPIResponse.fromJson(response);
+    return response!;
+  }
+
+  Future<NewAPIResponse> postProjectImage(
+      dynamic map, Map<String, String> imageMap) async {
+    print(imageMap);
+    NewAPIResponse response = await _netoworkService.postMultiPart(
+        AppUrl.projectImageupload, map, imageMap);
+    // var newAPIResponse = NewAPIResponse.fromJson(response);
+    return response!;
+  }
 }
