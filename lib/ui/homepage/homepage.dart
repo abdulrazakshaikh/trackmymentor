@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trackmy_mentor/ui/common_widgets/bottom_navigation.dart';
 import 'package:trackmy_mentor/ui/homepage/homepage_categories.dart';
 import 'package:trackmy_mentor/ui/homepage/homepage_mypopulargigs.dart';
 import 'package:trackmy_mentor/ui/homepage/homepage_populargigs.dart';
@@ -20,7 +21,7 @@ class _HomepageState extends State<Homepage> {
 
     return SafeArea(
       child: Scaffold(
-        //bottomNavigationBar: BottomNavigation(),
+        // bottomNavigationBar: BottomNavigation(),
         appBar: AppBar(
           title: Text('Dashboard'.toUpperCase()),
           actions: [],

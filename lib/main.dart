@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:trackmy_mentor/ui/faq.dart';
 import 'package:trackmy_mentor/ui/homepage/homepage.dart';
 import 'package:trackmy_mentor/ui/project/project_details.dart';
 import 'package:trackmy_mentor/ui/splashscreen.dart';
@@ -27,10 +28,11 @@ class MyApp extends StatelessWidget {
       home: SafeArea(
         child: 
         // UserProfile()
-                Homepage()
-                // Login()
-                // SplashScreen()
-            // ProjectDetails('Lorem Ipsum Project Title')
+        // Homepage()
+        // Login()
+        // SplashScreen()
+        // ProjectDetails('Lorem Ipsum Project Title')
+        FAQ('FAQ')
       )
     );
   }
