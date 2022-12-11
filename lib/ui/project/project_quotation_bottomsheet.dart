@@ -3,15 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trackmy_mentor/ui/project/photo_view_image.dart';
+import 'package:trackmy_mentor/utils/AppUtils.dart';
+import 'package:trackmy_mentor/view_model/chat_view_model.dart';
+import 'package:trackmy_mentor/view_model/quotation_view_model.dart';
+
+import '../../data/quotationdata.dart';
+import '../../model/storage/shared_prefs.dart';
 
 class ProjectQuotationBottomSheet extends StatefulWidget {
-  String name;
-  String profilepic;
-  String price;
-  String comment;
+  QuotationData quotationData;
+  String projectTitle;
 
-  ProjectQuotationBottomSheet(
-      this.name, this.profilepic, this.price, this.comment);
+  ProjectQuotationBottomSheet(this.projectTitle, this.quotationData);
 
   @override
   _ProjectQuotationBottomSheetState createState() =>
@@ -70,8 +74,8 @@ class _ProjectQuotationBottomSheetState
                               decoration: BoxDecoration(
                                 color: Colors.grey,
                               ),
-                              child: Image.asset(
-                                widget.profilepic,
+                              child: Image.network(
+                                widget.quotationData.image!,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -79,7 +83,7 @@ class _ProjectQuotationBottomSheetState
                           SizedBox(width: 5),
                           Expanded(
                             child: Text(
-                              widget.name,
+                              widget.quotationData.teacher_name!,
                               style: GoogleFonts.lato(
                                 textStyle:
                                     Theme.of(context).textTheme.titleSmall,
@@ -107,7 +111,7 @@ class _ProjectQuotationBottomSheetState
                           ),
                           SizedBox(height: 3),
                           Text(
-                            widget.comment,
+                            widget.quotationData.comment!,
                             style: GoogleFonts.lato(
                               textStyle: Theme.of(context).textTheme.bodyMedium,
                               fontWeight: FontWeight.w500,
@@ -133,7 +137,7 @@ class _ProjectQuotationBottomSheetState
                           ),
                           SizedBox(height: 3),
                           Text(
-                            '₹' + widget.price,
+                            '₹' + widget.quotationData.price!,
                             style: GoogleFonts.lato(
                               textStyle:
                                   Theme.of(context).textTheme.titleMedium,
@@ -159,43 +163,72 @@ class _ProjectQuotationBottomSheetState
                             ),
                           ),
                           SizedBox(height: 3),
-                          TextButton(
-                            onPressed: () {},
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.file_download_outlined,
-                                  size: 16,
+                          InkWell(
+                            onTap: () {
+                              print("object");
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => PhotoGallery(widget
+                                          .quotationData.image!
+                                          .split(",")
+                                          .toList())));
+                            },
+                            child: Container(
+                              height: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              width: 200,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(15),
+                                child: Image.network(
+                                  '${widget.quotationData.image}',
+                                  fit: BoxFit.cover,
                                 ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Untitledfile.pdf'.toLowerCase(),
-                                  style: GoogleFonts.lato(
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall,
-                                      letterSpacing: 1.2,
-                                      fontSize:
-                                          MediaQuery.of(context).size.width <
-                                                  321
-                                              ? 12
-                                              : 14,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondary,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ],
+                              ),
                             ),
-                            style: TextButton.styleFrom(
-                              shape: StadiumBorder(),
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 10),
-                              foregroundColor:
-                                  Theme.of(context).colorScheme.secondary,
-                            ),
-                          )
+                          ),
+                          true
+                              ? Container()
+                              : TextButton(
+                                  onPressed: () {},
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.file_download_outlined,
+                                        size: 16,
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        'Untitledfile.pdf'.toLowerCase(),
+                                        style: GoogleFonts.lato(
+                                            textStyle: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall,
+                                            letterSpacing: 1.2,
+                                            fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    321
+                                                ? 12
+                                                : 14,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondary,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ],
+                                  ),
+                                  style: TextButton.styleFrom(
+                                    shape: StadiumBorder(),
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 5, horizontal: 10),
+                                    foregroundColor:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
+                                )
                         ],
                       ),
                     ),
@@ -217,8 +250,8 @@ class _ProjectQuotationBottomSheetState
               children: [
                 Expanded(
                   child: OutlinedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
+                    onPressed: () async {
+                      await callApi("2");
                     },
                     style: OutlinedButton.styleFrom(
                       side: BorderSide(color: Colors.red),
@@ -235,7 +268,9 @@ class _ProjectQuotationBottomSheetState
                 SizedBox(width: 10),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      await callApi("1");
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green.shade700,
                       foregroundColor: Theme.of(context).colorScheme.onPrimary,
@@ -252,5 +287,40 @@ class _ProjectQuotationBottomSheetState
         ],
       ),
     );
+  }
+
+  bool isLoading = false;
+
+  callApi(String status) async {
+    setState(() {
+      isLoading = true;
+    });
+    bool a = await QuotationViewModel().acceptRejectQuotation(
+        project_id: widget.quotationData.projectId!,
+        project_status: status,
+        quot_id: widget.quotationData.id!.toString(),
+        teacher_id: widget.quotationData.teacherId!);
+    isLoading = false;
+    if (a) {
+      if (status == "1") {
+        bool aa = await ChatViewModel().addChat(
+            senderemail: SharedPrefs().userdata!.email!,
+            receiveremail: widget.quotationData.id.toString(),
+            message:
+                "Hello ,Your quotation for project  ${widget.projectTitle} of ${widget.quotationData.price} is accepted.");
+        AppUtils.appToast("Accepted Successfully");
+        if (aa) {
+          Navigator.pop(context);
+        } else {
+          Navigator.pop(context);
+        }
+      } else {
+        AppUtils.appToast("Rejected Successfully");
+        Navigator.pop(context);
+      }
+    } else {
+      setState(() {});
+      AppUtils.appToast("Please try again");
+    }
   }
 }

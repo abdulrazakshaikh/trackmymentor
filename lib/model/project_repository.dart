@@ -7,7 +7,36 @@ class ProjectRepository {
   BaseService _netoworkService = NetworkApiService();
 
   Future<NewAPIResponse> getProjectList(dynamic map) async {
-    NewAPIResponse response = await _netoworkService.get(AppUrl.projectList);
+    NewAPIResponse response =
+        await _netoworkService.post(AppUrl.projectList, map);
+    // var newAPIResponse = NewAPIResponse.fromJson(response);
+    return response!;
+  }
+
+  Future<NewAPIResponse> getProjectListByCategory(dynamic map) async {
+    NewAPIResponse response =
+        await _netoworkService.post(AppUrl.ProjectListbacategory, map);
+    // var newAPIResponse = NewAPIResponse.fromJson(response);
+    return response!;
+  }
+
+  Future<NewAPIResponse> getProjectListByStudent(dynamic map) async {
+    NewAPIResponse response =
+        await _netoworkService.post(AppUrl.ProjectListsstudent, map);
+    // var newAPIResponse = NewAPIResponse.fromJson(response);
+    return response!;
+  }
+
+  Future<NewAPIResponse> getProjectListByTeacher(dynamic map) async {
+    NewAPIResponse response =
+        await _netoworkService.get(AppUrl.teacherprojectHistory, data: map);
+    // var newAPIResponse = NewAPIResponse.fromJson(response);
+    return response!;
+  }
+
+  Future<NewAPIResponse> getProjectDetail(dynamic map) async {
+    NewAPIResponse response =
+        await _netoworkService.post(AppUrl.projectDetails, map);
     // var newAPIResponse = NewAPIResponse.fromJson(response);
     return response!;
   }
@@ -20,8 +49,7 @@ class ProjectRepository {
   }
 
   Future<NewAPIResponse> postProjectImage(
-      dynamic map, Map<String, String> imageMap) async {
-    print(imageMap);
+      Map<String, String> map, Map<String, String> imageMap) async {
     NewAPIResponse response = await _netoworkService.postMultiPart(
         AppUrl.projectImageupload, map, imageMap);
     // var newAPIResponse = NewAPIResponse.fromJson(response);

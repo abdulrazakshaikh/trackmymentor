@@ -84,7 +84,10 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
         bool status = await authUserDataNotifier.userSignUp(
             step1data['type'] == 'teacher' ? "2" : "1",
             step1data['username'],
-            step1data['password']);
+            step1data['password'],
+            step1data['country'],
+            step1data['state'],
+            step1data['city']);
         Navigator.pop(context);
         if (status) {
           AppUtils.appToast("Step 1 completed");
@@ -240,7 +243,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                 padding: EdgeInsets.all(5),
                 child: ElevatedButton(
                   onPressed: () {
-                    print("object");
+                    // print("object");
                   },
                   child: Row(
                     children: [

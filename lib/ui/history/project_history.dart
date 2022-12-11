@@ -1,27 +1,75 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:trackmy_mentor/data/projectdata.dart';
+import 'package:trackmy_mentor/model/storage/shared_prefs.dart';
 import 'package:trackmy_mentor/ui/homepage/gigs_item.dart';
 import 'package:trackmy_mentor/view_model/project_view_model.dart';
+
+import '../FsListWithSearchWidget.dart';
 
 class ProjectHistory extends StatefulWidget {
   @override
   State<ProjectHistory> createState() => _ProjectHistoryState();
 }
 
-class _ProjectHistoryState extends State<ProjectHistory> {
+class _ProjectHistoryState extends State<ProjectHistory>
+    implements PageLoadSearchListener {
   List<ProjectData> projectItemList = [];
   late ProjectViewModel projectViewModel;
+  int currentPage = 1;
+  late FsListWithSearchState listListner;
 
   @override
   void initState() {
+    widget1 = FsListWithSearchWidget(
+      pageLoadListner: this,
+      title: false,
+      message: null,
+      itemBuilder: (BuildContext context, int index, var item) {
+        return GigsItem(value: item as ProjectData);
+      },
+      afterView: (FsListWithSearchState v) {
+        listListner = v;
+      },
+      showError: false,
+      // errorWidget: errorWidget(),
+    );
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await projectViewModel.getProjectList();
+      /*bool isTeacher=SharedPrefs().userdata!.type=="2";
+      isTeacher?await projectViewModel.getProjectListByTeacher(teacheremail:SharedPrefs().userdata!.email!)
+          : await projectViewModel.getProjectListByStudent(studentemail:SharedPrefs().userdata!.email!);
       projectItemList = projectViewModel.listData;
-      setState(() {});
+      setState(() {});*/
+      getProjectList(currentPage);
     });
+  }
+
+  late Widget widget1;
+
+  Future<void> getProjectList(int page) async {
+    currentPage = page;
+    bool isTeacher = SharedPrefs().userdata!.type == "2";
+    isTeacher
+        ? await projectViewModel.getProjectListByTeacher(
+            teacheremail: SharedPrefs().userdata!.email!, page: page)
+        : await projectViewModel.getProjectListByStudent(
+            studentemail: SharedPrefs().userdata!.email!, page: page);
+    projectItemList = [];
+    if (projectViewModel.listData.length == 0) {
+      listListner.addListList({
+        "current_page": currentPage,
+        "last_page": currentPage,
+      }, projectItemList);
+      setState(() {});
+    } else {
+      projectItemList.addAll(projectViewModel.listData);
+      listListner.addListList({
+        "current_page": currentPage,
+        "last_page": 1000,
+      }, projectItemList);
+      setState(() {});
+    }
   }
 
   @override
@@ -41,45 +89,16 @@ class _ProjectHistoryState extends State<ProjectHistory> {
         ),
       ),
       body: Center(
-        child: projectViewModel.isLoading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : projectItemList.length == 0
-                ? Center(
-                    child: Text(
-                      "No search record found",
-                      overflow: TextOverflow.clip,
-                      maxLines: 1,
-                      style: GoogleFonts.lato(
-                        textStyle: Theme.of(context).textTheme.titleMedium,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  )
-                : ListView(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 5),
-                        child: ListView.builder(
-                            primary: false,
-                            physics: NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: projectItemList == null
-                                ? 0
-                                : projectItemList.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              ProjectData item = projectItemList[index];
-                              return GigsItem(
-                                value: item,
-                              );
-                            }),
-                      ),
-                    ],
-                  ),
+        child: widget1,
       ),
-
     );
+  }
+
+  @override
+  lastPage(int page) {}
+
+  @override
+  loadNextPage(String page) {
+    getProjectList(currentPage + 1);
   }
 }

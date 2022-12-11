@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "86879376051",
+    "project_id": "trackmymentor-1a305",
+    "storage_bucket": "trackmymentor-1a305.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:86879376051:android:3b9353e0363f742a5a16c6",
+        "android_client_info": {
+          "package_name": "com.example.trackmymentor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "86879376051-sopijamadr0mhkr0rrp4fbm77o0n9o1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTIyozUqKE-EjKqMxbmAhFJIYZueqk12g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "86879376051-sopijamadr0mhkr0rrp4fbm77o0n9o1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

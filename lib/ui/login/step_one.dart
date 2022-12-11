@@ -5,6 +5,11 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../data/helperdata.dart';
+import '../../model/services/app_url.dart';
+import '../../utils/AppUtils.dart';
+import '../common_widgets/helper_single_selection_bottomsheet.dart';
+
 abstract class iCallBack {
   void success();
 }
@@ -27,6 +32,9 @@ class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController countryController = TextEditingController();
+  TextEditingController stateController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
   int selectedIndex = 0;
   bool _passwordVisible = false;
   bool _confirmPasswordVisible = false;
@@ -49,7 +57,7 @@ class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
             Container(
               margin: EdgeInsets.only(bottom: 15),
               child: Text(
-                'Who are you ?',
+                'Login as ?',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.lato(
                   textStyle: Theme.of(context).textTheme.headlineSmall,
@@ -203,6 +211,9 @@ class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
                           'type': (selectedIndex == 0 ? "teacher" : "student"),
                           "username": usernameController.text,
                           "password": passwordController.text,
+                          "country": selectedCountry!.id!.toString(),
+                          "state": selectedState!.id!.toString(),
+                          "city": selectedCity!.id!.toString(),
                         };
                         widget.onSave(data);
                       },
@@ -257,6 +268,298 @@ class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.only(bottom: 5),
+                          child: Text(
+                            'Your Country',
+                            style: GoogleFonts.lato(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              letterSpacing: 1.75,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Select Country';
+                            } else {
+                              return null;
+                            }
+                          },
+                          controller: countryController,
+                          readOnly: true,
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.bodyMedium,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
+                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                              hintText: 'Select an Options'.toLowerCase(),
+                              hintStyle: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.bodyMedium,
+                                  letterSpacing: 1.8,
+                                  fontWeight: FontWeight.w300),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.outline),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              suffixIcon: Icon(Icons.arrow_drop_down)),
+                          onTap: () {
+                            showModalBottomSheet(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                ),
+                              ),
+                              context: context,
+                              builder: (BuildContext context) {
+                                return HelperSingleSelectionBottomSheet(
+                                    AppUrl.getcountry, selectedCountry,
+                                    (selectedItem) {
+                                  selectedCountry = selectedItem;
+                                  countryController.text =
+                                      selectedCountry!.name!;
+                                  stateController.text = "";
+                                  cityController.text = "";
+                                  selectedCity = null;
+                                  selectedState = null;
+                                  setState(() {});
+                                });
+                              },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.only(bottom: 5),
+                          child: Text(
+                            'Your State',
+                            style: GoogleFonts.lato(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              letterSpacing: 1.75,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Select State';
+                            } else {
+                              return null;
+                            }
+                          },
+                          controller: stateController,
+                          readOnly: true,
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.bodyMedium,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
+                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                              hintText: 'Select an Options'.toLowerCase(),
+                              hintStyle: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.bodyMedium,
+                                  letterSpacing: 1.8,
+                                  fontWeight: FontWeight.w300),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.outline),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              suffixIcon: Icon(Icons.arrow_drop_down)),
+                          onTap: () {
+                            if (selectedCountry == null) {
+                              AppUtils.appToast("Please select country first");
+                              return;
+                            }
+                            showModalBottomSheet(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                ),
+                              ),
+                              context: context,
+                              builder: (BuildContext context) {
+                                return HelperSingleSelectionBottomSheet(
+                                  AppUrl.getstate,
+                                  selectedState,
+                                  (selectedItem) {
+                                    //selectedCountry = selectedItem;
+                                    selectedState = selectedItem;
+                                    selectedCity = null;
+                                    stateController.text = selectedState!.name!;
+                                    cityController.text = "";
+                                    setState(() {});
+                                  },
+                                  selectedCountry:
+                                      selectedCountry!.id.toString(),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.only(bottom: 5),
+                          child: Text(
+                            'Your City',
+                            style: GoogleFonts.lato(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                              letterSpacing: 1.75,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Select City';
+                            } else {
+                              return null;
+                            }
+                          },
+                          controller: cityController,
+                          readOnly: true,
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.bodyMedium,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
+                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                              hintText: 'Select an Options'.toLowerCase(),
+                              hintStyle: GoogleFonts.lato(
+                                  textStyle:
+                                      Theme.of(context).textTheme.bodyMedium,
+                                  letterSpacing: 1.8,
+                                  fontWeight: FontWeight.w300),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.outline),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              suffixIcon: Icon(Icons.arrow_drop_down)),
+                          onTap: () {
+                            if (selectedState == null) {
+                              AppUtils.appToast("Please select state first");
+                              return;
+                            }
+                            showModalBottomSheet(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                ),
+                              ),
+                              context: context,
+                              builder: (BuildContext context) {
+                                return HelperSingleSelectionBottomSheet(
+                                    AppUrl.getcity, selectedCity,
+                                    (selectedItem) {
+                                  //selectedCountry = selectedItem;
+                                  selectedCity = selectedItem;
+                                  cityController.text = selectedCity!.name!;
+                                  setState(() {});
+                                },
+                                    selectedCountry:
+                                        selectedCountry!.id.toString(),
+                                    selectedState:
+                                        selectedState!.id.toString());
+                              },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -265,6 +568,10 @@ class _StepOneState extends State<StepOne> with TickerProviderStateMixin {
       ),
     );
   }
+
+  HelperData? selectedCountry;
+  HelperData? selectedState;
+  HelperData? selectedCity;
 
   Widget anyItem(int index) {
     return InkWell(

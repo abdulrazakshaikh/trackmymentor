@@ -8,6 +8,7 @@ import 'package:trackmy_mentor/data/projectdata.dart';
 import 'package:trackmy_mentor/ui/homepage/gigs_item.dart';
 import 'package:trackmy_mentor/view_model/project_view_model.dart';
 
+import '../../model/storage/shared_prefs.dart';
 import '../see_all_project_list.dart';
 
 class HomepageMyPopularGigs extends StatefulWidget {
@@ -23,7 +24,8 @@ class _HomepageMyPopularGigsState extends State<HomepageMyPopularGigs> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await projectViewModel.getProjectList();
+      await projectViewModel.getProjectListByStudent(
+          studentemail: SharedPrefs().userdata!.email!, page: 1);
       projectItemList = projectViewModel.listData;
       setState(() {});
     });
@@ -43,7 +45,7 @@ class _HomepageMyPopularGigsState extends State<HomepageMyPopularGigs> {
               children: [
                 Expanded(
                     child: Text(
-                  'My Popular Gigs'.toUpperCase(),
+                      'Students Popular Gigs'.toUpperCase(),
                   style: GoogleFonts.lato(
                       textStyle: Theme.of(context).textTheme.titleLarge,
                       letterSpacing: 1.5,
@@ -56,18 +58,19 @@ class _HomepageMyPopularGigsState extends State<HomepageMyPopularGigs> {
                         width: 100,
                         height: 50,
                       )
-                    : Container(
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        SeeAllProjectList("My Popular Gigs")));
-                          },
-                          child: Row(
-                            children: [
-                              Text(
+                    : projectItemList.length > 10
+                        ? Container(
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SeeAllProjectList(
+                                            "Students Popular Gigs")));
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
                                 'Show All',
                                 style: GoogleFonts.lato(
                                     textStyle:
@@ -86,17 +89,18 @@ class _HomepageMyPopularGigsState extends State<HomepageMyPopularGigs> {
                                 Icons.arrow_forward,
                                 size: 16,
                               ),
-                            ],
-                          ),
-                          style: TextButton.styleFrom(
-                            shape: StadiumBorder(),
-                            padding: EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 10),
-                            foregroundColor:
-                                Theme.of(context).colorScheme.secondary,
-                          ),
-                        ),
-                      )
+                                ],
+                              ),
+                              style: TextButton.styleFrom(
+                                shape: StadiumBorder(),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 5, horizontal: 10),
+                                foregroundColor:
+                                    Theme.of(context).colorScheme.secondary,
+                              ),
+                            ),
+                          )
+                        : Container()
               ],
             ),
           ),

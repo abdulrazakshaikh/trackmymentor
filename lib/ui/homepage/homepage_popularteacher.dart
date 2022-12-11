@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:trackmy_mentor/data/userdata.dart';
-import 'package:trackmy_mentor/model/services/app_url.dart';
 import 'package:trackmy_mentor/ui/profile/teacherprofile.dart';
 import 'package:trackmy_mentor/view_model/teacher_view_model.dart';
 
@@ -24,7 +23,7 @@ class _HomepagePopularTeacherState extends State<HomepagePopularTeacher> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await teacherViewModel.getTeachers();
+      await teacherViewModel.getTeacherList();
       teacherItemlist = teacherViewModel.listData;
       setState(() {});
     });
@@ -156,7 +155,7 @@ class _HomepagePopularTeacherState extends State<HomepagePopularTeacher> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              TeacherProfile()));
+                                              TeacherProfile(item)));
                                 },
                                 child: Card(
                                   elevation: 5,
@@ -183,7 +182,7 @@ class _HomepagePopularTeacherState extends State<HomepagePopularTeacher> {
                                             borderRadius:
                                                 BorderRadius.circular(15),
                                             child: Image.network(
-                                              '${AppUrl.image_baseUrl}${item.image}',
+                                              '${item.image}',
                                               fit: BoxFit.cover,
                                             ),
                                           ),
@@ -209,7 +208,7 @@ class _HomepagePopularTeacherState extends State<HomepagePopularTeacher> {
                                               ),
                                               SizedBox(height: 5),
                                               Text(
-                                                '${item.degree}',
+                                                '${item.degree_name}',
                                                 overflow: TextOverflow.clip,
                                                 style: GoogleFonts.lato(
                                                     textStyle: Theme.of(context)

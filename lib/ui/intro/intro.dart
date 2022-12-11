@@ -57,102 +57,157 @@ class _IntroState extends State<Intro> with TickerProviderStateMixin {
         ),
       ),
       back: Back(
-        child: Row(
-          children: [
-            Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.secondary,),
-            SizedBox(width: 5),
-            Text('Back'.toUpperCase(),
-            style: GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.titleSmall,
-              color: Theme.of(context).colorScheme.secondary,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 1.2,
-            ),
-            ),
-          ],
+        child: GestureDetector(
+          onTap: () {
+            //print("dcsdvdv");
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => Login()),
+                (route) => false);
+          },
+          child: Row(
+            children: [
+              Icon(
+                Icons.arrow_back,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+              SizedBox(width: 5),
+              Text(
+                'Skip'.toUpperCase(),
+                style: GoogleFonts.lato(
+                  textStyle: Theme.of(context).textTheme.titleSmall,
+                  color: Theme.of(context).colorScheme.secondary,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.2,
+                ),
+              ),
+            ],
+          ),
         ),
-        
       ),
       
       items: [
         IntroductionSliderItem(
-          logo: Image.asset("assets/images/success.png",
+          logo: Image.asset(
+            "assets/images/curious_cuate.png",
             fit: BoxFit.contain,
           ),
           title: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: Text("Lorem Ipsum Heading", textAlign: TextAlign.center,
-            style: GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.headlineSmall,
-              fontWeight: FontWeight.w900,
-              letterSpacing: 1.2,
-            ),
+            child: Text(
+              "Grow and earn like pro",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.headlineSmall,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 1.2,
+              ),
             ),
           ),
           subtitle: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Text("Lorem Ipsum Dolor sit amet is a simply dummy text used for typesetting",
-            textAlign: TextAlign.center,
-            style: GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.labelMedium,
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-              letterSpacing: 1.2,
-            ),
+            child: Text(
+              "Find a tutor and hire for a assignment with them as per your preferences.",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.labelMedium,
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                letterSpacing: 1.2,
+              ),
             ),
           ),
         ),
         IntroductionSliderItem(
-          logo: Image.asset("assets/images/success.png",
+          logo: Image.asset(
+            "assets/images/mathematics.png",
             fit: BoxFit.contain,
           ),
           title: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: Text("Lorem Ipsum Heading", textAlign: TextAlign.center,
-            style: GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.headlineSmall,
-              fontWeight: FontWeight.w900,
-              letterSpacing: 1.2,
-            ),
+            child: Text(
+              "Hire coaches",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.headlineSmall,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 1.2,
+              ),
             ),
           ),
           subtitle: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Text("Lorem Ipsum Dolor sit amet is a simply dummy text used for typesetting",
-            textAlign: TextAlign.center,
-            style: GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.labelMedium,
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-              letterSpacing: 1.2,
-            ),
+            child: Text(
+              "Excellent Coaches and trainers for various sports activities can also be found on hire.",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.labelMedium,
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                letterSpacing: 1.2,
+              ),
             ),
           ),
         ),
         IntroductionSliderItem(
-          logo: Image.asset("assets/images/success.png",
+          logo: Image.asset(
+            "assets/images/seminar.png",
             fit: BoxFit.contain,
           ),
           title: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: Text("Lorem Ipsum Heading", textAlign: TextAlign.center,
-            style: GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.headlineSmall,
-              fontWeight: FontWeight.w900,
-              letterSpacing: 1.2,
-            ),
+            child: Text(
+              "Complete project",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.headlineSmall,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 1.2,
+              ),
             ),
           ),
           subtitle: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Text("Lorem Ipsum Dolor sit amet is a simply dummy text used for typesetting",
-            textAlign: TextAlign.center,
-            style: GoogleFonts.lato(
-              textStyle: Theme.of(context).textTheme.labelMedium,
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-              letterSpacing: 1.2,
+            child: Text(
+              "You can post your requirements for experts help with Track Mentor as projects.",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.labelMedium,
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                letterSpacing: 1.2,
+              ),
             ),
+          ),
+        ),
+        IntroductionSliderItem(
+          logo: Image.asset(
+            "assets/images/thesis.png",
+            fit: BoxFit.contain,
+          ),
+          title: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            child: Text(
+              "Learn activity",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.headlineSmall,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+          subtitle: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: Text(
+              "Loren different activities on Track My Mentor from experts tutors.",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
+                textStyle: Theme.of(context).textTheme.labelMedium,
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                letterSpacing: 1.2,
+              ),
             ),
           ),
         ),

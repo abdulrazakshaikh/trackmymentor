@@ -11,6 +11,10 @@ import 'package:trackmy_mentor/view_model/project_view_model.dart';
 import '../see_all_project_list.dart';
 
 class TeacherMyWork extends StatefulWidget {
+  String email;
+
+  TeacherMyWork(this.email);
+
   @override
   _TeacherMyWorkState createState() => new _TeacherMyWorkState();
 }
@@ -22,7 +26,8 @@ class _TeacherMyWorkState extends State<TeacherMyWork> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await projectViewModel.getProjectList();
+      await projectViewModel.getProjectListByTeacher(
+          teacheremail: widget.email);
       projectItemList = projectViewModel.listData;
       setState(() {});
     });
@@ -56,18 +61,21 @@ class _TeacherMyWorkState extends State<TeacherMyWork> {
                         width: 100,
                         height: 50,
                       )
-                    : Container(
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        SeeAllProjectList("My Work")));
-                          },
-                          child: Row(
-                            children: [
-                              Text(
+                    : projectItemList.length > 10
+                        ? Container(
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SeeAllProjectList(
+                                              "My Work",
+                                              category_id: widget.email,
+                                            )));
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
                           'Show All',
                           style: GoogleFonts.lato(
                               textStyle: Theme.of(context).textTheme.titleSmall,
@@ -78,17 +86,23 @@ class _TeacherMyWorkState extends State<TeacherMyWork> {
                               color: Theme.of(context).colorScheme.secondary,
                               fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(width: 5),
-                        Icon(Icons.arrow_forward, size: 14,),
-                      ],
-                    ),
-                    style: TextButton.styleFrom(
-                      shape: StadiumBorder(),
-                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                      foregroundColor: Theme.of(context).colorScheme.secondary,
-                          ),
-                        ),
-                      )
+                                  SizedBox(width: 5),
+                                  Icon(
+                                    Icons.arrow_forward,
+                                    size: 14,
+                                  ),
+                                ],
+                              ),
+                              style: TextButton.styleFrom(
+                                shape: StadiumBorder(),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 5, horizontal: 10),
+                                foregroundColor:
+                                    Theme.of(context).colorScheme.secondary,
+                              ),
+                            ),
+                          )
+                        : Container()
               ],
             ),
           ),

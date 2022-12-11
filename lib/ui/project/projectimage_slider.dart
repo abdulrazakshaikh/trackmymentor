@@ -1,16 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
+import 'package:trackmy_mentor/ui/project/photo_view_image.dart';
 
 class ProjectImageSlider extends StatefulWidget {
-  
-  ProjectImageSlider({
+  List<String> images;
+
+  ProjectImageSlider(
+    this.images, {
     this.loadingBuilder,
     this.backgroundDecoration,
     this.minScale,
     this.maxScale,
     this.initialIndex = 0,
-  
     this.scrollDirection = Axis.horizontal,
   }) : pageController = PageController(initialPage: initialIndex);
 
@@ -29,29 +31,7 @@ class ProjectImageSlider extends StatefulWidget {
 }
 
 class _ProjectImageSliderState extends State<ProjectImageSlider> {
-  List galleryItems = [
-    {
-      "id": "001",
-      "image": "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-    {
-      "id": "002",
-      "image": "https://images.pexels.com/photos/7376/startup-photos.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-    {
-      "id": "003",
-      "image": "https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-    {
-      "id": "004",
-      "image": "https://images.pexels.com/photos/10227348/pexels-photo-10227348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-    {
-      "id": "005",
-      "image": "https://images.pexels.com/photos/13878056/pexels-photo-13878056.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-  ];
-
+  List galleryItems = [];
 
   late int currentIndex = widget.initialIndex;
 
@@ -61,9 +41,12 @@ class _ProjectImageSliderState extends State<ProjectImageSlider> {
     });
   }
 
-
-  
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    galleryItems = widget.images;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,17 +63,23 @@ class _ProjectImageSliderState extends State<ProjectImageSlider> {
           itemCount: galleryItems == null ? 0 : galleryItems.length,
           physics: PageScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
-            Map item = galleryItems[index];
+            String item = galleryItems[index];
             return Container(
               margin: EdgeInsets.only(right: 10, left: index == 0 ? 10 : 0),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PhotoGallery(widget.images)));
+                },
                 child: Card(
                   elevation: 5,
                   shadowColor: Theme.of(context).shadowColor.withOpacity(0.35),
                   shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  side: BorderSide(width: 1, color: Colors.grey.withOpacity(0.2))),
+                      borderRadius: BorderRadius.circular(20),
+                      side: BorderSide(
+                          width: 1, color: Colors.grey.withOpacity(0.2))),
                   child: Container(
                     height: 130,
                     decoration: BoxDecoration(
@@ -100,7 +89,7 @@ class _ProjectImageSliderState extends State<ProjectImageSlider> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: Image.network(
-                        '${item["image"]}',
+                        '${item}',
                         fit: BoxFit.cover,
                       ),
                     ),

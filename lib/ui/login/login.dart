@@ -59,7 +59,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                             ),
                           ),
                           Text(
-                            'Welcome Back',
+                            'Welcome ',
                             style: GoogleFonts.lato(
                                 textStyle:
                                     Theme.of(context).textTheme.headlineLarge,
@@ -255,7 +255,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                                     EdgeInsets.symmetric(vertical: 15),
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.auto,
-                                labelText: 'Enter Email/Mobile'.toLowerCase(),
+                                labelText: 'Enter Email'.toLowerCase(),
                                 labelStyle: GoogleFonts.lato(
                                     textStyle:
                                         Theme.of(context).textTheme.bodyMedium,

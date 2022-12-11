@@ -192,8 +192,8 @@ class _AddStepOneState extends State<AddStepOne> with TickerProviderStateMixin {
                     Container(
                       margin: EdgeInsets.only(right: 10),
                       width: 42,
-                      child: Image.asset(
-                        'assets/images/tutor.png',
+                      child: Image.network(
+                        '${data.image}',
                         fit: BoxFit.contain,
                       ),
                     ),

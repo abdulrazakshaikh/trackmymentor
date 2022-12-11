@@ -67,8 +67,6 @@ class _AddProjectInfoState extends State<AddProjectInfo>
             projectInfoMap,
             _formKey1,
             (data) {
-              print("object");
-              print(data);
               setState(() {
                 projectInfoMap = data;
               });
@@ -109,9 +107,6 @@ class _AddProjectInfoState extends State<AddProjectInfo>
   @override
   Widget build(BuildContext context) {
     projectViewModel = context.watch<ProjectViewModel>();
-
-    print("objectobjectobjectobject");
-    print(projectInfoMap);
     return SafeArea(
       child: Scaffold(
         body: CoolStepper(
@@ -186,7 +181,6 @@ class _AddProjectInfoState extends State<AddProjectInfo>
                 padding: EdgeInsets.all(5),
                 child: ElevatedButton(
                   onPressed: () {
-                    print("sdvjsdbvdkjv");
                     Navigator.pushReplacement<void, void>(
                         context,
                         MaterialPageRoute(

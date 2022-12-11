@@ -38,7 +38,6 @@ class _BottomNavigationState extends State<BottomNavigation> with TickerProvider
 
   @override
   Widget build(BuildContext context) {
-    print("$_selectedIndex");
     if (isTeacher) {
       _pages = [
         {

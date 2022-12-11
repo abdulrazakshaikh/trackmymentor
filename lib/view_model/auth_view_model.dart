@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:trackmy_mentor/data/helperdata.dart';
 import 'package:trackmy_mentor/model/storage/shared_prefs.dart';
@@ -21,11 +22,14 @@ class AuthViewModel extends ChangeNotifier {
     try {
       _isLoading = true;
       notifyListeners();
+      String? token = await FirebaseMessaging.instance.getToken();
+      print("token");
+      print(token);
       var _userdata = await new AuthRepository().getUserLogin({
         "email": "$username",
         "password": "$password",
         "device_type": "Android",
-        "device_token": "Firebase Pending"
+        "device_token": "$token"
       });
       _isLoading = false;
       notifyListeners();
@@ -48,7 +52,8 @@ class AuthViewModel extends ChangeNotifier {
     }
   }
 
-  Future<bool> userSignUp(String type, String username, String password) async {
+  Future<bool> userSignUp(String type, String username, String password,
+      String country, String state, String city) async {
     try {
       _isLoading = true;
       notifyListeners();
@@ -57,6 +62,9 @@ class AuthViewModel extends ChangeNotifier {
         "email": "$username",
         "password": "$password",
         "confirm_pass": "$password",
+        "country_id": "$country",
+        "state_id": "$state",
+        "city_id": "$city",
         "device_type": "Android",
         "device_token": "Firebase Pending"
       });
@@ -101,6 +109,66 @@ class AuthViewModel extends ChangeNotifier {
       } else {
         var data = _userdata.data;
         SharedPrefs().userdata = UserData.fromJson(data);
+        notifyListeners();
+        return true;
+      }
+    } catch (e) {
+      print(e);
+      _isLoading = false;
+      _error = e.toString();
+      notifyListeners();
+      return false;
+    }
+  }
+
+  Future<bool> updateUserInfo(
+      {String firstname = "",
+      String lastname = "",
+      String mobile = "",
+      String imagePath = "",
+      String description = "",
+      String language = "",
+      String courses = "",
+      String degree = "",
+      String categoryies = "",
+      String class2 = "",
+      String subject = "",
+      String yearOfEx = ""}) async {
+    try {
+      _isLoading = true;
+      notifyListeners();
+      Map<String, String> map = {
+        "email": "${SharedPrefs().userdata!.email}",
+        "fname": "$firstname",
+        "lname": "$lastname",
+        "mobile": "${mobile}",
+        "description": "${description}",
+        "language": "${language}",
+        "courses": "${courses}",
+        "degree": "${degree}",
+        "category": "${categoryies}",
+        "classes": "${class2}",
+        "subjects": "${subject}",
+        "noofyears": "${yearOfEx}",
+      };
+      Map<String, String> imagePath2 =
+          imagePath.isEmpty ? {} : {"profile": "${imagePath}"};
+      var _userdata =
+          await new AuthRepository().getUserInfoUpdate(map, imagePath2);
+      _isLoading = false;
+      notifyListeners();
+      if (!_userdata.isSuccess) {
+        _error = _userdata.message;
+        return false;
+      } else {
+        UserData user = SharedPrefs().userdata!;
+        //print(_userdata.completeData['updateUser'][0][]);
+
+        user.firstname = _userdata.completeData['data'][0]['firstname'];
+        user.lastname = _userdata.completeData['data'][0]['lastname'];
+        user.image = _userdata.completeData['data'][0]['profile'];
+        SharedPrefs().userdata = user;
+
         notifyListeners();
         return true;
       }

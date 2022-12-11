@@ -36,9 +36,13 @@ class NetworkApiService extends BaseService {
         "content-type": "application/x-www-form-urlencoded",
         "accept": "application/json"
       };
-
-      var parse = Uri.parse(baseUrl + url);
-      print("dsvv");
+      var parse;
+      if ((data as Map).isEmpty) {
+        parse = Uri.parse(baseUrl + url);
+      } else {
+        parse = Uri.https("www.appcul.com",
+            "trackmymentor/api/Mobileapi/" + url, data as Map<String, dynamic>);
+      }
       AppUrl.debugPrint("*********API Call Started************");
       AppUrl.debugPrint("API Request Type:GET");
       AppUrl.debugPrint("API Call URL :" + parse.toString());
@@ -52,6 +56,7 @@ class NetworkApiService extends BaseService {
       AppUrl.debugPrint("*********API Call End************");
       return responseJson;
     } catch (e) {
+      print("NetworkApiService");
       print(e);
     }
   }
@@ -134,7 +139,7 @@ class NetworkApiService extends BaseService {
   }
 
   @override
-  Future postMultiPart(String url, data, imagePath) async {
+  Future postMultiPart(String url, data, Map<String, String> imagePath) async {
     if (!await checkInternetConnection()) {
       return NewAPIResponse(
           status: "FAILURE", message: "No internet connection! ", data: {});
@@ -153,8 +158,11 @@ class NetworkApiService extends BaseService {
       AppUrl.debugPrint("Request Data : " + data.toString());
       AppUrl.debugPrint("Request Data : " + json.encode(data).toString());
       var request = http.MultipartRequest('POST', parse);
+
       request.fields.addAll(data);
+
       request.headers.addAll(header);
+
       imagePath.forEach((key, value) {
         request.files.add(http.MultipartFile.fromBytes(
             key, File(value).readAsBytesSync(),
@@ -170,6 +178,7 @@ class NetworkApiService extends BaseService {
       AppUrl.debugPrint("*********API Call End************");
       return responseJson;
     } catch (e) {
+      print("Network API postMultiPart");
       print(e);
     }
   }

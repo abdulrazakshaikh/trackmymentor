@@ -39,17 +39,18 @@ class _AddStepFourState extends State<AddStepFour>
     if (picked != null && picked != selectedDate) {
       setState(() {
         lastDatController.text = DateFormat('dd-MM-yyyy').format(picked);
+        _selectedDate = DateFormat('yyyy-MM-dd').format(picked);
         selectedDate = picked;
         widget.onSave({
           "title": projectTitleController.text,
           "description": projectDescriptionController.text,
-          "lastdate": lastDatController.text,
+          "lastdate": _selectedDate,
           "imagelist": imageList
         });
         print({
           "title": projectTitleController.text,
           "description": projectDescriptionController.text,
-          "lastdate": lastDatController.text,
+          "lastdate": _selectedDate,
           "imagelist": imageList
         });
       });
@@ -107,7 +108,7 @@ class _AddStepFourState extends State<AddStepFour>
                           widget.onSave({
                             "title": value,
                             "description": projectDescriptionController.text,
-                            "lastdate": lastDatController.text,
+                            "lastdate": _selectedDate,
                             "imagelist": imageList
                           });
                         },
@@ -163,7 +164,7 @@ class _AddStepFourState extends State<AddStepFour>
                           widget.onSave({
                             "title": projectTitleController.text,
                             "description": value,
-                            "lastdate": lastDatController.text,
+                            "lastdate": _selectedDate,
                             "imagelist": imageList
                           });
                         },
@@ -230,7 +231,7 @@ class _AddStepFourState extends State<AddStepFour>
                           widget.onSave({
                             "title": projectTitleController.text,
                             "description": projectDescriptionController.text,
-                            "lastdate": lastDatController.text,
+                            "lastdate": _selectedDate,
                             "imagelist": imageList
                           });
                         },
@@ -248,7 +249,7 @@ class _AddStepFourState extends State<AddStepFour>
                           widget.onSave({
                             "title": projectTitleController.text,
                             "description": projectDescriptionController.text,
-                            "lastdate": lastDatController.text,
+                            "lastdate": _selectedDate,
                             "imagelist": imageList
                           });
                         },

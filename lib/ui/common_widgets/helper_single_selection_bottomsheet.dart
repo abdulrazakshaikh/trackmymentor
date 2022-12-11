@@ -6,15 +6,24 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../data/helperdata.dart';
+import '../../model/services/app_url.dart';
+import '../../utils/AppUtils.dart';
+import '../../view_model/auth_view_model.dart';
 import '../../view_model/helper_view_model.dart';
 
 class HelperSingleSelectionBottomSheet extends StatefulWidget {
   String type;
-  HelperData? selectedItem;
+  HelperData? selectedItem1;
+  String selectedState;
+  String selectedCountry;
   var takeSelectedItem;
+  bool apiCallRequired = false;
 
   HelperSingleSelectionBottomSheet(
-      this.type, this.selectedItem, this.takeSelectedItem);
+      this.type, this.selectedItem1, this.takeSelectedItem,
+      {this.apiCallRequired = false,
+      this.selectedState = "",
+      this.selectedCountry = ""});
 
   @override
   _HelperSingleSelectionBottomSheetState createState() =>
@@ -26,29 +35,51 @@ class _HelperSingleSelectionBottomSheetState
     with TickerProviderStateMixin {
   List<HelperData> helperDataList = [];
   late HelperViewModel helperViewModel;
+  late AuthViewModel authViewModel;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    selectedItem = widget.selectedItem1;
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      var a = await helperViewModel.getCategory(widget.type);
-      if (helperViewModel.listData != null) {
-        helperDataList = helperViewModel.listData;
-        if (widget.selectedItem != null)
-          helperDataList.forEach((element) {
-            if (widget.selectedItem!.name == element.name) {
-              widget.selectedItem = element;
-            }
-          });
-        //
-      }
+      if (widget.type == AppUrl.getcity ||
+          widget.type == AppUrl.getstate ||
+          widget.type == AppUrl.getcountry) {
+        var a = await helperViewModel.getLocationDetails(widget.type,
+            country_id: widget.selectedCountry, state_id: widget.selectedState);
+      } else
+        var a = await helperViewModel.getCategory(widget.type);
+      setValues();
     });
+  }
+
+  HelperData? selectedItem;
+
+  void setValues({String search = ""}) {
+    if (helperViewModel.listData != null) {
+      helperDataList = helperViewModel.listData;
+      if (selectedItem != null)
+        helperDataList.forEach((element) {
+          if (selectedItem!.id == element.id) {
+            selectedItem = element;
+          }
+        });
+      helperDataList = helperDataList.where((element) {
+        if (search.isEmpty) {
+          return true;
+        } else {
+          return element.name!.toUpperCase().contains(search.toUpperCase());
+        }
+      }).toList();
+      setState(() {});
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     helperViewModel = context.watch<HelperViewModel>();
+    authViewModel = context.watch<AuthViewModel>();
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.background,
@@ -78,6 +109,13 @@ class _HelperSingleSelectionBottomSheetState
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
                         ),
+                        onChanged: (value) {
+                          if (value.isEmpty) {
+                            setValues();
+                          } else {
+                            setValues(search: value);
+                          }
+                        },
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(15),
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
@@ -121,11 +159,12 @@ class _HelperSingleSelectionBottomSheetState
                 ? Center(
                     child: CircularProgressIndicator(),
                   )
-                : (helperViewModel.error ?? "").isNotEmpty
+                : helperDataList.length == 0
                     ? Center(
                         child: Container(
                             margin: EdgeInsets.symmetric(horizontal: 30),
-                            child: Text("${helperViewModel.error}")),
+                            child: Text(
+                                "${helperViewModel.error == null || helperViewModel.error!.isEmpty ? "No search record found" : helperViewModel.error}")),
                       )
                     : ListView(
                         children: [
@@ -156,13 +195,13 @@ class _HelperSingleSelectionBottomSheetState
                                       activeColor:
                                           Theme.of(context).colorScheme.primary,
                                       // checkColor: Theme.of(context).colorScheme.onPrimary,
-                                      groupValue: widget.selectedItem,
+                                      groupValue: selectedItem,
                                       controlAffinity:
                                           ListTileControlAffinity.leading,
                                       value: item,
                                       onChanged: (HelperData? value) {
                                         setState(() {
-                                          widget.selectedItem = value;
+                                          selectedItem = value;
                                         });
                                       },
                                     ),
@@ -181,18 +220,21 @@ class _HelperSingleSelectionBottomSheetState
               ),
             ),
             padding: EdgeInsets.all(15),
-            child: Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: OutlinedButton.styleFrom(
-                      side: BorderSide(
-                          color: Theme.of(context).colorScheme.secondary),
-                      foregroundColor: Theme.of(context).colorScheme.secondary,
-                      padding:
+            child: authViewModel.isLoading
+                ? CircularProgressIndicator()
+                : Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          style: OutlinedButton.styleFrom(
+                            side: BorderSide(
+                                color: Theme.of(context).colorScheme.secondary),
+                            foregroundColor:
+                                Theme.of(context).colorScheme.secondary,
+                            padding:
                           EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                       alignment: Alignment.center,
                     ),
@@ -204,19 +246,36 @@ class _HelperSingleSelectionBottomSheetState
                 SizedBox(width: 10),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {
-                      widget.takeSelectedItem(widget.selectedItem);
-                      Navigator.pop(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).colorScheme.primary,
-                      foregroundColor: Theme.of(context).colorScheme.onPrimary,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                      alignment: Alignment.center,
-                    ),
-                    child: Text('Apply'),
-                  ),
+                          onPressed: () async {
+                            if (widget.apiCallRequired) {
+                              bool status = false;
+                              if (widget.type == AppUrl.degree) {
+                                status = await authViewModel.updateUserInfo(
+                                    degree: selectedItem!.id!);
+                              } else if (widget.type == "Experience") {
+                                status = await authViewModel.updateUserInfo(
+                                    yearOfEx: selectedItem!.id!);
+                              }
+                              if (!status) {
+                                AppUtils.appToast(authViewModel.error ??
+                                    "Failed updated,please try again");
+                                return;
+                              }
+                            }
+                            widget.takeSelectedItem(selectedItem);
+                            Navigator.pop(context);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                Theme.of(context).colorScheme.primary,
+                            foregroundColor:
+                                Theme.of(context).colorScheme.onPrimary,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 15),
+                            alignment: Alignment.center,
+                          ),
+                          child: Text('Apply'),
+                        ),
                 ),
               ],
             ),

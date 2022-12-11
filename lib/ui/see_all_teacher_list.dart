@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:trackmy_mentor/data/userdata.dart';
 import 'package:trackmy_mentor/ui/profile/teacherprofile.dart';
 
-import '../model/services/app_url.dart';
 import '../view_model/teacher_view_model.dart';
 
 class SeeAllTeacherList extends StatefulWidget {
@@ -26,7 +25,7 @@ class SeeAllTeacherListState extends State<SeeAllTeacherList> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await teacherViewModel.getTeachers();
+      await teacherViewModel.getTeacherList();
       teacherItemlist = teacherViewModel.listData;
       setState(() {});
     });
@@ -81,7 +80,7 @@ class SeeAllTeacherListState extends State<SeeAllTeacherList> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                TeacherProfile()));
+                                                TeacherProfile(item)));
                                   },
                                   child: Card(
                                     elevation: 5,
@@ -110,7 +109,7 @@ class SeeAllTeacherListState extends State<SeeAllTeacherList> {
                                               borderRadius:
                                                   BorderRadius.circular(15),
                                               child: Image.network(
-                                                '${AppUrl.image_baseUrl}${item.image}',
+                                                '${item.image}',
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
@@ -139,7 +138,7 @@ class SeeAllTeacherListState extends State<SeeAllTeacherList> {
                                                   ),
                                                   SizedBox(height: 5),
                                                   Text(
-                                                    '${item.degree}',
+                                                    '${item.degree_name}',
                                                     overflow: TextOverflow.clip,
                                                     style: GoogleFonts.lato(
                                                         textStyle:

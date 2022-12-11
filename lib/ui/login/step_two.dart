@@ -4,8 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trackmy_mentor/data/helperdata.dart';
 import 'package:trackmy_mentor/utils/AppUtils.dart';
 
 import '../../utils/ImagePickerUtil.dart';
@@ -26,6 +28,10 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
   TextEditingController mobileNumberController = TextEditingController();
   int selectedIndex = 0;
   File? imagePath;
+
+  HelperData? selectedCountry;
+  HelperData? selectedState;
+  HelperData? selectedCity;
 
   @override
   Widget build(BuildContext context) {
@@ -249,9 +255,18 @@ class _StepTwoState extends State<StepTwo> with TickerProviderStateMixin {
                     margin: EdgeInsets.only(bottom: 15),
                     child: TextFormField(
                       controller: mobileNumberController,
+                      keyboardType: TextInputType.number,
+                      maxLength: 10,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Mobile number is required';
+                        }
+                        if (value.length < 10) {
+                          return 'Please enter valid mobile number ';
                         } else {
                           return null;
                         }

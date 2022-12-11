@@ -86,14 +86,12 @@ class _CoolStepperState extends State<CoolStepper> {
       if (widget.steps[currentStep].isValid == null ||
           await widget.steps[currentStep].isValid!()) {
         if (!_isLast(currentStep)) {
-          print("dsvsv");
           setState(() {
             currentStep++;
           });
           FocusScope.of(context).unfocus();
           switchToPage(currentStep);
         } else {
-          print("dsvsvaaaaaaa");
           final callback = widget.onCompleted ?? _doNothing;
           callback();
         }

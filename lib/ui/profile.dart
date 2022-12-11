@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../model/services/app_url.dart';
 import '../model/storage/shared_prefs.dart';
 
 class Profile extends StatefulWidget {
@@ -90,7 +89,7 @@ class _ProfileState extends State<Profile> {
                             ),
                             child: SharedPrefs().userdata?.image == null
                                 ? Image.asset('assets/images/default.jpg')
-                                : Image.network(AppUrl.image_baseUrl +
+                                : Image.network(
                                     "${SharedPrefs().userdata!.image}")),
                           ),
                           SizedBox(width: 15),
