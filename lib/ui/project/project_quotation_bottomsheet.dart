@@ -10,7 +10,7 @@ import 'package:trackmy_mentor/view_model/quotation_view_model.dart';
 
 import '../../data/quotationdata.dart';
 import '../../model/storage/shared_prefs.dart';
-
+import 'package:provider/provider.dart';
 class ProjectQuotationBottomSheet extends StatefulWidget {
   QuotationData quotationData;
   String projectTitle;
@@ -24,8 +24,10 @@ class ProjectQuotationBottomSheet extends StatefulWidget {
 
 class _ProjectQuotationBottomSheetState
     extends State<ProjectQuotationBottomSheet> with TickerProviderStateMixin {
+  late QuotationViewModel quotationViewModel;
   @override
   Widget build(BuildContext context) {
+    quotationViewModel = context.watch<QuotationViewModel>();
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.background,
@@ -246,7 +248,7 @@ class _ProjectQuotationBottomSheetState
               ),
             ),
             padding: EdgeInsets.all(15),
-            child: Row(
+            child:quotationViewModel.isLoading?CircularProgressIndicator(): Row(
               children: [
                 Expanded(
                   child: OutlinedButton(
@@ -295,7 +297,7 @@ class _ProjectQuotationBottomSheetState
     setState(() {
       isLoading = true;
     });
-    bool a = await QuotationViewModel().acceptRejectQuotation(
+    bool a = await quotationViewModel.acceptRejectQuotation(
         project_id: widget.quotationData.projectId!,
         project_status: status,
         quot_id: widget.quotationData.id!.toString(),

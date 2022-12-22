@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trackmy_mentor/model/storage/shared_prefs.dart';
 import 'package:trackmy_mentor/ui/common_widgets/description_bottomsheet.dart';
+import 'package:trackmy_mentor/ui/faq.dart';
 import 'package:trackmy_mentor/ui/profile/userprofile_edit.dart';
 
 import '../../data/helperdata.dart';
@@ -36,6 +37,11 @@ class _UserProfileState extends State<UserProfile> {
       "id": "005",
       "title": "Apply Overseas",
       "icon": Icons.app_registration,
+    },
+    {
+      "id": "006",
+      "title": "FAQ",
+        "icon": Icons.help_outline,
     },
     {
       "id": "004",
@@ -1134,6 +1140,11 @@ class _UserProfileState extends State<UserProfile> {
                             onTap: () {
                               if (item['id'] == "004") {
                                 SharedPrefs().logout();
+                              }else if (item['id'] == "006") {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => FAQ()));
                               }
                             },
                           ),

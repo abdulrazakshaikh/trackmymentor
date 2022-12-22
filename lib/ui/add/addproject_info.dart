@@ -42,6 +42,7 @@ class _AddProjectInfoState extends State<AddProjectInfo>
     // TODO: implement initState
     super.initState();
     setUps = [
+
       CoolStep(
           content: AddStepOne(categoryId, (HelperData data) {
         categoryId = data;

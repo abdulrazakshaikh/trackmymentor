@@ -28,6 +28,7 @@ class RatingViewModel extends ChangeNotifier {
           .getRatingList({"project_id": project_id});
       _isLoading = false;
       notifyListeners();
+      listData = [];
       if (!_NewAPIResponseresponse.isSuccess) {
         _error = _NewAPIResponseresponse.message;
         return false;
@@ -63,6 +64,7 @@ class RatingViewModel extends ChangeNotifier {
         _error = _NewAPIResponseresponse.message;
         return false;
       } else {
+        listData = [];
         if (_NewAPIResponseresponse.data[0]['student_rating'] == null) {
           var data = _NewAPIResponseresponse.data as List;
           data.forEach((element) {

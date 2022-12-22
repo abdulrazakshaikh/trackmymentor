@@ -12,7 +12,7 @@ import 'package:trackmy_mentor/utils/AppUtils.dart';
 
 import '../../utils/ImagePickerUtil.dart';
 import '../../view_model/quotation_view_model.dart';
-
+import 'package:provider/provider.dart';
 class QuotationBottomSheet extends StatefulWidget {
   ProjectData projectData;
   var status;
@@ -32,9 +32,10 @@ class _QuotationBottomSheetState extends State<QuotationBottomSheet>
   String? selectedDatee;
   DateTime selectedDate = DateTime.now();
   final _formKey1 = GlobalKey<FormState>();
-
+  late QuotationViewModel quotationViewModel;
   @override
   Widget build(BuildContext context) {
+    quotationViewModel = context.watch<QuotationViewModel>();
     return Form(
       key: _formKey1,
       child: SingleChildScrollView(
@@ -293,7 +294,7 @@ class _QuotationBottomSheetState extends State<QuotationBottomSheet>
                   ),
                 ),
                 padding: EdgeInsets.all(15),
-                child: Row(
+                child: quotationViewModel.isLoading ?CircularProgressIndicator():Row(
                   children: [
                     Expanded(
                       child: OutlinedButton(
@@ -324,7 +325,7 @@ class _QuotationBottomSheetState extends State<QuotationBottomSheet>
                               AppUtils.appToast("Please select image");
                               return;
                             }
-                            bool status = await QuotationViewModel()
+                            bool status = await quotationViewModel
                                 .addQuotation(
                                     project_id: widget.projectData.id!,
                                     price: priceTextEditingController.text,

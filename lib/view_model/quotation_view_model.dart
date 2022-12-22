@@ -33,6 +33,7 @@ class QuotationViewModel extends ChangeNotifier {
         _error = _NewAPIResponseresponse.message;
         return false;
       } else {
+        listData = [];
         var data =
             _NewAPIResponseresponse.data[0]['getteacher_quotion'] as List;
         data.forEach((element) {

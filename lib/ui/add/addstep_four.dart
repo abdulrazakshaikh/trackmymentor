@@ -10,6 +10,8 @@ import 'package:intl/intl.dart';
 import 'package:trackmy_mentor/utils/AppUtils.dart';
 import 'package:trackmy_mentor/utils/ImagePickerUtil.dart';
 
+import '../../model/storage/shared_prefs.dart';
+
 class AddStepFour extends StatefulWidget {
   Map? projectInfoMap;
   GlobalKey<FormState> formKey;
@@ -67,7 +69,7 @@ class _AddStepFourState extends State<AddStepFour>
         projectTitleController.text = widget.projectInfoMap!["title"];
       if (widget.projectInfoMap!['description'] != null)
         projectDescriptionController.text =
-            widget.projectInfoMap!["description"];
+        widget.projectInfoMap!["description"];
       if (widget.projectInfoMap!['lastdate'] != null)
         lastDatController.text = widget.projectInfoMap!["lastdate"];
       if (widget.projectInfoMap!['imagelist'] != null)
@@ -89,7 +91,10 @@ class _AddStepFourState extends State<AddStepFour>
                 'Project Information',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.lato(
-                  textStyle: Theme.of(context).textTheme.headlineSmall,
+                  textStyle: Theme
+                      .of(context)
+                      .textTheme
+                      .headlineSmall,
                   letterSpacing: 1.5,
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -121,7 +126,10 @@ class _AddStepFourState extends State<AddStepFour>
                         },
                         controller: projectTitleController,
                         style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.bodyMedium,
+                          textStyle: Theme
+                              .of(context)
+                              .textTheme
+                              .bodyMedium,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
                         ),
@@ -130,26 +138,41 @@ class _AddStepFourState extends State<AddStepFour>
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
                           labelText: 'Project Title'.toLowerCase(),
                           labelStyle: GoogleFonts.lato(
-                              textStyle: Theme.of(context).textTheme.bodyMedium,
+                              textStyle: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyMedium,
                               letterSpacing: 1.8,
                               fontWeight: FontWeight.w300),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.outline),
+                                color: Theme
+                                    .of(context)
+                                    .colorScheme
+                                    .outline),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme
+                                    .of(context)
+                                    .colorScheme
+                                    .primary,
                                 width: 1),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme
+                                    .of(context)
+                                    .colorScheme
+                                    .primary,
                                 width: 1),
                           ),
                           errorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme
+                                    .of(context)
+                                    .colorScheme
+                                    .primary,
                                 width: 1),
                           ),
                         ),
@@ -177,7 +200,10 @@ class _AddStepFourState extends State<AddStepFour>
                         },
                         controller: projectDescriptionController,
                         style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.bodyMedium,
+                          textStyle: Theme
+                              .of(context)
+                              .textTheme
+                              .bodyMedium,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
                         ),
@@ -187,26 +213,41 @@ class _AddStepFourState extends State<AddStepFour>
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
                           labelText: 'Project Description'.toLowerCase(),
                           labelStyle: GoogleFonts.lato(
-                              textStyle: Theme.of(context).textTheme.bodyMedium,
+                              textStyle: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyMedium,
                               letterSpacing: 1.8,
                               fontWeight: FontWeight.w300),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.outline),
+                                color: Theme
+                                    .of(context)
+                                    .colorScheme
+                                    .outline),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme
+                                    .of(context)
+                                    .colorScheme
+                                    .primary,
                                 width: 1),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme
+                                    .of(context)
+                                    .colorScheme
+                                    .primary,
                                 width: 1),
                           ),
                           errorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme
+                                    .of(context)
+                                    .colorScheme
+                                    .primary,
                                 width: 1),
                           ),
                         ),
@@ -238,7 +279,10 @@ class _AddStepFourState extends State<AddStepFour>
                         controller: lastDatController,
                         readOnly: true,
                         style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.bodyMedium,
+                          textStyle: Theme
+                              .of(context)
+                              .textTheme
+                              .bodyMedium,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
                         ),
@@ -258,26 +302,41 @@ class _AddStepFourState extends State<AddStepFour>
                           floatingLabelBehavior: FloatingLabelBehavior.auto,
                           labelText: 'Last Date to Submit'.toLowerCase(),
                           labelStyle: GoogleFonts.lato(
-                              textStyle: Theme.of(context).textTheme.bodyMedium,
+                              textStyle: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .bodyMedium,
                               letterSpacing: 1.8,
                               fontWeight: FontWeight.w300),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.outline),
+                                color: Theme
+                                    .of(context)
+                                    .colorScheme
+                                    .outline),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme
+                                    .of(context)
+                                    .colorScheme
+                                    .primary,
                                 width: 1),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme
+                                    .of(context)
+                                    .colorScheme
+                                    .primary,
                                 width: 1),
                           ),
                           errorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Theme
+                                    .of(context)
+                                    .colorScheme
+                                    .primary,
                                 width: 1),
                           ),
                         ),
@@ -300,7 +359,8 @@ class _AddStepFourState extends State<AddStepFour>
                           width: double.infinity,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                              color: Theme.of(context)
+                              color: Theme
+                                  .of(context)
                                   .colorScheme
                                   .secondary
                                   .withOpacity(0.2),
@@ -312,13 +372,19 @@ class _AddStepFourState extends State<AddStepFour>
                               Icon(Icons.upload_file,
                                   size: 44,
                                   color:
-                                      Theme.of(context).colorScheme.secondary),
+                                  Theme
+                                      .of(context)
+                                      .colorScheme
+                                      .secondary),
                               SizedBox(height: 5),
                               Text(
                                 'Upload Project Images',
                                 style: GoogleFonts.lato(
                                     textStyle:
-                                        Theme.of(context).textTheme.labelLarge,
+                                    Theme
+                                        .of(context)
+                                        .textTheme
+                                        .labelLarge,
                                     letterSpacing: 1.5,
                                     fontWeight: FontWeight.w600),
                               ),
@@ -326,6 +392,7 @@ class _AddStepFourState extends State<AddStepFour>
                           )),
                     ),
                     Container(
+                      margin: EdgeInsets.only(top: 20),
                       child: GridView.count(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
@@ -333,7 +400,44 @@ class _AddStepFourState extends State<AddStepFour>
                           // childAspectRatio: (1 / .4),
                           crossAxisSpacing: 4.0,
                           children: List.generate(imageList.length, (index) {
-                            return Image.file(imageList[index]);
+                            return Stack(children: [
+                              Container(
+                            decoration: BoxDecoration(
+                            border: Border.all(),
+                            ),
+                                child: ClipRRect(
+                                  child: Image.file(imageList[index],width: 160,height: 150,fit: BoxFit.cover),
+                                ),
+                              ),
+                              Positioned(
+                                right: 10,
+                                bottom: 153,
+                                child: ClipOval(
+                                  child: Material(
+                                    color: Colors.red, // Button color
+                                    child: InkWell(
+                                      splashColor: Theme.of(context)
+                                          .colorScheme
+                                          .secondary, // Splash color
+                                      onTap: () async {
+                                        imageList.removeAt(index);
+                                        setState(() {
+
+                                        });
+                                      },
+                                      child: SizedBox(
+                                          width: 32,
+                                          height: 32,
+                                          child: Icon(
+                                            Icons.delete,
+                                            size: 20,
+                                            color: Colors.white,
+                                          )),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ]);
                           })),
                     )
                   ],

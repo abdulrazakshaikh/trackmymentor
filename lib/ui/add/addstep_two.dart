@@ -123,8 +123,8 @@ class _AddStepTwoState extends State<AddStepTwo> with TickerProviderStateMixin {
                               height: 40,
                             ),
                             SizedBox(
-                              width: 200,
-                              height: 60,
+                              width: 300,
+                              height: 80,
                               child: Container(
                                 height: 60.0,
                                 decoration: BoxDecoration(
@@ -142,6 +142,7 @@ class _AddStepTwoState extends State<AddStepTwo> with TickerProviderStateMixin {
                                   child: Text(
                                     widget.classId!.name!.toString() +
                                         " Class ",
+                                    textAlign: TextAlign.center,
                                     style: GoogleFonts.lato(
                                         textStyle: Theme.of(context)
                                             .textTheme
